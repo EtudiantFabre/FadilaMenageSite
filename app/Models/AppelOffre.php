@@ -17,7 +17,7 @@ class AppelOffre extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function societe(): BelongsTo
+    public function societe()
     {
         return $this->belongsTo(Societe::class, 'id_societe');
     }
@@ -28,7 +28,7 @@ class AppelOffre extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function personnel(): BelongsTo
+    public function personnel()
     {
         return $this->belongsTo(Personnel::class, 'id_personnel');
     }

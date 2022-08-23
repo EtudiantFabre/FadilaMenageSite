@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AppelOffre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class AppelOffreController extends Controller
 {
@@ -13,7 +15,9 @@ class AppelOffreController extends Controller
      */
     public function index()
     {
-        //
+        $appel_offres = AppelOffre::all();
+        //echo 'Rien de bon';
+        return view('appelOffres.index', compact('appel_offres'));
     }
 
     /**
@@ -23,7 +27,7 @@ class AppelOffreController extends Controller
      */
     public function create()
     {
-        //
+        return view('appelOffres.create');
     }
 
     /**
@@ -34,51 +38,55 @@ class AppelOffreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('appelOffres.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\AppelOffre  $appelOffre
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(AppelOffre $appelOffre)
     {
-        //
+        return view('appelOffres.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\AppelOffre  $appelOffre
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(AppelOffre $appelOffre)
     {
-        //
+        if (View::exists('appelOffres.edit')){
+            return view('appelOffres.edit', compact('appelOffre'));
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\AppelOffre  $appelOffre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, AppelOffre $appelOffre)
     {
-        //
+        
+        return redirect()->route('appelOffres.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\AppelOffre  $appelOffre
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(AppelOffre $appelOffre)
     {
-        //
+        $appelOffre->delete();
+        return redirect()->route('appelOffres.index');
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
-    protected $illable = [ 'nom','tel','ville','quartier', 'email', 'type_service_rechercher', 'frequence_souhaiter'];
+    protected $fillable = [ 'nom','tel','ville','quartier', 'email', 'type_service_rechercher', 'frequence_souhaiter'];
 
     protected $primaryKet = 'id_client';
 

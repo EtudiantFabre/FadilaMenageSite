@@ -16,7 +16,7 @@ class Facture extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function personnel(): BelongsTo
+    public function personnel()
     {
         return $this->belongsTo(Personnel::class, 'id_personnel');
     }
@@ -26,7 +26,7 @@ class Facture extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function prospection(): BelongsTo
+    public function prospection()
     {
         return $this->belongsTo(Prospection::class, 'id_prospection');
     }

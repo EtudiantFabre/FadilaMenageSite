@@ -1,0 +1,9 @@
+suivie, prospection, AppelOffre, Facture, personneAprevenir, evaluation, societe, ponctuel
+
+
+Route::middleware('auth')->group(function () {
+    Route::resource('photos', 'PhotoController');
+    Route::resource('posts', 'PostsController');
+
+    // Beaucoup de routes ...
+});

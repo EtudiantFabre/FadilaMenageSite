@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id_suivis');
             $table->date('date_passage');
             $table->string('heure_passage');
-            $table->string('id_client');
+            //$table->string('id_client');
             $table->string('acces_residence');
             $table->string('verif_presence_agent');
             $table->string('presence_agent');
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('entretient_sanitaire');
             $table->string('balayage_netoyage_sol');
             $table->string('repassage');
-            $table->string('autres_traveaux');
+            $table->string('autres_traveaux')->nullable();
             $table->integer('id_personnel');
             $table->integer('id_agent');
             $table->timestamps();

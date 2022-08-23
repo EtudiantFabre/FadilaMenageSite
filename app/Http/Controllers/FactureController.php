@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Facture;
 use Illuminate\Http\Request;
 
 class FactureController extends Controller
@@ -13,7 +14,8 @@ class FactureController extends Controller
      */
     public function index()
     {
-        //
+        $factures = Facture::all();
+        return view('factures.index', compact('factures'));
     }
 
     /**
@@ -23,7 +25,7 @@ class FactureController extends Controller
      */
     public function create()
     {
-        //
+        return view('factures.create');
     }
 
     /**
@@ -34,51 +36,58 @@ class FactureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+        return redirect()->route('factures.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Facture  $facture
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Facture $facture)
     {
-        //
+        
+        return view('factures.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Facture  $facture
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Facture $facture)
     {
-        //
+        if (View::exists('factures.edit')) {
+            return view('factures.edit', compact('facture'));
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Facture  $facture
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Facture $facture)
     {
-        //
+        
+        return redirect()->route('factures.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Facture  $facture
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Facture $facture)
     {
-        //
+        $facture->delete();
+        return redirect()->route('factures.index');
     }
 }

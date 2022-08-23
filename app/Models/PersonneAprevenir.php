@@ -16,7 +16,7 @@ class PersonneAprevenir extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function candidat(): BelongsTo
+    public function candidat()
     {
         return $this->belongsTo(Candidat::class, 'id_candidat');
     }
