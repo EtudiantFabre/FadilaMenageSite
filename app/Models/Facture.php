@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Facture extends Model
 {
     use HasFactory;
-    protected $fillable = ['remuneration_brut', 'remuneration_net', 'conciliation_social', 'provision_sociales', 'cotisation_provisoir_conges', 'total_debour', 'frais', 'tva', 'total_ttc'];
+    protected $fillable = ['remuneration_brut', 'remuneration_net', 'conciliation_social', 
+    'provision_sociales', 'cotisation_provisoir_conges', 'total_debour', 'frais', 'tva', 
+    'total_ttc'];
     protected $primaryKey = 'id_facture';
 
     /**

@@ -8,8 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class AppelOffre extends Model
 {
     use HasFactory;
-    protected $fillable = ['classement', 'adresse_autorite_contractante', 'date_depot', 'domaine_postule', 'prix_achat_dossier', 'caution_bancaire', 'resultat', 'debut_prestation', 'id_societe', 'id_personnel'];
+    protected $fillable = ['classement', 'adresse_autorite_contractante', 'date_depot', 
+    'domaine_postule', 'prix_achat_dossier', 'caution_bancaire', 'resultat', 
+    'debut_prestation', 'id_societe', 'id_personnel'];
     protected $primaryKey = 'id_appel';
+
+    protected $casts = ['adresse_autorite_contractante' => "array"];
 
 
     /**

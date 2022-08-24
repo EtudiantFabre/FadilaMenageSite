@@ -24,7 +24,7 @@
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <?php 
             use SimpleSoftwareIO\QrCode\Facades\QrCode;
-                $qrcode = QrCode::size(200)->generate("Je suis un QR Code");
+                $qrcode = QrCode::size(200)->generate("https://www.youtube.com/channel/UC9H0uvq-93Bbf1hJJ5mJa8A");
                 echo $qrcode;
             ?>
             <?php if(Route::has('login')): ?>

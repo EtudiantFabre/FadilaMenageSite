@@ -17,8 +17,8 @@
         <h1>Liste de suivi</h1>
         <div class="container">
             <table class="table table-primary table-hover table-striped table-bordered border-primary text-center justify-content-center">
-                <thead class="thead-dark">
-                    <tr class="table-dark">
+                <thead class="table-dark">
+                    <tr>
                         <th>Date de passage</th>
                         <th>Heure de passage</th>
                         <!--th>Accesible a la residence</th>
@@ -36,7 +36,7 @@
                         <th>Repassage</th-->
                         <th>Personnel</th>
                         <th>Agent</th>
-                        <th>Actions</th>
+                        <th class="bg-danger">Actions</th>
                     </tr>
                 </thead>
 

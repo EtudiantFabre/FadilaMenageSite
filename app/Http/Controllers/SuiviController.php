@@ -64,16 +64,18 @@ class SuiviController extends Controller
         ]);
         $suivrePersonne = Suivi::all()->where('date_passage' , '=', $request->date_passage)->where('id_personnel', '=', $request->id_personnel)->where('id_agent', '=', $request->id_agent);
         if (count($suivrePersonne) != 0) {
+
             echo "
             <div class='alert alert-danger alert-dismissible fade show' role='alert'>
                 <strong>Alerte !!!</strong> Il paraît que vous avez déjà créer un suivi pour ce agent à la même date et heure.
                 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
             </div>";
+            return redirect()->route('suivis.index')->with('error', 'Suivi déjà existant !');
         } else {
             Suivi::create($request->all());
+            return redirect()->route('suivis.index')->with('succes', 'Suivi créer avec succès !');
         }
 
-        return redirect()->route('suivis.index');
     }
 
     /**
@@ -155,7 +157,7 @@ class SuiviController extends Controller
         $suivi->autres_traveaux = $request->autres_traveaux;
 
         $suivi->save();
-        return redirect()->route('suivis.index');
+        return redirect()->route('suivis.index')->with('succes', 'Suivi modifié !');
     }
 
     /**
@@ -168,6 +170,6 @@ class SuiviController extends Controller
     {
         
         $suivi->delete();
-        return redirect()->route('suivis.index');
+        return redirect()->route('suivis.index')->with('info', 'Suivi supprimé avec succès !');
     }
 }

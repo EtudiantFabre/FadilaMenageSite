@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\AppelOffre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use App\Models\Personnel;
+use App\Models\Societe;
 
 class AppelOffreController extends Controller
 {
@@ -27,7 +29,9 @@ class AppelOffreController extends Controller
      */
     public function create()
     {
-        return view('appelOffres.create');
+        $personnels = Personnel::all()->where('post_ocuper', '=', 'MARKETING');
+        $societes = Societe::all();
+        return view('appelOffres.create')->with('personnels', $personnels)->with('societes', $societes);
     }
 
     /**
@@ -38,6 +42,30 @@ class AppelOffreController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'classement' => 'required',
+            'ville' => 'required',
+            'quartier' => 'required',
+            'date_depot' => 'required',
+            'domaine_postule' => 'required',
+            'prix_achat_dossier' => 'required',
+            'caution_bancaire' => 'required',
+            'resultat' => 'required',
+            'debut_prestation' => 'required',
+            'id_societe' => 'required',
+            'id_personnel' => 'required',
+        ]);
+
+        $request['adresse_autorite_contractante'] = array(
+            'ville'=>$request->ville,
+            'quartier'=>$request->quartier,
+        );
+
+        $appelOffre= AppelOffre::all()->where('classement', '=', $request->classement)->where('date_depot', '=', $request->date_depot)->where('id_societe', '=', $request->id_societe);
+        if (count($appelOffre) != 0) {
+        } else {
+            AppelOffre::create($request->all());
+        }
         return redirect()->route('appelOffres.index');
     }
 
