@@ -13,7 +13,7 @@
     <div class="container">
         <h1>Modification de suivi</h1>
         <form action="{{route('suivis.update', $suivi)}}" method="POST">
-            {{ csrf_field() }}
+            @csrf
             @method('put')
             <div class="container">
                 @if ($errors->any())

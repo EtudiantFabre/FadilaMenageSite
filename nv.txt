@@ -1,4 +1,4 @@
-suivie, prospection, AppelOffre, Facture, personneAprevenir, evaluation, societe, ponctuel
+suivie(fait), prospection, AppelOffre(fait), Facture(fait), personneAprevenir(fait), evaluation(fait), societe(fait), ponctuel(fait), AgentPonctuel
 
 
 Route::middleware('auth')->group(function () {
@@ -7,3 +7,11 @@ Route::middleware('auth')->group(function () {
 
     // Beaucoup de routes ...
 });
+
+
+// Insertion
+
+
+
+insert into candidats (nom, prenom, date_naissance, lieu_naissance, genre, nationalite, piece_identite, numero_de_piece, date_delivrer, date_expiration, ville_residence, quartier, rue, email, situation_familiale, enfants_encharge, profession, photo_id, avatar, poste_candidate, horaire_travail_souhaite, objectif, qualite_personnelles, savoir_faire, disponible_a_loger, nature_contrat, horaire_travail_passe) values ('Franc', 'Amégnigan', '13/02/2001', 'Lomé', 'M', 'Togolaise', 'CV', '123456KL', '10/11/2022', '10/11/2025', 'Sokodé', 'Bamabodolo', 'Rue 1', 'fabrice.toyi@ifnti.com', 'Célibataire', '5', 'Etudiant', '1', 'toyi.png', 'NOUNOU', 'Temps partiel', 'Rien', 'Hospitalité', 'Couture', 'OUI', 'CDD', '10 h 40');
+

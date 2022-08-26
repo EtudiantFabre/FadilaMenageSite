@@ -9,11 +9,16 @@
     <title>LISTE DES APPELS D'OFFRES</title>
 </head>
 <body>
-    <div>
+    <div class="container">
         <h1>LISTE DES APPELS D'OFFRES</h1>
         <table class="table table-primary table-hover table-striped table-bordered border-primary text-center justify-content-center">
             <thead class="table-dark">
                 <tr>
+                    <th>Date d'invitation</th>
+                    <th>Autorite contractante</th>
+                    <!--th>Numéro AA0</th>
+                    <th>Montant Proposé</th>
+                    <th>Nombre de concurent(s)</th>
                     <th>Classement</th>
                     <th>Adresse de l'autorité contractante : Ville</th>
                     <th>Adresse de l'autorité contractante : Quartier</th>
@@ -22,7 +27,7 @@
                     <th>Prix d'achat du dossier</th>
                     <th>Caution bancaire</th>
                     <th>Résultat</th>
-                    <th>Début de prestation</th>
+                    <th>Début de prestation</th-->
                     <th>Societé</th>
                     <th>Personnel</th>
                     <th class="bg-danger">Actions</th>
@@ -30,6 +35,22 @@
             </thead>
             @foreach ($appel_offres as $appel)
                 <tr>
+                    <td>
+                        {{$appel->date_invitation}}
+                    </td>
+                    <td>
+                        {{$appel->autorite_contractante}}
+                    </td>
+                    <!--td>
+                        {{$appel->numero_aao}}
+                    </td>
+                    <td>
+                        {{$appel->montant_propose}}
+                    </td>
+                    <td>
+                        {{$appel->nbre_concurents}}
+                    </td>
+
                     <td>
                         {{$appel->classement}}
                     </td>
@@ -56,7 +77,7 @@
                     </td>
                     <td>
                         {{$appel->debut_prestation}}
-                    </td>
+                    </td-->
                     <td>
                         {{$appel->id_societe}}
                     </td>
@@ -85,6 +106,11 @@
                 </tr>
             @endforeach
         </table>
+        <br/>
+        <div class="row-cols-auto mt-3">
+            {{$appel_offres->links()}}
+        </div>
+        <br>
     </div>
 
     <section>

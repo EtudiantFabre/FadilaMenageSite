@@ -11,7 +11,7 @@ class Candidat extends Model
     protected $fillable =['nom','prenom','date_naissance','lieu_naissance','genre','nationalite','piece_identite','numero_de_piece','date_delivrer',
                           'date_expiration','ville_residence','quartier','rue','email','situation_familiale','enfants_encharge','profession','photo_id',
                           'avatar', 'poste_candidate','horaire_travail_souhaite','objectif','qualite_personnelles','savoir_faire','disponible_a_loger',
-                          'nature_contrat','oraire_travail_passe'];
+                          'nature_contrat','horaire_travail_passe'];
     protected $primaryKey = 'id_candidat';
 
 

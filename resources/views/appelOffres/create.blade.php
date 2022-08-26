@@ -30,6 +30,32 @@
                 </div>
                 <div>
                     <div>
+                        <label for="date_invitation">
+                            Date d'invitation<span class="text-danger required" aria-hidden="true">*</span> <input type="date" name="date_invitation" placeholder="JJ/MM/AAAA">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="autorite_contractante">
+                            Autorité contractante<span class="text-danger required" aria-hidden="true">*</span> <input type="text" name="autorite_contractante" placeholder="Entrer le nom de l'autorité">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="numero_aao">
+                            Numéro AA0<span class="text-danger required" aria-hidden="true">*</span> <input type="text" name="numero_aao" placeholder="Numéro">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="montant_propose">
+                            Montant proposé <span class="text-danger required" aria-hidden="true">*</span> <input type="number" name="montant_propose" placeholder="Montant">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="nbre_concurents">
+                            Nombre de concurent(s)<span class="text-danger required" aria-hidden="true">*</span> <input type="number" name="nbre_concurents" placeholder="Nombre">
+                        </label>
+                    </div>
+
+                    <div>
                         <label for="classement">
                             Classement<span class="text-danger required" aria-hidden="true">*</span> <input type="text" name="classement">
                         </label>
@@ -53,7 +79,7 @@
                     </div>
                     <div>
                         <label for="date_depot">
-                            Date de dépôt<span class="text-danger required" aria-hidden="true">*</span>  <input type="text" name="date_depot" placeholder="JJ/MM/AA">
+                            Date de dépôt<span class="text-danger required" aria-hidden="true">*</span>  <input type="date" name="date_depot" placeholder="JJ/MM/AA">
                         </label>
                     </div>
                     <div>

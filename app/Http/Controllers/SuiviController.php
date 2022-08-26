@@ -17,7 +17,7 @@ class SuiviController extends Controller
      */
     public function index()
     {
-        $suivis = Suivi::latest()->paginate(10);
+        $suivis = Suivi::latest()->paginate(25);
         //echo 'Rien de bon';
         return view('suivis.index', compact('suivis'));
     }

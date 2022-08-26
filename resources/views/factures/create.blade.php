@@ -10,6 +10,8 @@
     </head>
     <body>
         <div class="container">
+            <h1>CRÉATION D'UNE FACTURE</h1>
+
             <form action="{{route('factures.store')}}" method="POST">
                 @csrf
                 @method('post')
@@ -25,7 +27,6 @@
                     @endif
                 </div>
                 <div>
-                    <h1>CRÉATION D'UNE FACTURE</h1>
                     <div>
                         <label for="remuneration_brut">
                             Rémunération BRUT<span class="text-danger required" aria-hidden="true">*</span> : <input type="number" name="remuneration_brut" id="remuneration_brut">
