@@ -37,6 +37,7 @@ return new class extends Migration
             $table->integer('salaire');
             $table->string('post_ocuper');
             $table->string('nature_contrat');
+            $table->string('telephone');
             $table->timestamps();
             $table->softDeletes();
         });

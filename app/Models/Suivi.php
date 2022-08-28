@@ -17,7 +17,7 @@ class Suivi extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function personnel(): HasOne
+    public function personnel()
     {
         return $this->hasOne(Personnel::class, 'id_personnel');
     }
@@ -27,7 +27,7 @@ class Suivi extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function agent(): HasOne
+    public function agent()
     {
         return $this->hasOne(Agent::class, 'id_agent');
     }
