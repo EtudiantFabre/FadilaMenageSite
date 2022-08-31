@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('info_complementaire');
             $table->integer('budget');
             $table->string('actions_menees');
-            $table->string('conclusion');
+            $table->string('conclusion')->nullable();
             $table->integer('id_agent');
             $table->integer('id_client');
             $table->integer('id_facture');

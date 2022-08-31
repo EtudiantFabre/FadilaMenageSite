@@ -16,7 +16,7 @@ class Evaluation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function agent(): BelongsTo
+    public function agent()
     {
         return $this->belongsTo(Agent::class, 'id_agent');
     }

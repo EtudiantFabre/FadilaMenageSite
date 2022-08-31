@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use Illuminate\Http\Request;
+use App\Models\Agent;
+use Illuminate\Support\Facades\View;
+
 
 class AgentController extends Controller
 {
@@ -15,7 +18,12 @@ class AgentController extends Controller
     public function index()
     {
         $agents = Agent::all();
+<<<<<<< HEAD
         return view('agents.index',compact('agents'));
+=======
+        //echo 'Rien de bon';
+        return view('agents.index', compact('agents'));
+>>>>>>> main
     }
 
     /**
@@ -25,7 +33,11 @@ class AgentController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         return view('agents.edit');
+=======
+        return view('agents.create');
+>>>>>>> main
     }
 
     /**
@@ -36,6 +48,7 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         $request->validate([
 
             //'nom' => 'required',
@@ -71,6 +84,10 @@ class AgentController extends Controller
         $agents->telephone = $request->telephone;
         $agents->save();
         return redirect()->route('agents.store');
+=======
+        
+        return redirect()->route('agents.index');
+>>>>>>> main
     }
 
     /**
@@ -81,8 +98,13 @@ class AgentController extends Controller
      */
     public function show(Agent $agent)
     {
+<<<<<<< HEAD
         return view('agents.show', compact("agent"));
 
+=======
+
+        return view('agents.show');
+>>>>>>> main
     }
 
     /**
@@ -93,7 +115,13 @@ class AgentController extends Controller
      */
     public function edit(Agent $agent)
     {
+<<<<<<< HEAD
         return view("agents.edit", compact("agent"));
+=======
+        if (View::exists('agents.edit')){
+            return view('agents.edit', compact('agent'));
+        }
+>>>>>>> main
     }
 
     /**
@@ -105,6 +133,7 @@ class AgentController extends Controller
      */
     public function update(Request $request, Agent $agent)
     {
+<<<<<<< HEAD
          // 1. La validation
 
     // Les règles de validation pour "title" et "content"
@@ -117,6 +146,11 @@ class AgentController extends Controller
     if ($request->has("photo_id")) {
         // On ajoute la règle de validation pour "picture"
         $rules["photo_id"] = 'bail|required|image|max:1024';
+=======
+        
+
+        return redirect()->route('agents.index');
+>>>>>>> main
     }
 
     //$this->validate($request, $rules);
@@ -170,11 +204,17 @@ class AgentController extends Controller
      */
     public function destroy(Agent $agent)
     {
+<<<<<<< HEAD
 
     $agent->delete();
 
     // Redirection route "posts.index"
     return redirect(route('agents.index'));
+=======
+        
+        $agent->delete();
+        return redirect()->route('agents.index');
+>>>>>>> main
     }
 
 }
