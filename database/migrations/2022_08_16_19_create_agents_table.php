@@ -34,8 +34,17 @@ return new class extends Migration
             $table->string('profession');
             $table->string('photo_id');
             $table->string('avatar');
+            $table->string('poste_candidate');
+            $table->string('horaire_travail_souhaite');
+            $table->string('objectif');
+            $table->string('qualite_personnelles');
+            $table->string('savoir_faire');
+            $table->string('disponible_a_loger');
+            $table->string('nature_contrat');
+            $table->string('oraire_travail_passe');
             $table->string('date_retenu');
             $table->string('status');
+            $table->string('telephone');
             $table->timestamps();
             $table->softDeletes();
         });

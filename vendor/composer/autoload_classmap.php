@@ -9,9 +9,12 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AgentController' => $baseDir . '/app/Http/Controllers/AgentController.php',
+<<<<<<< HEAD
+=======
     'App\\Http\\Controllers\\AgentPonctuelController' => $baseDir . '/app/Http/Controllers/AgentPonctuelController.php',
     'App\\Http\\Controllers\\AppelOffreController' => $baseDir . '/app/Http/Controllers/AppelOffreController.php',
     'App\\Http\\Controllers\\ArticleController' => $baseDir . '/app/Http/Controllers/ArticleController.php',
+>>>>>>> main
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
@@ -22,18 +25,27 @@ return array(
     'App\\Http\\Controllers\\ClientController' => $baseDir . '/app/Http/Controllers/ClientController.php',
     'App\\Http\\Controllers\\ContratController' => $baseDir . '/app/Http/Controllers/ContratController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+<<<<<<< HEAD
+    'App\\Http\\Controllers\\ExperienceDuCandidatController' => $baseDir . '/app/Http/Controllers/ExperienceDuCandidatController.php',
+=======
     'App\\Http\\Controllers\\EvaluationController' => $baseDir . '/app/Http/Controllers/EvaluationController.php',
     'App\\Http\\Controllers\\ExperienceDuCandidatController' => $baseDir . '/app/Http/Controllers/ExperienceDuCandidatController.php',
     'App\\Http\\Controllers\\FactureController' => $baseDir . '/app/Http/Controllers/FactureController.php',
+>>>>>>> main
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\PersonneAprevenirController' => $baseDir . '/app/Http/Controllers/PersonneAprevenirController.php',
     'App\\Http\\Controllers\\PersonneController' => $baseDir . '/app/Http/Controllers/PersonneController.php',
     'App\\Http\\Controllers\\PersonnelController' => $baseDir . '/app/Http/Controllers/PersonnelController.php',
+<<<<<<< HEAD
+    'App\\Http\\Controllers\\RelanceContratController' => $baseDir . '/app/Http/Controllers/RelanceContratController.php',
+    'App\\Http\\Controllers\\SocieteController' => $baseDir . '/app/Http/Controllers/SocieteController.php',
+=======
     'App\\Http\\Controllers\\PonctuelController' => $baseDir . '/app/Http/Controllers/PonctuelController.php',
     'App\\Http\\Controllers\\ProspectionController' => $baseDir . '/app/Http/Controllers/ProspectionController.php',
     'App\\Http\\Controllers\\RelanceContratController' => $baseDir . '/app/Http/Controllers/RelanceContratController.php',
     'App\\Http\\Controllers\\SocieteController' => $baseDir . '/app/Http/Controllers/SocieteController.php',
     'App\\Http\\Controllers\\SuiviController' => $baseDir . '/app/Http/Controllers/SuiviController.php',
+>>>>>>> main
     'App\\Http\\Controllers\\VenteController' => $baseDir . '/app/Http/Controllers/VenteController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
