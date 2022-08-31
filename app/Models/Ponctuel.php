@@ -13,4 +13,9 @@ class Ponctuel extends Model
     protected $primaryKey = 'id_ponctuel';
 
     protected $casts = ['adresse' => 'array'];
+
+    public function agentPonctuels()
+    {
+    return $this->hasMany(AgentPonctuel::class,'id_agent_ponctuel');
+    }
 }

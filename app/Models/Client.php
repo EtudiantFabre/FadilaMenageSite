@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
-    protected $fillable = [ 'nom','tel','ville','quartier', 'email', 'type_service_rechercher',
+    protected $fillable = ['nom','tel','ville','quartier', 'email', 'type_service_rechercher',
      'frequence_souhaiter'];
 
     protected $primaryKet = 'id_client';
@@ -17,4 +17,9 @@ class Client extends Model
     {
         return $this->hasMany(Contrat::class,'id_contrat');
     }
+
+    /*public function prospections()
+    {
+        return $this->hasMany(Prospection::class,'id_prospection');
+    }*/
 }

@@ -10,11 +10,12 @@
     <title>Affichage de suivi</title>
 </head>
 <body>
-    <div>
+    <div class="container">
+        <h1 class="text-center">Affichage de suivi</h1>
         <form action="{{route('suivis.index')}}" method="GET">
             <div>
                 <table class="table table-dange table-hover table-striped table-bordered border-primary text-center justify-content-center">
-                    <thead class="thead-dark">
+                    <thead class="table-dark">
                         <tr>
                             <th>Date de passage</th>
                             <th>Heure de passage</th>

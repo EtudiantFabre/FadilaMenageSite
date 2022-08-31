@@ -33,4 +33,8 @@ class Agent extends Model
     return $this->belongsTo(Personne::class,'id_personne');
     }
 
+    public function agentPonctuels()
+    {
+    return $this->hasMany(AgentPonctuel::class,'id_agent_ponctuel');
+    }
 }

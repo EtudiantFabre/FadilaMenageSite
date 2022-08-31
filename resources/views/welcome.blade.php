@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -21,7 +23,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <!--div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <?php 
             use SimpleSoftwareIO\QrCode\Facades\QrCode;
                 $qrcode = QrCode::size(200)->generate("https://www.youtube.com/channel/UC9H0uvq-93Bbf1hJJ5mJa8A");
@@ -132,6 +134,158 @@
                     </div>
                 </div>
             </div>
+        </div-->
+
+
+
+        <!--div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="10000">
+                <img src="logo.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>First slide label</h5>
+                  <p>Some representative placeholder content for the first slide.</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="fadila1.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Second slide label</h5>
+                  <p>Some representative placeholder content for the second slide.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="Original.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Third slide label</h5>
+                  <p>Some representative placeholder content for the third slide.</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div-->
+
+        <section>
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="logo.png" class="d-block w-100 img-custom" alt="..." >
+                  <div class="carousel-caption d-none d-md-block text-start">
+                    <h5>Bienvenue sur notre site officiel</h5>
+                    <p>Accédez directement à notre Bot Telegram à partir d'ici</p>
+                    <form action="https://web.telegram.org/z/#5340210420" target="_blank">
+                       <button class="btn btn-primary">Telegram</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="fadila1.png" class="d-block w-100 img-custom" alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Bienvenue sur notre site officiel</h5>
+                    <p>Accédez directement à notre Page facebook à partir d'ici.</p>
+                    <form action="https://www.facebook.com/TOAFIS.IFN.SOK" target="_blank">
+                      <button class="btn btn-primary">Facebook</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="Original.png" class="d-block w-100 img-custom" alt="...">
+                  <div class="carousel-caption d-none d-md-block text-end">
+                    <h5>Bienvenue sur notre site officiel</h5>
+                    <p>Accédez directement à notre whatsapp à partir d'ici</p>
+                    <form action="https://chat.whatsapp.com/HYxRZx6Z4h62TgGdwHShJc" target="_blank">
+                      <button class="btn btn-primary">Whatsapp</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+        </section>
+        <br>
+
+        <div class="text-center fs-1 fw-bolder text-warning">
+          <label for="text">
+            Histoire : <br>
+            Créée en 2017, FADILA MÉNAGE est spécialisée dans le placement du personnel de ménage, le nettoyage professionnel et la conception de panier-cadeau. Notre mission est d'apporter le bonheur et la joie dans vos ménages.
+          </label>
         </div>
+        <br>
+        <section>
+          <div class="row row-cols-2 row-cols-md-2 g-4" style="margin-top: auto; margin-bottom: auto;">
+            <div class="card mb-3 bg-warning " style="max-width: 999px;">
+              <div class="row g-1">
+                <div class="col-md-4">
+                  <img src="logo.png" class="img-fluid rounded-start" alt="img">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-3 bg-warning " style="max-width: 999px;">
+              <div class="row g-1">
+                <div class="col-md-4">
+                  <img src="logo.png" class="img-fluid rounded-start" alt="img">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
     </body>
+
+    <footer>
+      <div class="bg-secondary bg-gradient position-relative bottom-0 start-50 translate-middle-x text-center">
+        <label for="coririth">
+          Copyright © 2022 Fadila Ménage   Tous droits réservés.
+        </label>
+      </div>
+    </footer>
 </html>
+
+<style>
+    .img-custom{
+      height: 500px !important;
+      object-fit: cover;
+    }
+
+    .
+  </style>
+@endsection

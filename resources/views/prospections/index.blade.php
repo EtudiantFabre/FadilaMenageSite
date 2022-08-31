@@ -10,13 +10,14 @@
     <title>Liste de prospections</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
+        <h1 class="text-center">Liste des prospections</h1>
         <table class="table table-dange table-hover table-striped table-bordered border-primary text-center justify-content-center">
             <thead class="table-dark">
                 <tr>
-                    <th>Raison social</th>
+                    <th>ID</th>
                     <th>Date</th>
-                    <th>Canal</th>
+                    <!--th>Canal</th>
                     <th>Compétence recherché</th>
                     <th>Type de maison</th>
                     <th>Nombre de chambre</th>
@@ -24,7 +25,7 @@
                     <th>Taille de la famille</th>
                     <th>Budget</th>
                     <th>Actions menées</th>
-                    <th>Conclusion</th>
+                    <th>Conclusion</th-->
                     <th>Agent sélectionné</th>
                     <th>Client sélectionné</th>
                     <th>Facture sélectionné</th>
@@ -35,12 +36,12 @@
             @foreach ($prospections as $prospection)
                 <tr>
                     <td>
-                        {{$prospection->raison_social}}
+                        {{$prospection->id_prospection}}
                     </td>
                     <td>
                         {{$prospection->date}}
                     </td>
-                    <td>
+                    <!--td>
                         {{$prospection->canal}}
                     </td>
                     <td>
@@ -66,15 +67,34 @@
                     </td>
                     <td>
                         {{$prospection->conclusion}}
-                    </td>
+                    </td-->
                     <td>
-                        {{$prospection->id_agent}}
+                        {{$prospection->agent->nom}}
                     </td>
                     <td>
                         {{$prospection->id_client}}
                     </td>
                     <td>
                         {{$prospection->id_facture}}
+                    </td>
+                    <td>
+                        <div class="d-flex dropdown mr-1">
+                            <form action="{{route('prospections.show', $prospection->id_prospection)}}" method="GET">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-primary">Afficher</button>
+                            </form>
+                        
+                            <form action="{{route('prospections.destroy', $prospection->id_prospection)}}" method="post" onsubmit="return AccepterSuppression()">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-outline-danger">Supprimer</button>
+                            </form>
+                        
+                            <form action="{{route('prospections.edit', $prospection->id_prospection)}}" method="GET">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-info">Modifier</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach

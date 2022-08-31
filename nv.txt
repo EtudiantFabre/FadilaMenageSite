@@ -1,4 +1,4 @@
-suivie(fait), prospection, AppelOffre(fait), Facture(fait), personneAprevenir(fait), evaluation(fait), societe(fait), ponctuel(fait), AgentPonctuel
+suivie(fait), prospection(fait), AppelOffre(fait), Facture(fait), personneAprevenir(fait), evaluation(fait), societe(fait), ponctuel(fait), AgentPonctuel
 
 
 Route::middleware('auth')->group(function () {
@@ -15,3 +15,60 @@ Route::middleware('auth')->group(function () {
 
 insert into candidats (nom, prenom, date_naissance, lieu_naissance, genre, nationalite, piece_identite, numero_de_piece, date_delivrer, date_expiration, ville_residence, quartier, rue, email, situation_familiale, enfants_encharge, profession, photo_id, avatar, poste_candidate, horaire_travail_souhaite, objectif, qualite_personnelles, savoir_faire, disponible_a_loger, nature_contrat, horaire_travail_passe) values ('Franc', 'Amégnigan', '13/02/2001', 'Lomé', 'M', 'Togolaise', 'CV', '123456KL', '10/11/2022', '10/11/2025', 'Sokodé', 'Bamabodolo', 'Rue 1', 'fabrice.toyi@ifnti.com', 'Célibataire', '5', 'Etudiant', '1', 'toyi.png', 'NOUNOU', 'Temps partiel', 'Rien', 'Hospitalité', 'Couture', 'OUI', 'CDD', '10 h 40');
 
+
+insert into agents (nom, prenom, date_naissance, lieu_naissance, genre, nationalite, piece_identite, numero_de_piece, date_delivrer, date_expiration, ville_residence, quartier, rue, email, situation_familiale, enfants_encharge, profession, photo_id, avatar, date_retenu, status) values ('Franc', 'Amégnigan', '13/02/2001', 'Lomé', 'M', 'Togolaise', 'CV', '123456KL', '10/11/2022', '10/11/2025', 'Sokodé', 'Bamabodolo', 'Rue 1', 'fabrice.toyi@ifnti.com', 'Célibataire', '5', 'Etudiant', '1', 'toyi.png', '10/11/2023', 'Libre');
+
+
+
+insert into personnels (nom, prenom, date_naissance, lieu_naissance, genre, nationalite, piece_identite, numero_de_piece, date_delivrer, date_expiration, ville_residence, quartier, rue, email, situation_familiale, enfants_en_charge, profession, photo_id, avatar, salaire, post_ocuper, nature_contrat) values ('TOYI', 'Kossi', '13/02/2001', 'Lomé', 'M', 'Togolaise', 'CV', '123456KL', '10/11/2022', '10/11/2025', 'Sokodé', 'Bamabodolo', 'Rue 1', 'fabrice.toyi@ifnti.com', 'Célibataire', '5', 'Etudiant', '1', 'toyi.png', 20000, 'SUIVI', 'CDD');
+
+
+
+
+
+
+
+
+
+
+
+
+
+Exemple de modal :
+
+
+<div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                        <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Recipient:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+Js du programme

@@ -10,13 +10,11 @@
     <title>Liste suivis</title>
 </head>
 <body>
-    <div class="container">
-
-    
+    <div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
         <!--a href="{{-- route('/creation-suivi')--}}">Commencer</a-->
-        <h1>Liste de suivi</h1>
-        <div class="container">
-            <table class="table table-primary table-hover table-striped table-bordered border-primary text-center justify-content-center">
+        <h1 class="text-center">Liste de suivi</h1>
+        <div >
+            <table class="table table-primary table-hover table-striped rounded table-bordered border-primary text-center table-curved justify-content-center">
                 <thead class="table-dark">
                     <tr>
                         <th>Date de passage</th>
@@ -127,6 +125,14 @@
             </form>
         </section>
     </div>
+
+
+
+    
+
+
+
+
         
 </body>
 </html>
@@ -140,18 +146,20 @@
             return false;
         }
     }
+</script>
 
-    /*sweetAlert(
-    {
-        title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
-        type: "warning",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!"
-    }, 
-    deleteIt()
-);*/
+<script>
+    .table-bordered {
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+    .table-curved {
+        border: solid #ccc 1px;
+        border-radius: 6px;
+        border-left:0px;
+    }
 </script>
 
 @endsection

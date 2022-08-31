@@ -33,7 +33,8 @@
     
 </head>
 <body>
-    <div class="container">
+    <div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
+        <h1 class="text-center">Création d'un suivi</h1>
         <form action="{{route('suivis.store')}}" method="POST">
             {{ csrf_field() }}
             @csrf
@@ -52,48 +53,45 @@
             </div>
         
             <div>
-                <div>
-                    <label for="">
-                        Date de passage <span class="text-danger required" aria-hidden="true">*</span> : <input type="date" id="date_passage" name="date_passage">
-                    </label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Date de passage<span class="text-danger required" aria-hidden="true">*</span></span>
+                    <input type="date" id="date_passage" name="date_passage" class="form-control">
                 </div>
-                <div>
-                    <label for="">
-                        Heure de passage <span class="text-danger required" aria-hidden="true">*</span>: <input type="time" id="heure_passage" name="heure_passage" min="07:30" max="18:00" required>
-                    </label>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Heure de passage <span class="text-danger required" aria-hidden="true">*</span></span>
+                    <input type="time" id="heure_passage" name="heure_passage" min="07:30" max="18:00" required class="form-control">
                 </div>
+                <br>
                 <div>
-                    <label for="">
-                        Accès a la résidence du client <span class="text-danger required" aria-hidden="true">*</span>:
-                        <select name="acces_residence" id="acces_residence">
-                            <option value="Vrai">Vrai</option>
-                            <option value="Faux">Faux</option>
-                        </select>
-                    </label>
+                    Accès a la résidence du client <span class="text-danger required" aria-hidden="true">*</span>:
+                    <select name="acces_residence" class="form-select form-select-lg" id="acces_residence">
+                        <option value="Vrai">Vrai</option>
+                        <option value="Faux">Faux</option>
+                    </select>
                 </div>
+                <br>
                 <div>
-                    <label for="">
-                        Verification et signature du registre de présence de l'agent <span class="text-danger required" aria-hidden="true">*</span>: 
-                        <select name="verif_presence_agent" id="verif_presence_agent">
-                            <option value="Vrai">Vrai</option>
-                            <option value="Faux">Faux</option>
-                        </select>
-                    </label>
+                    Verification et signature du registre de présence de l'agent <span class="text-danger required" aria-hidden="true">*</span>
+                    <select name="verif_presence_agent" id="verif_presence_agent" class="form-select form-select-lg">
+                        <option value="Vrai">Vrai</option>
+                        <option value="Faux">Faux</option>
+                    </select>
                 </div>
+                <br>
                 <div>
-                    <label for="">
-                        Présence de l'agent <span class="text-danger required" aria-hidden="true">*</span> : 
-                        <select name="presence_agent" id="presence_agentss">
-                            <option value="Vrai">Vrai</option>
-                            <option value="Faux">Faux</option>
-                        </select>
-                    </label>
+                    Présence de l'agent <span class="text-danger required" aria-hidden="true">*</span> : 
+                    <select name="presence_agent" id="presence_agentss" class="form-select form-select-lg mb-3">
+                        <option value="Vrai">Vrai</option>
+                        <option value="Faux">Faux</option>
+                    </select>
                 </div>
-                <div>
-                    <label for="">
-                        Heure d'arrivé de l'agent <span class="text-danger required" aria-hidden="true">*</span> : <input type="time" id="heure_arrive_agent" name="heure_arrive_agent" min="06:30" max="18:00" required>
-                    </label>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Heure d'arrivé de l'agent <span class="text-danger required" aria-hidden="true">*</span></span>
+                    <input type="time" id="heure_arrive_agent" name="heure_arrive_agent" min="06:30" max="18:00" required class="form-control" >
                 </div>
+                <br>
                 <div>
                     <label for="pres_corporel_vestimentaire">
                         Présentation corporelle et vestimentaire <span class="text-danger required" aria-hidden="true">*</span> : 
@@ -111,6 +109,7 @@
                         </div>
                     </label>
                 </div>
+                <br>
                 <div>
                     <label for="entretient_plafond">
                         Entretien des plafonds<span class="text-danger required" aria-hidden="true">*</span> :
@@ -128,7 +127,7 @@
                         </div>
                     </label>
                 </div>
-
+                <br>
                 <div>
                     <label for="essuyage_vitre">
                         Essuyage des vitres / Nacos / Fenêtre / Portes<span class="text-danger required" aria-hidden="true">*</span> :
@@ -152,7 +151,7 @@
                         <label for="Satisfait">Satisfait</label-->
                     </label>
                 </div>
-
+                <br>
                 <div>
                     <label for="depousierage_appareil">
                         Dépousièrage des appareils électroniques<span class="text-danger required" aria-hidden="true">*</span> : 
@@ -170,7 +169,7 @@
                         </div>
                     </label>
                 </div>
-
+                <br>
                 <div>
                     <label for="depousierage_meuble">
                         Dépousièrage des meubles<span class="text-danger required" aria-hidden="true">*</span> : 
@@ -188,7 +187,7 @@
                         </div>
                     </label>
                 </div>
-
+                <br>
                 <div>
                     <label for="entretient_corbeil">
                         Vidage et entretien des corbeilles<span class="text-danger required" aria-hidden="true">*</span> : 
@@ -206,7 +205,7 @@
                         </div>
                     </label>
                 </div>
-
+                <br>
                 <div>
                     <label for="entretient_sanitaire">
                         Entretien des sanitaires<span class="text-danger required" aria-hidden="true">*</span> : 
@@ -241,7 +240,7 @@
                         </div>
                     </div>
                 </div-->
-
+                <br>
                 <div>
                     <label for="balayage_netoyage_sol">
                         Balayage et netoyage du sol<span class="text-danger required" aria-hidden="true">*</span> : 
@@ -259,7 +258,7 @@
                         </div>
                     </label>
                 </div>
-
+                <br>
                 <div>
                     <label for="repassage">
                         Repassage du linge<span class="text-danger required" aria-hidden="true">*</span> : 
@@ -277,7 +276,7 @@
                         </div>
                     </label>
                 </div>
-
+                <br>
                 <div>
                     <label for="">Sélectionner l'agent de suivi<span class="text-danger required" aria-hidden="true">*</span> :
                         <select name="id_personnel" class="form-control" size="3" aria-label="size 3 select example">>
@@ -287,9 +286,8 @@
                             @endforeach
                         </select>
                     </label>
-
                 </div>
-
+                <br>
                 <div>
                     <label for="">Sélectionner l'agent suivi<span class="text-danger required" aria-hidden="true">*</span> :
                         <select name="id_agent" class="form-control" size="3" aria-label="size 3 select example">>
@@ -300,12 +298,13 @@
                         </select>
                     </label>
                 </div>
-
+                <br>
                 <div class="form-floating" >
                     Autres traveaux (ceci est optionnel):
                     <textarea class="form-control" placeholder="Pricisez si vous avez" id="floatingTextarea2" style="height: 100px" name="autres_traveaux"></textarea>
                 </div>            
             </div>
+            <br>
             <div class="d-grid gap-2 col-6 mx-auto">
                 <input type="submit" class="btn btn-primary" value="ENREGISTRER LE SUIVI"/>
             </div>

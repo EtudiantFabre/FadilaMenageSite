@@ -19,6 +19,7 @@
         "sass": "^1.32.11"
     },
     "dependencies": {
+        "bootstrap-icons": "^1.9.1",
         "mdb-ui-kit": "^4.4.0"
     }
 }
