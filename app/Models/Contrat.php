@@ -9,7 +9,7 @@ class Contrat extends Model
 {
     use HasFactory;
     protected $fillable = ['agent','client','date_contrat','debut_contrat','echeance_contrat','service','local',
-                           'adresse','temps','frequence','agent_assigne','facturation','salaire','tva','marge_nette','status'];
+                           'adresse','temps','frequence','facturation','salaire','tva','marge_nette','status'];
 
     protected $primaryKey = 'id_contrat';
 

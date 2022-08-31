@@ -42,8 +42,8 @@ Route::resource('clients',ClientController::class);
 Route::resource('personnels',PersonnelController::class);
 Route::resource('contrats',ContratController::class);
 Route::resource('ventes',VenteController::class);
-Route::resource('societes',RelanceContratController::class);
-Route::resource('ExperienceDuCandidats',ExperienceDuCandidatController::class);
+Route::resource('relanceContrats',RelanceContratController::class);
+Route::resource('experienceDuCandidats',ExperienceDuCandidatController::class);
 
 
 

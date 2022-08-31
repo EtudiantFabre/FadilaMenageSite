@@ -32,7 +32,6 @@ return new class extends Migration
             $table->string('situation_familiale');
             $table->integer('enfants_en_charge');
             $table->string('profession');
-            $table->string('photo_id');
             $table->string('avatar');
             $table->integer('salaire');
             $table->string('post_ocuper');

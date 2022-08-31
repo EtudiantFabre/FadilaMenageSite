@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ExperienceDuCandidat;
 use Illuminate\Http\Request;
+use App\Models\Candidat;
+
 
 class ExperienceDuCandidatController extends Controller
 {
@@ -27,7 +29,9 @@ class ExperienceDuCandidatController extends Controller
      */
     public function create()
     {
-        return view("experienceDuCandidats.edit");
+        $candidats = Candidat::all();
+        return view("experienceDuCandidats.edit",compact('candidats'));
+        //return view("experienceDuCandidats.edit");
 
     }
 
@@ -54,10 +58,13 @@ class ExperienceDuCandidatController extends Controller
             "adresse_societe" => $request->adresse_societe,
             "adresse_employeur" => $request->adresse_employeur,
             "dernier_salaire" => $request->dernier_salaire,
-            "pretention_salarial" => $request->pretention_salarial
+            "date_demission" => $request->date_demission,
+            "pretention_salarial" => $request->pretention_salarial,
+            "candidat" => $request->id_candidat
+
 
         ]);
-
+        
         // 3. On retourne vers tous les experiences :
         return redirect(route("experienceDuCandidats.index"));
 
@@ -71,7 +78,7 @@ class ExperienceDuCandidatController extends Controller
      */
     public function show(ExperienceDuCandidat $experienceDuCandidat)
     {
-        return view("experienceDuCandidats.show", compact("postexperienceDuCandidat"));
+        return view("experienceDuCandidats.show", compact("experienceDuCandidat"));
 
     }
 
@@ -113,7 +120,10 @@ class ExperienceDuCandidatController extends Controller
             "adresse_societe" => $request->adresse_societe,
             "adresse_employeur" => $request->adresse_employeur,
             "dernier_salaire" => $request->dernier_salaire,
+            "date_demission" => $request->date_demission,
             "pretention_salarial" => $request->pretention_salarial,
+            "candidat" => $request->id_candidat
+
 
     ]);
 
@@ -129,8 +139,8 @@ class ExperienceDuCandidatController extends Controller
      */
     public function destroy(ExperienceDuCandidat $experienceDuCandidat)
     {
-        ExperienceDuCandidat::destroy($candidat);
-        return redirect('experienceDuCandidat')->with('flash_message', 'experience supprimé!');
+        $experienceDuCandidat->delete();
+        return redirect('experienceDuCandidats')->with('flash_message', 'experience supprimé!');
 
     }
 }

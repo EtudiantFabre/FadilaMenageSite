@@ -24,10 +24,10 @@
 		@csrf
 
 		<p>
-			<label for="Agent" >Agent</label><br/>
+			<label for="agent">Agent</label><br/>
             <select name="id_agent">
                 @foreach ($agents as $agent)
-                    <option value="agent">{{$agent['id_agent']}}  {{$agnet['nom'].' '.$agent['prenom']}}</option>
+                    <option value="{{$agent['id_agent']}}">{{$agent['id_agent']}}  {{$agent['nom'].' '.$agent['prenom']}}</option>
                 @endforeach
             </select>
 
@@ -42,7 +42,7 @@
 
             <select name="id_client">
                 @foreach ($clients as $client)
-                    <option value="client">{{$client['client']}}  {{$client['nom'].' '.$client['prenom']}}</option>
+                    <option value="{{$client['id_client']}}">{{$client['id_client']}}  {{$client['nom'].' '.$client['prenom']}}</option>
                 @endforeach
             </select>
 
@@ -124,33 +124,14 @@
         <p>
 			<label for="frequence" >Frequence</label><br/>
 
-			<input type="text" name="frequence" value="{{ isset($contrat->frequence) ? $contrat->frequence : old('frequence') }}"  id="frequence" placeholder="Frequence" >
+			<input type="number" name="frequence" value="{{ isset($contrat->frequence) ? $contrat->frequence : old('frequence') }}"  id="frequence" placeholder="Frequence" >
 
 			<!-- Le message d'erreur pour "frequence" -->
 			@error("frequence")
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
-        <p>
-			<label for="agent_assigne" >Agent Assigné</label><br/>
 
-			<input type="text" name="agent_assigne" value="{{ isset($contrat->agent_assigne) ? $contrat->agent_assigne : old('agent_assigne') }}"  id="agent_assigne" placeholder="Agent" >
-
-			<!-- Le message d'erreur pour "service" -->
-			@error("service")
-			<div>{{ $message }}</div>
-			@enderror
-		</p>
-        <p>
-			<label for="facturation" >Facturation</label><br/>
-
-			<input type="number" name="facturation" value="{{ isset($contrat->facturation) ? $contrat->facturation : old('facturation') }}"  id="facturation" placeholder="facture" >
-
-			<!-- Le message d'erreur pour "facturation" -->
-			@error("facturation")
-			<div>{{ $message }}</div>
-			@enderror
-		</p>
         <p>
 			<label for="salaire" >Salaire</label><br/>
 
@@ -158,26 +139,6 @@
 
 			<!-- Le message d'erreur pour "salaire" -->
 			@error("salaire")
-			<div>{{ $message }}</div>
-			@enderror
-		</p>
-        <p>
-			<label for="tva" >Tva</label><br/>
-
-			<input type="number" name="tva" value="{{ isset($contrat->tva) ? $contrat->tva : old('tva') }}"  id="tva" placeholder="tva" >
-
-			<!-- Le message d'erreur pour "service" -->
-			@error("tva")
-			<div>{{ $message }}</div>
-			@enderror
-		</p>
-        <p>
-			<label for="marge_nette" >Marge nettte</label><br/>
-
-			<input type="text" name="marge_nette" value="{{ isset($contrat->marge_nette) ? $contrat->marge_nette : old('marge_nette') }}"  id="marge_nette" placeholder="Marge nette" >
-
-			<!-- Le message d'erreur pour "marge_nette" -->
-			@error("marge_nette")
 			<div>{{ $message }}</div>
 			@enderror
 		</p>

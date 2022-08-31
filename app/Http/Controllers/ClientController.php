@@ -43,17 +43,7 @@ class ClientController extends Controller
 
        // ]);
 
-        // 2. On enregistre les informations de la
-
-   // Client::create([
-   //     "nom" => $request->nom,
-   //     "tel" => $request->tel,
-    //    "ville" => $request->ville,
-    //    "quartier" => $request->quartier,
-     //   "email" => $request->email,
-     //   "type_service_rechercher" => $request->type_service_rechercher,
-     //   "frequence_souhaiter" => $request->frequence_souhaiter,
-   // ]);
+      
 
    Client::create($request->all());
     // 3. On retourne vers tous les clients :

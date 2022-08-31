@@ -2,14 +2,20 @@
 @section("title", "Liste des candidats")
 @section("content")
 
-	<h1>Tous les candidats</h1>
+<div class="container" style="background: orangered">
+    <h1>Liste des candidats</h1>
 
-	<p>
+    <p>
 		<!-- Lien pour créer un nouvel contrat : "contrat.create" -->
 		<a href="{{ route('candidats.create') }}" title="Créer un candidat" >Déposer votre candidature</a>
 	</p>
 
+</div><br>
+
+
+
 	<!-- Le tableau pour lister les candidats -->
+    <div class="container">
 	<table>
 		<thead>
 			<tr>
@@ -87,6 +93,7 @@
 			@endforeach
 		</tbody>
 	</table>
+</div>
 
 @endsection
 

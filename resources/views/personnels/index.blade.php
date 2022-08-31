@@ -6,7 +6,7 @@
 
 	<p>
 		<!-- Lien pour créer un nouvel personnel : "personnel.create" -->
-		<a href="{{ route('personnels.create') }}" title="Créer un personnel" >Déposer votre personnelure</a>
+	<a href="{{ route('personnels.create') }}" title="Créer un personnel" >Eregistrer un nouveau personnel</a>
 	</p>
 
 	<!-- Le tableau pour lister les personnels -->
@@ -26,16 +26,6 @@
                 <th>Date d'expiration</th>
                 <th>Ville résidence</th>
                 <th>Quartier</th>
-                <th>Rue</th>
-                <th>Adresse email</th>
-                <th>Situation matrimoniale</th>
-                <th>Nombre d'enfants</th>
-                <th>Profession</th>
-                <th>Avatar</th>
-                <th>Salaire</th>
-                <th>Poste ocupper</th>
-                <th>Nature personnel</th>
-                <th>Numéro de téléphone</th>
 				<th colspan="3" >Opérations</th>
 			</tr>
 		</thead>
@@ -44,75 +34,50 @@
 			@foreach ($personnels as $personnel)
 			<tr>
 				<td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->id_personnel}}</a>
+					{{ $personnel->id_personnel}}
 				</td>
                 <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->nom}}</a>
+					{{ $personnel->nom}}
 				</td>
                 <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->prenom}}</a>
+					{{ $personnel->prenom}}
 				</td>
                 <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->date_naissance}}</a>
+					{{ $personnel->date_naissance}}
 				</td>
                 <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->lieu_naissance}}</a>
+					{{ $personnel->lieu_naissance}}
 				</td>
                 <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->genre}}</a>
+					{{ $personnel->genre}}
 				</td>
                 <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->nationalite}}</a>
+					{{ $personnel->nationalite}}
 				</td>
                 <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->piece_identite}}</a>
+					{{ $personnel->piece_identite}}
 				</td>
                 <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->numero_de_piece}}</a>
+					{{ $personnel->numero_de_piece}}
 				</td>
                 <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->date_delivrer}}</a>
+					{{ $personnel->date_delivrer}}
 				</td>
                 <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->ville_residence}}</a>
+					{{ $personnel->ville_residence}}
 				</td>
                 <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->quartier}}</a>
-				</td>
-                <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->rue}}</a>
-				</td>
-                <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->email}}</a>
-				</td>
-                <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->situation_familiale}}</a>
-				</td>
-                <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->enfants_encharge}}</a>
-				</td>
-                <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->profession}}</a>
-				</td>
-                <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->avatar}}</a>
-				</td>
-                <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->salaire}}</a>
-				</td>
-                <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->post_ocuper}}</a>
-				</td>
-                <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->nature_contrat}}</a>
-				</td>
-                <td>
-					<a href="{{ route('personnels.show', $personnel) }}" title="Lire personnel" >{{ $personnel->telephone}}</a>
+					{{ $personnel->quartier}}
 				</td>
 
                 <td>
 					<!-- Lien pour modifier un personnel : "posts.edit" -->
 					<a href="{{ route('personnels.edit', $personnel) }}" title="Modifier le personnel">Modifier</a>
+				</td>
+
+                <td>
+					<!-- Lien pour modifier un personnel : "posts.edit" -->
+				<a href="{{ route('personnels.show', $personnel) }}" title="Modifier le personnel">Afficher</a>
 				</td>
 
 				<td>

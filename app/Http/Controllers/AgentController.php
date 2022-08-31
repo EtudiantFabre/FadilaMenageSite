@@ -61,7 +61,7 @@ class AgentController extends Controller
         $agents->avatar = $request->avatar;
         $agents->date_retenu = $request->date_retenu;
         $agents->nationalite = $request->nationalite;
-        $agents->photo_id = $request->photo_id;
+        $agents->photo_id = $request->avatar;
         $agents->numero_de_piece = $request->numero_de_piece;
         $agents-> date_expiration = $request-> date_expiration;
         $agents->date_delivrer = $request->date_delivrer;
@@ -119,7 +119,7 @@ class AgentController extends Controller
         $rules["photo_id"] = 'bail|required|image|max:1024';
     }
 
-    $this->validate($request, $rules);
+    //$this->validate($request, $rules);
 
     // 2. On upload l'image dans "/storage/app/public/posts"
     if ($request->has("photo_id")) {

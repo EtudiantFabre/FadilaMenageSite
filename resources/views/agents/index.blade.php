@@ -24,16 +24,6 @@
             <th>Date d'expiration</th>
             <th>Ville résidence</th>
             <th>Quartier</th>
-            <th>Rue</th>
-            <th>Email</th>
-            <th>Situation de famille</th>
-            <th>Nombre d'enfent en charge</th>
-            <th>Profession</th>
-            <th>Photo</th>
-            <th>Avatar</th>
-            <th>Date retenu</th>
-            <th>Numéro de téléphone</th>
-            <th>Disponibilité</th>
             <th colspan="4">Opérations</th>
         </tr>
     </thead>
@@ -76,14 +66,8 @@
 
                 {{ $agent->numero_de_piece}}
             </td>
-            <td>
 
-                {{ $agent->date_delivrer}}
-            </td>
-            <td>
 
-                {{ $agent->date_expiration}}
-            </td>
             <td>
 
                 {{ $agent->ville_residence}}
@@ -92,67 +76,23 @@
 
                 {{ $agent->quartier}}
             </td>
-            <td>
 
-                {{ $agent->rue}}
+            <td>
+                <a href="{{ route('agents.edit', $agent) }}" title="Modifier">Modifier</a>
             </td>
             <td>
-
-                {{ $agent->email}}
-            </td>
-            <td>
-
-                {{ $agent->situation_familiale}}
-            </td>
-            <td>
-
-                {{ $agent->enfants_encharge}}
-            </td>
-            <td>
-
-                {{ $agent->profession}}
-            </td>
-            <td>
-
-                {{ $agent->photo_id}}
-            </td>
-            <td>
-
-                {{ $agent->avatar}}
-            </td>
-            <td>
-
-                {{ $agent->date_retenu}}
-            </td>
-            <td>
-
-                {{ $agent->telephone}}
-            </td>
-            <td>
-
-                {{ $agent->status}}
-            </td>
-            <td>
-                <!-- Lien pour modifier une manifestation : "agents.edit" -->
-                <a href="{{ route('agents.edit', $agent) }}" title="Modifier manifestation">Modifier</a>
-            </td>
-            <td>
-                <!-- Formulaire pour supprimer une manifestation : "agents.destroy" -->
                 <form method="POST" action="{{ route('agents.destroy', $agent) }}" >
-                    <!-- CSRF token -->
+
                     @csrf
-                    <!-- <input type="hidden" name="_method" value="DELETE"> -->
                     @method("DELETE")
                     <input type="submit" value="Supprimer" >
                 </form>
             </td>
             <td>
-                <!-- Lien pour modifier une manifestation : "agents.edit" -->
-                <a href="{{ route('agents.show', $agent) }}" title="Modifier manifestation">Afficher</a>
+                <a href="{{ route('agents.show', $agent) }}" title="Afficher plus">Afficher</a>
             </td>
             <td>
-                <!-- Lien pour modifier une manifestation : "agents.edit" -->
-                <a href="{{ route('agents.edit', $agent) }}" title="Modifier manifestation">Envoyer un mail</a>
+                <a href="{{ route('agents.index', $agent) }}" title="envoiyer un meil">Envoyer un mail</a>
             </td>
         </tr>
         @endforeach

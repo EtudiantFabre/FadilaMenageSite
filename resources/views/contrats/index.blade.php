@@ -13,41 +13,61 @@
 	<table>
 		<thead>
 			<tr>
+                <th>Numéro</th>
 				<th>Agent</th>
                 <th>Client</th>
                 <th>Date signé</th>
-				<th colspan="2" >Opérations</th>
+				<th>debut du contrat</th>
+                <th>Echeance</th>
+                <th>service</th>
+                <th>local</th>
+                <th>Adresse</th>
+                <th>Temps</th>
+                <th>Frequence</th>
+                <th>Salaire</th>
+                <th>tva</th>
+                <th>Marge nette</th>
+                <th>Facturation</th>
+                <th>Status</th>
 			</tr>
 		</thead>
 		<tbody>
 			<!-- On parcourt la collection de Post -->
 			@foreach ($contrats as $contrat)
 			<tr>
-				<td>
-					<!-- Lien pour afficher un contrat : "contrat.show" -->
-					<a href="{{ route('contrats.show', $contrat) }}" title="Lire contrat" >{{ $contrat->agent}}</a>
-				</td>
-                <td>
-					<!-- Lien pour afficher un contrat: "contrat.show" -->
-					<a href="{{ route('contrats.show', $contrat) }}" title="Lire contrat" >{{ $contrat->client}}</a>
-				</td>
-                <td>
-					<!-- Lien pour afficher un contrat: "contrat.show" -->
-					<a href="{{ route('contrats.show', $contrat) }}" title="Lire contrat" >{{ $contrat->date_contrat}}</a>
-				</td>
-				<td>
-					<!-- Lien pour modifier un contrat : "posts.edit" -->
-					<a href="{{ route('contrats.edit', $contrat) }}" title="Modifier l'article" >Modifier</a>
-				</td>
+                    <td>{{ $contrat->id_contrat}}</td>
+                    <td>{{ $contrat->agent}}</td>
+                    <td>{{ $contrat->client}}</td>
+                    <td>{{ $contrat->date_contrat}}</td>
+                    <td>{{ $contrat->debut_contrat}}</td>
+                    <td>{{ $contrat->echeance_contrat}}</td>
+                    <td>{{ $contrat->service}}</td>
+                    <td>{{ $contrat->local}}</td>
+                    <td>{{ $contrat->adresse}}</td>
+                    <td>{{ $contrat->temps}}</td>
+                    <td>{{ $contrat->frequence}}</td>
+                    <td>{{ $contrat->salaire}}</td>
+                    <td>{{ $contrat->tva}}</td>
+                    <td>{{ $contrat->marge_nette}}</td>
+                    <td>{{ $contrat->facturation}}</td>
+                    <td>{{ $contrat->status}}</td>
+                    <td>
+                        <!-- Lien pour modifier un cantrat : "contrats.edit" -->
+                        <a href="{{ route('contrats.edit', $contrat) }}" title="Modifier le contrat">Modifier</a>
+                    </td>
 
+                    <td>
+                        <!-- Lien pour Afficher un contrat : "contrat.edit" -->
+                    <a href="{{ route('contrats.show', $contrat) }}" title="Afficher le contrat">Afficher</a>
+                    </td>
 				<td>
 					<!-- Formulaire pour supprimer un contrat : "posts.destroy" -->
-					<form method="POST" action="{{ route('contrats.destroy', $contrat) }}" >
+					<form method="POST" action="{{ route('contrats.destroy', $contrat)}}" >
 						<!-- CSRF token -->
 						@csrf
 						<!-- <input type="hidden" name="_method" value="DELETE"> -->
 						@method("DELETE")
-						<input type="submit" value="x Supprimer" >
+						<input type="submit" value="Supprimer" >
 					</form>
 				</td>
 			</tr>

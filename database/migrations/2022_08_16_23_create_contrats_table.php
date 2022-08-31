@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('adresse');
             $table->string('temps');
             $table->string('frequence');
-            $table->string('agent_assigne');
             $table->string('facturation');
             $table->string('salaire');
             $table->string('tva');

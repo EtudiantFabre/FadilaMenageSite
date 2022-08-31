@@ -2,7 +2,7 @@
 @section("title", "Editer un contrat")
 @section("content")
 
-	<h1>Editer un contrat</h1>
+	<h1>Enregistrer une vente</h1>
 
 	<!-- Si nous avons une vente $vente -->
 	@if (isset($vente))
@@ -26,8 +26,11 @@
 		<p>
 			<label for="personnel" >Personnel</label><br/>
 
-			<input type="text" name="personnel" value="{{ isset($vente->personnel) ? $vente->personnel : old('personnel') }}"  id="personnel" placeholder="Le numéro du personnel" >
-
+            <select name="personnel">
+                @foreach ($personnels as $personnel)
+                    <option value="{{$personnel['id_personnel']}}">{{$personnel['id_personnel']}}  {{$personnel['nom'].' '.$personnel['prenom']}}</option>
+                @endforeach
+            </select>
 			<!-- Le message d'erreur pour "personnel" -->
 			@error("personnel")
 			<div>{{ $message }}</div>
@@ -35,9 +38,9 @@
 		</p>
 
 		<p>
-			<label for="mois" >Le mois</label><br/>
+			<label for="mois" >Vente du mois</label><br/>
 
-			<input type="text" name="mois" value="{{ isset($vente->mois) ? $vente->mois : old('mois') }}"  id="mois" placeholder="Le mois" >
+			<input type="month" name="mois" value="{{ isset($vente->mois) ? $vente->mois : old('mois') }}"  id="mois" placeholder="Le mois" >
 
 			<!-- Le message d'erreur pour "mois" -->
 			@error("mois")
@@ -55,7 +58,7 @@
 			@enderror
 		</p>
         <p>
-			<label for="contrat_permanent_perdus" >Début du contrat</label><br/>
+			<label for="contrat_permanent_perdus" >Contrat permanent perdu</label><br/>
 
 			<input type="number" name="contrat_permanent_perdus" value="{{ isset($vente->contrat_permanent_perdus) ? $vente->contrat_permanent_perdus : old('contrat_permanent_perdus') }}"  id="contrat_permanent_perdus" placeholder="Nombre de contrat perdu" >
 
@@ -74,16 +77,7 @@
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
-        <p>
-			<label for="solde_contrat" >Solde</label><br/>
-
-			<input type="number" name="solde_contrat" value="{{ isset($vente->solde_contrat) ? $vente->solde_contrat : old('solde_contrat') }}"  id="solde_contrat">
-
-			<!-- Le message d'erreur pour "solde_contrat" -->
-			@error("solde_contrat")
-			<div>{{ $message }}</div>
-			@enderror
-		</p>
+        
         <p>
 			<label for="contrat_ponctuel" >Contrat ponctuel</label><br/>
 
@@ -124,17 +118,8 @@
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
-        <p>
-			<label for="ca_total_mensuel_realiser" >Total mensuel </label><br/>
 
-			<input type="number" name="ca_total_mensuel_realiser" value="{{ isset($vente->ca_total_mensuel_realiser) ? $vente->ca_total_mensuel_realiser : old('ca_total_mensuel_realiser') }}"  id="ca_total_mensuel_realiser" placeholder="ca_total_mensuel_realiser" >
 
-			<!-- Le message d'erreur pour "ca_total_mensuel_realiser" -->
-			@error("ca_total_mensuel_realiser")
-			<div>{{ $message }}</div>
-			@enderror
-		</p>
-        </p>
 
 		<input type="submit" name="valider" value="Valider" >
 

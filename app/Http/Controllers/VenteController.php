@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vente;
+use App\Models\Personnel;
+
 use Illuminate\Http\Request;
 
 class VenteController extends Controller
@@ -27,7 +29,8 @@ class VenteController extends Controller
      */
     public function create()
     {
-        return view("ventes.edit");
+        $personnels = Personnel::all();
+        return view("ventes.edit")->with('personnels', $personnels);
 
     }
 
@@ -46,18 +49,20 @@ class VenteController extends Controller
 
 
         // 2. On enregistre les informations de la
+        $input = $request->all();
+
     Vente::create([
     "personnel" => $request->personnel,
-    "mois" => $request->$mois,
+    "mois" => $request->mois,
     "contrat_permanent" => $request->contrat_permanent,
     "contrat_permanent_perdus" => $request->contrat_permanent_perdus,
     "contrat_gagne" => $request->contrat_gagne,
-    "solde_contrat" => $request->solde_contrat,
+    "solde_contrat" => $input['contrat_permanent']+$input['contrat_gagne']-$input['contrat_permanent_perdus'],
     "contrat_ponctuel" => $request->contrat_ponctuel,
     "marche_public" => $request->marche_public,
     "commentaire" => $request->commentaire,
     "total_client_findu_mois" => $request->total_client_findu_mois,
-    "ca_total_mensuel_realiser" => $request->ca_total_mensuel_realiser,
+    "ca_total_mensuel_realiser" => $request['solde_contrat']+$request['total_client_findu_mois'],
 
 
 ]);
@@ -87,7 +92,10 @@ return redirect(route("ventes.index"));
      */
     public function edit(Vente $vente)
     {
-        return view("ventes.edit", compact("vente"));
+        $personnels = Personnel::all();
+       // return view("ventes.edit")->with('personnels', $personnels);
+
+        return view("ventes.edit", compact("vente","personnels"));
     }
 
     /**
@@ -99,21 +107,25 @@ return redirect(route("ventes.index"));
      */
     public function update(Request $request, Vente $vente)
     {
-        $post->update([
-            "personnel" => $request->nbr_annee_experience,
-            "mois" => $request->$mois,
+        $input = $request->all();
+
+        $vente->update([
+            "personnel" => $request->personnel,
+            "mois" => $request->mois,
             "contrat_permanent" => $request->contrat_permanent,
             "contrat_permanent_perdus" => $request->contrat_permanent_perdus,
             "contrat_gagne" => $request->contrat_gagne,
-            "solde_contrat" => $request->solde_contrat,
+            "solde_contrat" => $input['contrat_permanent']+$input['contrat_gagne']-$input['contrat_permanent_perdus'],
             "contrat_ponctuel" => $request->contrat_ponctuel,
+            "marche_public" => $request->marche_public,
+            "commentaire" => $request->commentaire,
             "total_client_findu_mois" => $request->total_client_findu_mois,
-            "ca_total_mensuel_realiser" => $request->ca_total_mensuel_realiser,
+            "ca_total_mensuel_realiser" => $request['solde_contrat']+$request['total_client_findu_mois'],
 
         ]);
 
         // 4. On affiche les ventes modifié :
-    return redirect(route("ventes.show", $vente));
+    return redirect(route("ventes.index", $vente));
     }
 
     /**
@@ -124,8 +136,8 @@ return redirect(route("ventes.index"));
      */
     public function destroy(Vente $vente)
     {
-        Vente::destroy($vente);
-        return redirect('vente')->with('flash_message', 'vente supprimé!');
+        $vente->delete();
+        return redirect('ventes')->with('flash_message', 'vente supprimé!');
 
     }
 }

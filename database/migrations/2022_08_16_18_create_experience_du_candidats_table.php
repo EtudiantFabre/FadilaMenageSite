@@ -24,8 +24,12 @@ return new class extends Migration
             $table->integer('dernier_salaire');
             $table->date('date_demission');
             $table->integer('pretention_salarial');
+            $table->integer('candidat');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('candidat')->references('id_candidat')->on('candidats')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

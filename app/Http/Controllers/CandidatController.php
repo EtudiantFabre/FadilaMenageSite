@@ -141,6 +141,7 @@ class CandidatController extends Controller
             $agents->enfants_encharge = $candidat->enfants_encharge;
             $agents->profession = $candidat->profession;
             $agents->avatar = $candidat->avatar;
+            $agents->photo_id = $candidat->avatar;
             $agents->poste_candidate = $candidat->poste_candidate;
             $agents->horaire_travail_souhaite = $candidat->horaire_travail_souhaite;
             $agents->objectif = $candidat->objectif;

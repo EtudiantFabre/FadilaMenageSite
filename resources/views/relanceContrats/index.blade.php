@@ -15,7 +15,6 @@
 				<th>Contrat</th>
                 <th>Date relance</th>
                 <th>Clien</th>
-                <th>Quartier</th>
                 <th>Motif</th>
                 <th>situation</th>
                 <th>nombre contrats en cours</th>
@@ -28,22 +27,22 @@
 			<tr>
 				<td>
 					<!-- Lien pour afficher les relanceContrat : "relanceContrat.show" -->
-					<a href="{{ route('relanceContrats.show', $relanceContrat) }}" title="Lire relanceContrat" >{{ $relanceContrat->contrat}}</a>
+					{{ $relanceContrat->contrat}}
 				</td>
                 <td>
-					<a href="{{ route('relanceContrats.show', $relanceContrat) }}" title="Lire relanceContrat" >{{ $relanceContrat->date_relance}}</a>
+					{{ $relanceContrat->date_relance}}
 				</td>
                 <td>
-					<a href="{{ route('relanceContrats.show', $relanceContrat) }}" title="Lire relanceContrat" >{{ $relanceContrat->client}}</a>
+					{{ $relanceContrat->client}}
 				</td>
                 <td>
-					<a href="{{ route('relanceContrats.show', $relanceContrat) }}" title="Lire relanceContrat" >{{ $relanceContrat->motif}}</a>
+					{{ $relanceContrat->motif}}
 				</td>
                 <td>
-					<a href="{{ route('relanceContrats.show', $relanceContrat) }}" title="Lire relanceContrat" >{{ $relanceContrat->situation}}</a>
+					{{ $relanceContrat->situation}}
 				</td>
                 <td>
-					<a href="{{ route('relanceContrats.show', $relanceContrat) }}" title="Lire relanceContrat" >{{ $relanceContrat->nbr_contrat_encours}}</a>
+					{{ $relanceContrat->nbr_contrat_encours}}
 				</td>
 				<td>
 					<!-- Lien pour modifier un relanceContrat : "posts.edit" -->

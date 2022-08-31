@@ -6,7 +6,7 @@
 
 	<p>
 		<!-- Lien pour créer un nouvel vente : "vente.create" -->
-		<a href="{{ route('ventes.create') }}" title="Créer un vente" >Enregistrer un nouveau vente</a>
+		<a href="{{ route('ventes.create') }}" title="Créer un vente" >Enregistrer une nouvelle vente</a>
 	</p>
 
 	<!-- Le tableau pour lister les ventes -->
@@ -17,8 +17,7 @@
                 <th>Mois</th>
                 <th>Contrat permanent</th>
                 <th>Contrat permanent perdut</th>
-                <th>Contrat gagne</th>
-                <th>Contrats gané</th>
+                <th>Contrat gagné</th>
                 <th>Solde</th>
                 <th>Contrat ponctuel</th>
                 <th>Marche public</th>
@@ -34,47 +33,47 @@
 			<tr>
 				<td>
 					<!-- Lien pour afficher un vente : "vente.show" -->
-					<a href="{{ route('ventes.show', $vente) }}" title="Lire vente" >{{ $vente->personnel}}</a>
+					{{ $vente->personnel}}
 				</td>
                 <td>
 					<!-- Lien pour afficher un vente: "vente.show" -->
-					<a href="{{ route('ventes.show', $vente) }}" title="Lire vente" >{{ $vente->mois}}</a>
+					{{ $vente->mois}}
 				</td>
                 <td>
 					<!-- Lien pour afficher un vente: "vente.show" -->
-					<a href="{{ route('ventes.show', $vente) }}" title="Lire vente" >{{ $vente->contrat_permanent}}</a>
+					{{ $vente->contrat_permanent}}
 				</td>
                 <td>
 					<!-- Lien pour afficher un vente: "vente.show" -->
-					<a href="{{ route('ventes.show', $vente) }}" title="Lire vente" >{{ $vente->contrat_permanent_perdus}}</a>
+					{{ $vente->contrat_permanent_perdus}}
 				</td>
                 <td>
 					<!-- Lien pour afficher un vente: "vente.show" -->
-					<a href="{{ route('ventes.show', $vente) }}" title="Lire vente" >{{ $vente->contrat_gagne}}</a>
+					{{ $vente->contrat_gagne}}
 				</td>
                 <td>
 					<!-- Lien pour afficher un vente: "vente.show" -->
-					<a href="{{ route('ventes.show', $vente) }}" title="Lire vente" >{{ $vente->solde_contrat}}</a>
+					{{ $vente->solde_contrat}}
 				</td>
                 <td>
 					<!-- Lien pour afficher un vente: "vente.show" -->
-					<a href="{{ route('ventes.show', $vente) }}" title="Lire vente" >{{ $vente->contrat_ponctuel}}</a>
+					{{ $vente->contrat_ponctuel}}
 				</td>
                 <td>
 					<!-- Lien pour afficher un vente: "vente.show" -->
-					<a href="{{ route('ventes.show', $vente) }}" title="Lire vente" >{{ $vente->marche_public}}</a>
+					{{ $vente->marche_public}}
 				</td>
                 <td>
 					<!-- Lien pour afficher un vente: "vente.show" -->
-					<a href="{{ route('ventes.show', $vente) }}" title="Lire vente" >{{ $vente->commentaire}}</a>
+					{{ $vente->commentaire}}
 				</td>
                 <td>
 					<!-- Lien pour afficher un vente: "vente.show" -->
-					<a href="{{ route('ventes.show', $vente) }}" title="Lire vente" >{{ $vente->total_client_findu_mois}}</a>
+					{{ $vente->total_client_findu_mois}}
 				</td>
                 <td>
 					<!-- Lien pour afficher un vente: "vente.show" -->
-					<a href="{{ route('ventes.show', $vente) }}" title="Lire vente" >{{ $vente->ca_total_mensuel_realiser }}</a>
+					{{ $vente->ca_total_mensuel_realiser }}
 				</td>
 				<td>
 					<!-- Lien pour modifier un vente : "posts.edit" -->

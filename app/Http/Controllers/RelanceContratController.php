@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\RelanceContrat;
+use App\Models\Contrat;
+use App\Models\Client;
+
+
 use Illuminate\Http\Request;
 
 class RelanceContratController extends Controller
@@ -25,8 +29,13 @@ class RelanceContratController extends Controller
      */
     public function create()
     {
-        return view("relanceContrat.edit");
+        $contrats = Contrat::all();
+        $clients = Client::all();
+
+        return view("relanceContrats.edit")->with('contrats', $contrats)->with('clients', $clients);
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -43,20 +52,11 @@ class RelanceContratController extends Controller
 
         // 2. On enregistre les informations de la
 
-        RelanceContrat::create([
-            "contrat" => $request->contrat,
-            "date_relance" => $request->date_relance,
-            "client" => $request->client,
-            "motif" => $request->motif,
-            "situation" => $request->situation,
-            "nbr_contrat_encours" => $request->nbr_contrat_encours
-
-
-
-        ]);
-
+        $input = $request->all();
+        RelanceContrats::create($input);
         // 3. On retourne vers tous les relance :
-        return redirect(route("relanceContrat.index"));    }
+        return redirect(route("relanceContrat.index"));
+      }
 
     /**
      * Display the specified resource.
@@ -108,7 +108,7 @@ class RelanceContratController extends Controller
      */
     public function destroy(RelanceContrat $relanceContrat)
     {
-        RelanceContrat::destroy($relanceContrat);
-        return redirect('relanceContrat')->with('flash_message', 'relance supprimé!');
+      $relanceContrat->delete();
+        return redirect('relanceContrats')->with('flash_message', 'relance supprimé!');
     }
 }

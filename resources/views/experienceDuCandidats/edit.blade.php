@@ -4,7 +4,7 @@
 
 	<h1>Experience du candidat</h1>
 
-	<!-- Si nous avons un Post $experienceDuCandidat -->
+	<!-- Si nous avons un  $experienceDuCandidat -->
 	@if (isset($experienceDuCandidat))
 
 	<!-- Le formulaire est géré par la route "contats.update" -->
@@ -37,16 +37,16 @@
 		<p>
 			<label for="nbr_voiture_conduit">Nombre de voituer conduit : </label>
 
-			<input type="text" name="nbr_voiture_conduit" value="{{ isset($experienceDuCandidat->nbr_voiture_conduit) ? $experienceDuCandidat->nbr_voiture_conduit : old('nbr_voiture_conduit') }}"  id="nbr_voiture_conduit" placeholder="Expemple : 1 >
+			<input type="text" name="nbr_voiture_conduit" value="{{ isset($experienceDuCandidat->nbr_voiture_conduit) ? $experienceDuCandidat->nbr_voiture_conduit : old('nbr_voiture_conduit') }}"  id="nbr_voiture_conduit" placeholder="Expemple : 1" >
 
 			@error("nbr_voiture_conduit")
 			<div>{{ $message }}</div>
 			@enderror
-		</p>
+        </p>
         <p>
 			<label for="type_voiture">Type de voiture : </label>
 
-			<input type="type_voiture" name="type_voiture" value="{{ isset($experienceDuCandidat->type_voiture) ? $experienceDuCandidat->type_voiture : old('type_voiture') }}"  id="type_voiture" placeholder=" Exp : automatique>
+			<input type="type_voiture" name="type_voiture" value="{{ isset($experienceDuCandidat->type_voiture) ? $experienceDuCandidat->type_voiture : old('type_voiture') }}"  id="type_voiture" placeholder=" Exp : automatique">
 
 			@error("type_voiture")
 			<div>{{ $message }}</div>
@@ -55,10 +55,10 @@
         <p>
 			<label for="type_contrat" >Type de contrat </label>
 
-			<input type="text" name="type_contrat" value="{{ isset($experienceDuCandidat->type_contrat) ? $experienceDuCandidat->type_contrat : old('type_contrat') }}"  id="type_contrat" placeholder=">
+			<input type="text" name="type_contrat" value="{{ isset($experienceDuCandidat->type_contrat) ? $experienceDuCandidat->type_contrat : old('type_contrat') }}"  id="type_contrat">
 
-			<!-- Le message d'erreur pour "debut_experienceDuCandidat" -->
-			@error("debut_experienceDuCandidat")
+			<!-- Le message d'erreur pour "type_contrat" -->
+			@error("type_contrat")
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
@@ -92,6 +92,17 @@
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
+
+        <p>
+			<label for="date_demission" >Date de démission : </label>
+
+			<input type="date" name="date_demission" value="{{ isset($experienceDuCandidat->date_demission) ? $experienceDuCandidat->date_demission : old('date_demission') }}"  id="date_demission" placeholder="date_demission">
+
+			<!-- Le message d'erreur pour "dernier_salaire" -->
+			@error("dernier_salaire")
+			<div>{{ $message }}</div>
+			@enderror
+		</p>
         <p>
 			<label for="pretention_salarial" >Prétention salarial : </label>
 
@@ -99,6 +110,20 @@
 
 			<!-- Le message d'erreur pour "pretention_salarial" -->
 			@error("pretention_salarial")
+			<div>{{ $message }}</div>
+			@enderror
+		</p>
+
+        <p>
+			<label for="Candidat" >Choisissez votre nom</label><br/>
+            <select name="id_candidat">
+                @foreach ($candidats as $candidat)
+                    <option value="{{$candidat['id_candidat']}}">{{$candidat['id_candidat']}}  {{$candidat['nom'].' '.$candidat['prenom']}}</option>
+                @endforeach
+            </select>
+
+			<!-- Le message d'erreur pour "candidat" -->
+			@error("candidat")
 			<div>{{ $message }}</div>
 			@enderror
 		</p>

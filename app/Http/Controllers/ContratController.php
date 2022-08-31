@@ -17,7 +17,7 @@ class ContratController extends Controller
      */
     public function index()
     {
-        $contras = Contrat::all();
+        $contrats = Contrat::all();
         return view('contrats.index',compact('contrats'));
      }
 
@@ -30,8 +30,8 @@ class ContratController extends Controller
     {
         $agents = Agent::all();
         $clients = Client::all();
-        //return view('contrats.edit')->with('clients', $clients)->with('agents', $agents);
-        return view("contrats.edit",compact('clients', 'agents'));
+        return view('contrats.edit')->with('clients', $clients)->with('agents', $agents);
+        //return view("contrats.edit",compact('clients', 'agents'));
     }
 
     /**
@@ -48,28 +48,29 @@ class ContratController extends Controller
        // ]);
 
         // 2. On enregistre les informations de la
-
+        $input = $request->all();
+        $margnet = $request['salaire']*30/100;
+        $tva = $margnet *18/100;
         Contrat::create([
-            "agent" => $request->agent,
-            "client" => $request->client,
+            "agent" => $request->id_agent,
+            "client" => $request->id_client,
             "date_contrat" => $request->date_contrat,
             "debut_contrat" => $request->debut_contrat,
             "echeance_contrat" => $request->echeance_contrat,
             "service" => $request->service,
             "local" => $request->local,
             "adresse" => $request->adresse,
-            "temps" => $request->nbr_contrat_encours,
+            "temps" => $request->temps,
             "frequence" => $request->frequence,
-            "agent_assigne" => $request->agent_assigne,
-            "facturation" => $request->facturation,
             "salaire" => $request->salaire,
-            "tva" => $request->tva,
-            "marge_nette" => $request->marge_nette,
+            "marge_nette" => $margnet,
+            "tva" => $tva,
+            "facturation" => $request['salaire']+$margnet+$tva,
             "status" => $request->status
         ]);
 
         // 3. On retourne vers tous les relance :
-        return redirect(route("contrat.index"));
+        return redirect(route("contrats.index"));
     }
 
     /**
@@ -91,7 +92,11 @@ class ContratController extends Controller
      */
     public function edit(Contrat $contrat)
     {
-        return view("contrat.edit", compact("contrat"));
+        $agents = Agent::all();
+        $clients = Client::all();
+        return view('contrats.edit')->with('clients', $clients)->with('agents', $agents);
+       // return view("contrats.edit",compact('clients', 'agents'));
+        //return view("contrat.edit", compact("contrat"));
     }
 
     /**
@@ -131,7 +136,7 @@ class ContratController extends Controller
      */
     public function destroy(Contrat $contrat)
     {
-        RelanceContrat::destroy($relanceContrat);
-        return redirect('relanceContrat')->with('flash_message', 'relance supprimé!');
+        $contrat->delete();
+        return redirect('contrats')->with('flash_message', 'relance supprimé!');
     }
 }

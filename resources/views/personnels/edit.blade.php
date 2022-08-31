@@ -2,7 +2,7 @@
 @section("title", "Editer un personnel")
 @section("content")
 
-	<h1>Editer un personne</h1>
+	<h1>Enregistrer un personnel</h1>
 
 	<!-- Si nous avons un personnel $personnel -->
 	@if (isset($personnel))
@@ -65,12 +65,15 @@
 			@enderror
 		</p>
         <p>
-			<label for="genre" >Genre</label><br/>
+			<label for="genre" >genre</label><br/>
+            <select name="genre" id="genre">
+                <option value="#" >Choisissez ici</option>
+                <option value="Homme">Homme</option>
+                <option value="Femme">Femme</option>
+            </select>
 
-			<input type="text" name="genre" value="{{ isset($personnel->genre) ? $personnel->genre : old('genre') }}"  id="genre" placeholder="Sexe" >
-
-			<!-- Le message d'erreur pour "genre" -->
-			@error("genre")
+			<!-- Le message d'erreur pour "pièce_identite" -->
+			@error("pièce_identite")
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
@@ -85,17 +88,22 @@
 			@enderror
 		</p>
         <p>
-			<label for="piece_identite" >Pièce d'identité</label><br/>
+			<label for="pice_identite" >Pièce d'identité </label><br/>
+            <select name="piece_identite" id="piece_identite">
+                <option value=" " > </option>
+                <option value="Carte nationale">Carte nationale</option>
+                <option value="Carte d'électeur">Carte d'électeur</option>
+                <option value="Passport">Passport</option>
+                <option value="Menagère">Menagère</option>
+            </select>
 
-			<input type="text" name="piece_identite" value="{{ isset($personnel->piece_identite) ? $personnel->piece_identite : old('piece_identite') }}"  id="piece_identite" placeholder="pièce d'dentité" >
-
-			<!-- Le message d'erreur pour "piece_identite" -->
-			@error("piece_identite")
+			<!-- Le message d'erreur pour "pièce_identite" -->
+			@error("pièce_identite")
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
         <p>
-			<label for="numero_de_piece" >Nuéro de la pièce d'identité</label><br/>
+			<label for="numero_de_piece" >Numéro de la pièce d'identité</label><br/>
 
 			<input type="text" name="numero_de_piece" value="{{ isset($personnel->numero_de_piece) ? $personnel->numero_de_piece : old('numero_de_piece') }}"  id="numero_de_piece" placeholder="Le numéro de vorte carte" >
 
@@ -107,7 +115,7 @@
         <p>
 			<label for="date_delivrer" >Date delivrer</label><br/>
 
-			<input type="text" name="date_delivrer" value="{{ isset($personnel->date_delivrer) ? $personnel->date_delivrer : old('date_delivrer') }}"  id="date_delivrer" placeholder="date de delivrance de votre carte" >
+			<input type="date" name="date_delivrer" value="{{ isset($personnel->date_delivrer) ? $personnel->date_delivrer : old('date_delivrer') }}"  id="date_delivrer" placeholder="date de delivrance de votre carte" >
 
 			<!-- Le message d'erreur pour "date_delivrer" -->
 			@error("date_delivrer")
@@ -117,23 +125,25 @@
         <p>
 			<label for="date_expiration" >Date d'expiration</label><br/>
 
-			<input type="text" name="date_expiration" value="{{ isset($personnel->date_expiration) ? $personnel->date_expiration : old('date_expiration') }}"  id="date_expiration" placeholder="Date d'expiration" >
+			<input type="date" name="date_expiration" value="{{ isset($personnel->date_expiration) ? $personnel->date_expiration : old('date_expiration') }}"  id="date_expiration" placeholder="Date d'expiration" >
 
 			<!-- Le message d'erreur pour "date_expiration" -->
 			@error("date_expiration")
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
+
         <p>
-			<label for="agent_assigne" >Agent Assigné</label><br/>
+			<label for="ville_residence" >Ville résidence</label><br/>
 
-			<input type="text" name="agent_assigne" value="{{ isset($personnel->agent_assigne) ? $personnel->agent_assigne : old('agent_assigne') }}"  id="agent_assigne" placeholder="Agent" >
+			<input type="text" name="ville_residence" value="{{ isset($personnel->ville_residence) ? $personnel->ville_residence : old('ville_residence') }}"  id="ville_residence" placeholder="ville_residence" >
 
-			<!-- Le message d'erreur pour "agent_assigne" -->
-			@error("agent_assigne")
+			<!-- Le message d'erreur pour "ville_residence" -->
+			@error("ville_residence")
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
+
         <p>
 			<label for="quartier" >Quartier</label><br/>
 
@@ -165,27 +175,31 @@
 			@enderror
 		</p>
         <p>
-			<label for="situation_familiale" >Situation matrimoniale</label><br/>
+			<p>
+                <label for="situation_familiale" >Situation Familiale </label><br/>
+                <select name="situation_familiale" id="situation_familiale">
+                    <option value="#" >Choisissez ici</option>
+                    <option value="Carte nationale">Marier</option>
+                    <option value="Carte d'électeur">Celibataire</option>
 
-			<input type="text" name="situation_familiale" value="{{ isset($personnel->situation_familiale) ? $personnel->situation_familiale : old('marge_nette') }}"  id="situation_familiale" placeholder="Marier ou celibataire" >
-
+                </select>
 			<!-- Le message d'erreur pour "situation_familiale" -->
 			@error("situation_familiale")
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
         <p>
-			<label for="enfants_encharge" >Enfants en charge</label><br/>
+			<label for="enfants_en_charge" >Enfants en charge</label><br/>
 
-			<input type="text" name="enfants_encharge" value="{{ isset($personnel->enfants_encharge) ? $personnel->enfants_encharge : old('enfants_encharge') }}"  id="enfants_encharge" placeholder="Combien d'enfants avez vous ?" >
+			<input type="number" name="enfants_en_charge" value="{{ isset($personnel->enfants_en_charge) ? $personnel->enfants_en_charge : old('enfants_en_charge') }}"  id="enfants_en_charge" placeholder="Combien d'enfants avez vous ?" >
 
-			<!-- Le message d'erreur pour "enfants_encharge" -->
-			@error("enfants_encharge")
+			<!-- Le message d'erreur pour "enfants_en_charge" -->
+			@error("enfants_en_charge")
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
         <p>
-			<label for="profession" >Profession</label><br/>
+			<label for="profession" >Profession actuelle</label><br/>
 
 			<input type="text" name="profession" value="{{ isset($personnel->profession) ? $personnel->profession : old('profession') }}"  id="profession" placeholder="Votre profession actuelle" >
 
@@ -195,25 +209,16 @@
 			@enderror
 		</p>
         <p>
-			<label for="photo_id" >Inserez votre photo</label><br/>
+			<label for="avatar">Inserez votre photo</label><br/>
 
-			<input type="text" name="photo_id" value="{{ isset($personnel->photo_id) ? $personnel->photo_id : old('photo_id') }}"  id="photo_id">
-
-			<!-- Le message d'erreur pour "photo_id" -->
-			@error("photo_id")
-			<div>{{ $message }}</div>
-			@enderror
-		</p>
-        <p>
-			<label for="avatar" >Avatar</label><br/>
-
-			<input type="text" name="avatar" value="{{ isset($personnel->avatar) ? $personnel->avatar : old('avatar') }}"  id="avatar" placeholder="Avatar" >
+			<input type="file" name="avatar"  id="avatar" >
 
 			<!-- Le message d'erreur pour "avatar" -->
 			@error("avatar")
 			<div>{{ $message }}</div>
 			@enderror
 		</p>
+
         <p>
 			<label for="salaire" >Salaire</label><br/>
 
@@ -225,9 +230,24 @@
 			@enderror
 		</p>
         <p>
-			<label for="poste_candidate" >Poste</label><br/>
+			<label for="post_ocuper" >Poste</label><br/>
+            <select name="post_ocuper" id="post_ocuper">
+                <option value="#" >Choisissez ici</option>
+                <option value="Chauffeur">Sécretaire</option>
+                <option value="Assistant Secrétaire">Assistant Secrétaire</option>
+                <option value="Charger de marketing et Communication">Charger de marketing et Communication</option>
+                <option value="Assistant au marketing et communication">Assistant au marketing et communication</option>
+                <option value="Comptable">Comptable</option>
+                <option value="Assistant au comptable">Assistant au comptable</option>
+                <option value="Cahrager de suivit et conrôle">Cahrager de suivit et conrôle</option>
+                <option value="Agent de suivit">Agent de suivit</option>
+                <option value="Stagiaure">Stagiaure</option>
+                <option value="Virgile">Virgile</option>
+                <option value="Office manager">Office manager</option>
+                <option value="Directeur générale">Directeur générale</option>
 
-			<input type="text" name="post_ocuper" value="{{ isset($personnel->post_ocuper) ? $personnel->post_ocuper : old('post_ocuper') }}"  id="post_ocuper" placeholder="le poste occuper" >
+
+            </select>
 
 			<!-- Le message d'erreur pour "post_ocuper" -->
 			@error("post_ocuper")
@@ -235,9 +255,14 @@
 			@enderror
 		</p>
         <p>
-			<label for="nature_contrat" >Nature contrat</label><br/>
+			<label for="nature_contrat" >Nature contrat : </label><br/>
+            <select name="nature_contrat" id="nature_contrat">
+                <option value="#" >Choisissez ici</option>
+                <option value="CDD">CDD</option>
+                <option value="CDI">CDI</option>
+                <option value="Agent d'entretient">Autre</option>
 
-			<input type="text" name="nature_contrat" value="{{ isset($personnel->nature_contrat) ? $personnel->nature_contrat : old('nature_contrat') }}"  id="nature_contrat">
+            </select>
 
 			<!-- Le message d'erreur pour "nature_contrat" -->
 			@error("nature_contrat")

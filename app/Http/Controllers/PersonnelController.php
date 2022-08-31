@@ -14,7 +14,7 @@ class PersonnelController extends Controller
      */
     public function index()
     {
-        $personnels = Client::all();
+        $personnels = Personnel::all();
         return view('personnels.index',compact('personnels'));
     }
 
@@ -44,37 +44,16 @@ class PersonnelController extends Controller
 
         // 2. On enregistre les informations de la
 
+       $nom_image = $request->avatar->store("personnels");
+       // dd($nom_image);
+        $request['avatar']=$nom_image;
+        //dd($request);
+        $input = $request->all();
+        Personnel::create($input);
 
-        Personnel::create([
-            "nom" => $request->nom,
-            "prenom" => $request->prenom,
-            "date_naissance" => $request->date_naissance,
-            "lieu_naissance" => $request->lieu_naissance,
-            "genre" => $request->genre,
-            "nationalite" => $request->nationalite,
-            "piece_identite" => $request->piece_identite,
-            "numero_de_piece" => $request->numero_de_piece,
-            "date_delivrer" => $request->date_delivrer,
-            "date_expiration" => $request->date_expiration,
-            "ville_residence" => $request->ville_residence,
-            "quartier" => $request->quartier,
-            "rue" => $request->rue,
-            "email" => $request->email,
-            "situation_familiale" => $request->situation_familiale,
-            "enfants_encharge" => $request->enfants_encharge,
-            "profession" => $request->profession,
-            "photo_id" => $request->photo_id,
-            "avatar" => $request->avatar,
-            "salaire" => $request->salaire,
-            "post_ocuper" => $request->post_ocuper,
-            "nature_contrat" => $request->nature_contrat,
-            "telephone" => $request->telephone,
-
-
-        ]);
 
         // 3. On retourne vers tous les personnels :
-        return redirect(route("personnels.index"));
+        return redirect('personnels')->with('flash_message', 'Le personnels est enregisré avec succès!');
         }
 
 
@@ -126,9 +105,8 @@ class PersonnelController extends Controller
             "rue" => $request->rue,
             "email" => $request->email,
             "situation_familiale" => $request->situation_familiale,
-            "enfants_encharge" => $request->enfants_encharge,
+            "enfants_encharge" => $request->enfants_en_charge,
             "profession" => $request->profession,
-            "photo_id" => $request->photo_id,
             "avatar" => $request->avatar,
             "salaire" => $request->salaire,
             "post_ocuper" => $request->post_ocuper,
@@ -150,7 +128,7 @@ class PersonnelController extends Controller
      */
     public function destroy(Personnel $personnel)
     {
-        Personnel::destroy($personnel);
+        $personnel->delete();
         return redirect('personnel')->with('flash_message', 'personnel supprimé!');
     }
 }
