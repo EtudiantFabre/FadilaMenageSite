@@ -24,13 +24,8 @@ return new class extends Migration
             $table->integer('contrat_ponctuel');
             $table->string('marche_public');
             $table->integer('total_client_findu_mois');
-<<<<<<< HEAD
-            $table->longText('commentaire')->nullable()->default('text');
+            $table->longText('commentaire')->nullable()->default('Texte pour ne rien dire');
             $table->integer('ca_total_mensuel_realiser');
-=======
-            $table->string('commentaire')->nullable();
-            $table->string('ca_total_mensuel_realiser');
->>>>>>> main
             $table->timestamps();
             $table->softDeletes();
 

@@ -18,12 +18,8 @@ class AgentController extends Controller
     public function index()
     {
         $agents = Agent::all();
-<<<<<<< HEAD
         return view('agents.index',compact('agents'));
-=======
-        //echo 'Rien de bon';
-        return view('agents.index', compact('agents'));
->>>>>>> main
+
     }
 
     /**
@@ -33,11 +29,8 @@ class AgentController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
-        return view('agents.edit');
-=======
+
         return view('agents.create');
->>>>>>> main
     }
 
     /**
@@ -48,13 +41,12 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
         $request->validate([
 
-            //'nom' => 'required',
-            //'prenom' => 'required',
-            //'date_offre' => 'required',
-            //'domaine'    => 'required'
+            'nom' => 'required',
+            'prenom' => 'required',
+            'date_offre' => 'required',
+            'domaine'    => 'required'
         ]);
 
 
@@ -84,10 +76,7 @@ class AgentController extends Controller
         $agents->telephone = $request->telephone;
         $agents->save();
         return redirect()->route('agents.store');
-=======
-        
-        return redirect()->route('agents.index');
->>>>>>> main
+
     }
 
     /**
@@ -98,13 +87,7 @@ class AgentController extends Controller
      */
     public function show(Agent $agent)
     {
-<<<<<<< HEAD
         return view('agents.show', compact("agent"));
-
-=======
-
-        return view('agents.show');
->>>>>>> main
     }
 
     /**
@@ -115,13 +98,10 @@ class AgentController extends Controller
      */
     public function edit(Agent $agent)
     {
-<<<<<<< HEAD
-        return view("agents.edit", compact("agent"));
-=======
+
         if (View::exists('agents.edit')){
             return view('agents.edit', compact('agent'));
         }
->>>>>>> main
     }
 
     /**
