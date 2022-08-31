@@ -182,9 +182,23 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        //MercurySeries\Flashy\FlashyServiceProvider::class,
+        
+
         /*
          * Package Service Providers...
          */
+
+        /*
+            Ajouter pour le projet :
+        */
+
+        //SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+
+        /* 
+        
+        */
+
 
         /*
          * Application Service Providers...
@@ -209,6 +223,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        //'Flashy' => MercurySeries\Flashy\Flashy::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
