@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Agent;
+use Illuminate\Support\Facades\View;
+
 
 class AgentController extends Controller
 {
@@ -13,7 +16,9 @@ class AgentController extends Controller
      */
     public function index()
     {
-        //
+        $agents = Agent::all();
+        //echo 'Rien de bon';
+        return view('agents.index', compact('agents'));
     }
 
     /**
@@ -23,7 +28,7 @@ class AgentController extends Controller
      */
     public function create()
     {
-        //
+        return view('agents.create');
     }
 
     /**
@@ -34,7 +39,8 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        return redirect()->route('agents.index');
     }
 
     /**
@@ -45,7 +51,8 @@ class AgentController extends Controller
      */
     public function show($id)
     {
-        //
+
+        return view('agents.show');
     }
 
     /**
@@ -56,7 +63,9 @@ class AgentController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (View::exists('agents.edit')){
+            return view('agents.edit', compact('agent'));
+        }
     }
 
     /**
@@ -68,7 +77,9 @@ class AgentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+
+        return redirect()->route('agents.index');
     }
 
     /**
@@ -77,8 +88,10 @@ class AgentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Agent $agent)
     {
-        //
+        
+        $agent->delete();
+        return redirect()->route('agents.index');
     }
 }

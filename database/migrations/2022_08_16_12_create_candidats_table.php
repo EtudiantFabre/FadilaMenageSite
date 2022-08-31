@@ -43,7 +43,7 @@ return new class extends Migration
             $table->string('savoir_faire');
             $table->string('disponible_a_loger');
             $table->string('nature_contrat');
-            $table->string('oraire_travail_passe');
+            $table->string('horaire_travail_passe');
             $table->timestamps();
             $table->softDeletes();
         });

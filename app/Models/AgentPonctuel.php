@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AgentPonctuel extends Model
 {
     use HasFactory;
-    protected $fillable = ['id_agent_ponctuel'];
+    protected $fillable = ['id_agent', 'id_ponctuel', 'id_agent_ponctuel'];
     protected $primaryKey = ['id_agent', 'id_ponctuel'];
 
     /**
@@ -16,7 +16,7 @@ class AgentPonctuel extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function agent(): BelongsTo
+    public function agent()
     {
         return $this->belongsTo(Agent::class, 'id_agent');
     }
@@ -26,7 +26,7 @@ class AgentPonctuel extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function ponctuel(): BelongsTo
+    public function ponctuel()
     {
         return $this->belongsTo(Ponctuel::class, 'id_ponctuel');
     }
