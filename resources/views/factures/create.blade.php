@@ -66,7 +66,7 @@
                 <br>
                 <section>
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <input type="submit" class="btn btn-primary" value="ENREGISTRER LE SUIVI"/>
+                        <input type="submit" class="btn btn-primary" value="ENREGISTRER LA FACTURE"/>
                     </div>
                 </section>
             </form>

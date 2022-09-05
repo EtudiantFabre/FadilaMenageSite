@@ -3,23 +3,28 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AgentPonctuelController;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AgentController;
+use App\Http\Controllers\CandidatController;
+use App\Http\Controllers\ExperienceDuCandidatController;
+use App\Http\Controllers\PersonnelController;
+use App\Http\Controllers\ContratController;
+use App\Http\Controllers\RelanceContratController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\VenteController;
+
+use App\Http\Controllers\AgentPonctuelController;
 use App\Http\Controllers\SuiviController;
 use App\Http\Controllers\SocieteController;
-use App\Http\Controllers\RelanceContratController;
 use App\Http\Controllers\ProspectionController;
 use App\Http\Controllers\PonctuelController;
 use App\Http\Controllers\AppelOffreController;
-use App\Http\Controllers\CandidatController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\ContratController;
 use App\Http\Controllers\EvaluationController;
-use App\Http\Controllers\ExperienceDuCandidatController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\PersonneAprevenirController;
-use App\Http\Controllers\PersonnelController;
-use App\Http\Controllers\AgentController;
+
+
 use Barryvdh\DomPDF\Facade\Pdf;
 
 
@@ -52,6 +57,7 @@ Route::get('/', function () {
 
 //  Agents
 
+
 Route::resource('agents',AgentController::class);
 Route::resource("candidats", CandidatController::class);
 Route::resource('clients',ClientController::class);
@@ -65,9 +71,13 @@ Route::resource('experienceDuCandidats',ExperienceDuCandidatController::class);
 
 
 
+
+Route::resource('agents', AgentController::class);
+
 //  AgentPonctuel
 
 Route::resource('agentPonctuels', AgentPonctuelController::class);
+Route::post('liste-des-agents', [AgentController::class], 'listeAgents')->name('liste-agents');
 /*
 Route::get('liste-agent-ponctuels', [AgentPonctuelController::class, 'index']);//->name('liste_agent_ponctuels');
 Route::post('enregistrement-agent-ponctuel', [AgentPonctuelController::class, 'store'], 'enregistrement_agent_ponctuel');
@@ -292,6 +302,7 @@ Route::post('suppression-vente/{vente}', [VenteController::class, 'destroy'], 's
 Route::get('vente}/mise-a-jour-vente', [VenteController::class, 'edit'], 'mise_a_jour');
 */
 //                              //
+
 
 Auth::routes();
 

@@ -5,21 +5,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <title>@yield('title', config('app.name'))</title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-
         <style>
-            table,
-            th,
-            td {
-              padding: 10px;
-              border: 1px solid black;
-              border-collapse: collapse;
-            }
+
 
             th{
                 background-color: orangered;
@@ -39,9 +30,9 @@
 
 
 
-        <main role="main" class="container-fluid">
             @yield('content')
-        </main>
+        </div>
+
 
 
         <!--Footer-->
@@ -63,4 +54,5 @@
       </body>
 
 </html>
+@endsection
 

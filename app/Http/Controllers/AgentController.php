@@ -18,6 +18,7 @@ class AgentController extends Controller
     public function index()
     {
         $agents = Agent::all();
+
         return view('agents.index',compact('agents'));
 
     }
@@ -31,6 +32,7 @@ class AgentController extends Controller
     {
 
         return view('agents.create');
+
     }
 
     /**
@@ -41,6 +43,7 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
 
             'nom' => 'required',
@@ -77,6 +80,10 @@ class AgentController extends Controller
         $agents->save();
         return redirect()->route('agents.store');
 
+
+
+        return redirect()->route('agents.index');
+
     }
 
     /**
@@ -87,7 +94,10 @@ class AgentController extends Controller
      */
     public function show(Agent $agent)
     {
+
+
         return view('agents.show', compact("agent"));
+
     }
 
     /**
@@ -102,6 +112,8 @@ class AgentController extends Controller
         if (View::exists('agents.edit')){
             return view('agents.edit', compact('agent'));
         }
+
+
     }
 
     /**
@@ -113,59 +125,79 @@ class AgentController extends Controller
      */
     public function update(Request $request, Agent $agent)
     {
+
          // 1. La validation
 
-    // Les règles de validation pour "title" et "content"
-   // $rules = [
-    //    'title' => 'bail|required|string|max:255',
-    //    "content" => 'bail|required',
-   // ];
 
-    // Si une nouvelle image est envoyée
+        $rules = [
+            'nom' => 'bail|required|string|max:255',
+            "prenom" => 'bail|required|string|max:255',
+            "date_naissance" => 'bail|required',
+            "lieu_naissance" => 'bail|required|string',
+            "genre" => 'bail|required|string',
+            "nationalite" => 'bail|required|string',
+            "piece_identite" => 'bail|required',
+            "numero_de_piece" => 'bail|required|alpha',
+            "date_delivrer" => 'bail|required',
+            "date_expiration" => 'bail|required',
+            "ville_residence" => 'bail|required',
+            "quartier" => 'bail|required',
+            "rue" => 'bail|required|string',
+            "email" => 'bail|required|email',
+            "situation_familiale" => 'bail|required',
+            "enfants_encharge" => 'bail|required',
+            "profession" => 'bail|required',
+            "telephone" => 'bail|required',
+            "poste_candidate" => 'bail|required',
+            "horaire_travail_souhaite" => 'bail|required',
+            "objectif" => 'bail|required|string|max:255',
+            "qualite_personnelles" => 'bail|required|string|max:255',
+            "savoir_faire" => 'bail|required|string|max:255',
+            "disponible_a_loger" => 'bail|required',
+            "nature_contrat" => 'bail|required',
+            "oraire_travail_passe" => 'bail|required'
+        ];
 
 
-    //$this->validate($request, $rules);
+        // Si une nouvelle image est envoyée
+        if ($request->has("avatar")) {
+            // On ajoute la règle de validation pour "picture"
+            $rules["avatar"] = 'bail|required|image|max:1024';
+        }
 
-    // 2. On upload l'image dans "/storage/app/public/posts"
-    if ($request->has("photo_id")) {
+        $this->validate($request, $rules);
 
-        //On supprime l'ancienne image
-        Storage::delete($agent->photo_id);
+        // 2. On upload l'image dans "/storage/app/public/candidats"
+        if ($request->has("avatar")) {
 
-        $chemin_image = $request->photo_id->store("agents");
+            //On supprime l'ancienne image
+            Storage::delete($agent->avatare);
+
+            $chemin_image = $request->avatar->store("candidats");
+            $request['avatar']=$chemin_image;
+            // 3. On met à jour les informations de l'agent
+            $input = $request->all();
+            $candidat->update($input);
+            return redirect('agents')->with('flash_message', 'Vos modifications sont enregistré!');
+
+        }
+
+
+        // 3. On met à jour les informations de l'agent
+        $input = $request->all();
+        $candidat->update($input);
+        return redirect('agents')->with('flash_message', 'Vos modifications sont enregistré!');
+
+
+
     }
 
-    // 3. On met à jour les informations du Post
-    $agent->update([
-        "nom" => $request -> nom,
-        "prenom" => $request->prenom,
-        "date_naissance" => $request->date_naissance,
-        "lieu_naissance"=> $request->lieu_naissance,
-        "genre"=> $request->genre,
-        "email"=>$request->email,
-        "situation_familiale" => $request->situation_familiale,
-        "nationalite" => $request->nationalite,
-        "enfants_encharge" => $request->enfants_encharge,
-        "profession" => $request->profession,
-        "status" => $request->status,
-        "avatar" => $request->avatar,
-        "date_retenu" => $request->date_retenu,
-        "nationalite" => $request->nationalite,
-        "photo_id" => $request->photo_id,
-        "numero_de_piece" => $request->numero_de_piece,
-         "date_expiration" => $request-> date_expiration,
-        "date_delivrer" => $request->date_delivrer,
-        "ville_residence" => $request->ville_residence,
-        "quartier" =>$request->quartier,
-        "rue" =>$request->rue,
-        "telephone" => $request->telephone,
-        "photo_id" => isset($chemin_image) ? $chemin_image : $agent->photo_id
-    ]);
+    public function listAgents(Request $request)
+    {
+        $agents = Agent::all()->where('ville_residence', '=', $request->ville)->where('poste_candidate', '=', $request->type_service_rechercher);
+        return view('agents.listAgents')->with('agents', $agents);
 
-    // 4. On affiche le Post modifié : route("posts.show")
-    return redirect(route("agents.show", $agent));
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -180,5 +212,6 @@ class AgentController extends Controller
 
     // Redirection route "posts.index"
     return redirect(route('agents.index'));
+
     }
 }

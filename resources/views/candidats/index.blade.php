@@ -2,22 +2,21 @@
 @section("title", "Liste des candidats")
 @section("content")
 
-<div class="container" style="background: orangered">
-    <h1>Liste des candidats</h1>
-
-    <p>
-		<!-- Lien pour créer un nouvel contrat : "contrat.create" -->
-		<a href="{{ route('candidats.create') }}" title="Créer un candidat" >Déposer votre candidature</a>
-	</p>
-
-</div><br>
 
 
 
+
+    <h1 class="text-center">Liste des candidats</h1>
 	<!-- Le tableau pour lister les candidats -->
-    <div class="container">
-	<table>
-		<thead>
+<div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <!-- Lien pour créer un nouvel contrat : "contrat.create" -->
+        <a href="{{ route('candidats.create') }}" title="Créer un candidat" class="btn btn-success btn-block">Déposer votre candidature</a><br>
+
+    </div><br><br>
+
+	<table class="table table-primary table-hover table-striped rounded table-bordered border-primary text-center table-curved justify-content-center">
+		<thead style="background-color: orangered">
 			<tr>
 				<th>Numero</th>
                 <th>Nom</th>
@@ -72,11 +71,11 @@
 				</td>
 				<td>
 					<!-- Lien pour modifier un contrat : "posts.edit" -->
-					<a href="{{ route('candidats.show', $candidat) }}" title="Afficher le candidat" >Afficher</a>
+					<a class="btn btn-info btn-block" href="{{ route('candidats.show', $candidat) }}" title="Afficher le candidat" >Afficher</a>
 				</td>
                 <td>
 					<!-- Lien pour modifier un contrat : "posts.edit" -->
-					<a href="{{ route('candidats.edit', $candidat) }}" title="Modifier la candidature" >Modifier</a>
+					<a class="btn btn-success btn-block" href="{{ route('candidats.edit', $candidat) }}" title="Modifier la candidature" >Modifier</a>
 				</td>
 
 				<td>
@@ -86,7 +85,7 @@
 						@csrf
 						<!-- <input type="hidden" name="_method" value="DELETE"> -->
 						@method("DELETE")
-						<input type="submit" value="Supprimer" >
+						<input class="btn btn-danger btn-block" type="submit" value="Supprimer" >
 					</form>
 				</td>
 			</tr>
@@ -94,6 +93,7 @@
 		</tbody>
 	</table>
 </div>
+
 
 @endsection
 

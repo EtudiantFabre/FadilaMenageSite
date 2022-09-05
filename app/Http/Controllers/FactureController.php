@@ -51,7 +51,7 @@ class FactureController extends Controller
             'total_ttc' => 'required|integer'
         ]);
         Facture::create($request->all());
-
+        dd($request);
         return redirect()->route('factures.index');
     }
 

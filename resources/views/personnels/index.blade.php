@@ -2,15 +2,15 @@
 @section("title", "Liste des personnels")
 @section("content")
 
-	<h1>Tous les personnels</h1>
-
-	<p>
-		<!-- Lien pour créer un nouvel personnel : "personnel.create" -->
-	<a href="{{ route('personnels.create') }}" title="Créer un personnel" >Eregistrer un nouveau personnel</a>
-	</p>
+	<h1 class="text-center">Tous les personnels</h1>
+<div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <!-- Lien pour créer un nouvel personnel : "personnel.create" -->
+        <a class="btn btn-success btn-block" href="{{ route('personnels.create') }}" title="Créer un personnel" >Eregistrer un nouveau personnel</a>
+    </div><br>
 
 	<!-- Le tableau pour lister les personnels -->
-	<table>
+	<table class="table table-primary table-hover table-striped rounded table-bordered border-primary text-center table-curved justify-content-center">
 		<thead>
 			<tr>
 				<th>Numero</th>
@@ -64,21 +64,28 @@
 					{{ $personnel->date_delivrer}}
 				</td>
                 <td>
+					{{ $personnel->date_expiration}}
+				</td>
+                <td>
 					{{ $personnel->ville_residence}}
 				</td>
                 <td>
 					{{ $personnel->quartier}}
 				</td>
 
+
+
                 <td>
 					<!-- Lien pour modifier un personnel : "posts.edit" -->
-					<a href="{{ route('personnels.edit', $personnel) }}" title="Modifier le personnel">Modifier</a>
+					<a class="btn btn-success btn-block" href="{{ route('personnels.edit', $personnel) }}" title="Modifier le personnel">Modifier</a>
 				</td>
 
                 <td>
 					<!-- Lien pour modifier un personnel : "posts.edit" -->
-				<a href="{{ route('personnels.show', $personnel) }}" title="Modifier le personnel">Afficher</a>
+					<a class="btn btn-info btn-block" href="{{ route('personnels.show', $personnel) }}" title="Modifier le personnel">Afficher</a>
 				</td>
+
+
 
 				<td>
 					<!-- Formulaire pour supprimer un personnel : "posts.destroy" -->
@@ -87,13 +94,13 @@
 						@csrf
 						<!-- <input type="hidden" name="_method" value="DELETE"> -->
 						@method("DELETE")
-						<input type="submit" value="Supprimer" >
+						<input class="btn btn-danger btn-block" type="submit" value="Supprimer" >
 					</form>
 				</td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
-
+</div>
 @endsection
 

@@ -13,7 +13,7 @@
     <div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
         <!--a href="{{-- route('/creation-suivi')--}}">Commencer</a-->
         <h1 class="text-center">Liste de suivi</h1>
-        <div >
+        <div>
             <table class="table table-primary table-hover table-striped rounded table-bordered border-primary text-center table-curved justify-content-center">
                 <thead class="table-success">
                     <tr>
@@ -45,13 +45,13 @@
                                     @csrf
                                     <button type="submit" class="btn btn-outline-primary">Afficher</button>
                                 </form>
-                            
+
                                 <form action="{{route('suivis.destroy', $suivi->id_suivis)}}" method="post" onsubmit="return AccepterSuppression()">
                                     @method('delete')
                                     @csrf
                                     <button type="submit" class="btn btn-outline-danger">Supprimer</button>
                                 </form>
-                            
+
                                 <form action="{{route('suivis.edit', $suivi->id_suivis)}}" method="GET">
                                     @csrf
                                     <button type="submit" class="btn btn-outline-info">Modifier</button>
@@ -63,7 +63,7 @@
                 @endforeach
             </table>
         </div>
-        
+
 
         <section>
             <form action="{{route('suivis.create')}}">
@@ -76,12 +76,12 @@
 
 
 
-    
 
 
 
 
-        
+
+
 </body>
 </html>
 

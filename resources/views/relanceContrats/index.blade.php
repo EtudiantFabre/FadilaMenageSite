@@ -2,14 +2,16 @@
 @section("title", "Les relances")
 @section("content")
 
-	<h1>Les contrats relancés</h1>
+	<h1 class="text-center">Les contrats relancés</h1>
+<div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
 
-	<p>
-		<a href="{{ route('relanceContrats.create') }}" title="Créer un relanceContrat" >Enregistrer un nouveau relanceContrat</a>
-	</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+		<a class="btn btn-success btn-block" href="{{ route('relanceContrats.create') }}" title="Créer un relanceContrat" >Enregistrer un nouveau relanceContrat</a>
+	</div><br>
 
 	<!-- Le tableau pour lister les relanceContrats -->
-	<table>
+	<table class="table table-primary table-hover table-striped rounded table-bordered border-primary text-center table-curved justify-content-center">
 		<thead>
 			<tr>
 				<th>Contrat</th>
@@ -63,5 +65,5 @@
 			@endforeach
 		</tbody>
 	</table>
-
+</div>
 @endsection

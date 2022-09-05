@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Models\Agent;
 
 class ClientController extends Controller
 {
@@ -38,16 +39,15 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-         // 1. La validation
-       // $this->validate($request, [
 
-       // ]);
+        Client::create($request->all());
+        
+        //  Affichage de tout les agents (CD 1)
+        $agents = Agent::all()->where('poste_candidate', '=', $request->type_service_rechercher);
+        
+        return view("agents.listeAgents")->with('agents', $agents);
 
-      
-
-   Client::create($request->all());
-    // 3. On retourne vers tous les clients :
-    return redirect(route("clients.index"));
+        //return redirect(route("clients.index"));
     }
 
     /**
