@@ -185,12 +185,12 @@
               </div>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="logo.png" class="d-block w-100 img-custom" alt="..." >
+                  <img src="toutfadila2.jpg" class="d-block w-100 img-custom" alt="..." >
                   <div class="carousel-caption d-none d-md-block text-start">
-                    <h5>Bienvenue sur notre site officiel</h5>
-                    <p>Accédez directement à notre Bot Telegram à partir d'ici</p>
-                    <form action="https://web.telegram.org/z/#5340210420" target="_blank">
-                       <button class="btn btn-primary">Telegram</button>
+                    <h5>Bienvenue sur notre site officiel Fadila Ménage</h5>
+                    <p>Demander un devis en cliquant directement sur ce bouton</p>
+                    <form action="<?php echo e(route('clients.create')); ?>">
+                       <button class="btn btn-primary">Demander un service</button>
                     </form>
                   </div>
                 </div>
