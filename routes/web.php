@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\CandidatController;
@@ -13,30 +13,17 @@ use App\Http\Controllers\RelanceContratController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\VenteController;
 
-
-
-
-=======
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AgentPonctuelController;
-use App\Http\Controllers\VenteController;
 use App\Http\Controllers\SuiviController;
 use App\Http\Controllers\SocieteController;
-use App\Http\Controllers\RelanceContratController;
 use App\Http\Controllers\ProspectionController;
 use App\Http\Controllers\PonctuelController;
 use App\Http\Controllers\AppelOffreController;
-use App\Http\Controllers\CandidatController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\ContratController;
 use App\Http\Controllers\EvaluationController;
-use App\Http\Controllers\ExperienceDuCandidatController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\PersonneController;
 use App\Http\Controllers\PersonneAprevenirController;
-use App\Http\Controllers\PersonnelController;
-use App\Http\Controllers\AgentController;
->>>>>>> main
+
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +47,7 @@ Route::get('/', function () {
 //  Route ajouter par moi :
 
 //  Agents
-<<<<<<< HEAD
+
 
 Route::resource('agents',AgentController::class);
 Route::resource("candidats", CandidatController::class);
@@ -74,7 +61,7 @@ Route::resource('experienceDuCandidats',ExperienceDuCandidatController::class);
 
 
 
-=======
+
 Route::resource('agents', AgentController::class);
 
 //  AgentPonctuel
@@ -315,7 +302,7 @@ Route::post('suppression-vente/{vente}', [VenteController::class, 'destroy'], 's
 Route::get('vente}/mise-a-jour-vente', [VenteController::class, 'edit'], 'mise_a_jour');
 */
 //                              //
->>>>>>> main
+
 
 Auth::routes();
 

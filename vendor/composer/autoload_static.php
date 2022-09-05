@@ -559,12 +559,9 @@ class ComposerStaticInitf47798a4e0d1b6a9c429e0d5eda3ee2e
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AgentController' => __DIR__ . '/../..' . '/app/Http/Controllers/AgentController.php',
-<<<<<<< HEAD
-=======
         'App\\Http\\Controllers\\AgentPonctuelController' => __DIR__ . '/../..' . '/app/Http/Controllers/AgentPonctuelController.php',
         'App\\Http\\Controllers\\AppelOffreController' => __DIR__ . '/../..' . '/app/Http/Controllers/AppelOffreController.php',
         'App\\Http\\Controllers\\ArticleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ArticleController.php',
->>>>>>> main
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -575,27 +572,17 @@ class ComposerStaticInitf47798a4e0d1b6a9c429e0d5eda3ee2e
         'App\\Http\\Controllers\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClientController.php',
         'App\\Http\\Controllers\\ContratController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContratController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-<<<<<<< HEAD
-        'App\\Http\\Controllers\\ExperienceDuCandidatController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExperienceDuCandidatController.php',
-=======
         'App\\Http\\Controllers\\EvaluationController' => __DIR__ . '/../..' . '/app/Http/Controllers/EvaluationController.php',
         'App\\Http\\Controllers\\ExperienceDuCandidatController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExperienceDuCandidatController.php',
         'App\\Http\\Controllers\\FactureController' => __DIR__ . '/../..' . '/app/Http/Controllers/FactureController.php',
->>>>>>> main
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PersonneAprevenirController' => __DIR__ . '/../..' . '/app/Http/Controllers/PersonneAprevenirController.php',
-        'App\\Http\\Controllers\\PersonneController' => __DIR__ . '/../..' . '/app/Http/Controllers/PersonneController.php',
         'App\\Http\\Controllers\\PersonnelController' => __DIR__ . '/../..' . '/app/Http/Controllers/PersonnelController.php',
-<<<<<<< HEAD
-        'App\\Http\\Controllers\\RelanceContratController' => __DIR__ . '/../..' . '/app/Http/Controllers/RelanceContratController.php',
-        'App\\Http\\Controllers\\SocieteController' => __DIR__ . '/../..' . '/app/Http/Controllers/SocieteController.php',
-=======
         'App\\Http\\Controllers\\PonctuelController' => __DIR__ . '/../..' . '/app/Http/Controllers/PonctuelController.php',
         'App\\Http\\Controllers\\ProspectionController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProspectionController.php',
         'App\\Http\\Controllers\\RelanceContratController' => __DIR__ . '/../..' . '/app/Http/Controllers/RelanceContratController.php',
         'App\\Http\\Controllers\\SocieteController' => __DIR__ . '/../..' . '/app/Http/Controllers/SocieteController.php',
         'App\\Http\\Controllers\\SuiviController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuiviController.php',
->>>>>>> main
         'App\\Http\\Controllers\\VenteController' => __DIR__ . '/../..' . '/app/Http/Controllers/VenteController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

@@ -3,7 +3,8 @@
 @section("content")
 
 	<h1>{{'Monsieur : '. $candidat->nom.' '.$candidat->prenom }}</h1>
-    <img src="{{ asset('storage'.$candidat->avatar)}}" alt="Photo du candidat" style="max-width: 300px;">
+
+    <img src="{{ asset('storage/images/app'.$candidat->avatar)}}" alt="Photo du candidat" >
 
         <p>
             <label for="numero">Numero :</label> {{$candidat->id_candidat }}
@@ -81,7 +82,9 @@
 
 
 
-	<p><a href="{{ route('candidats.index') }}" title="Retourner aux candidat" >Retourner aux candidat</a></p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+
+        <a class="btn btn-info btn-block" href="{{ route('candidats.index') }}" title="Retourner aux candidat" >Retourner aux candidat</a>
 
     <form method="POST" name="recru" id="recru" action="{{ route('candidats.destroy', $candidat) }}" >
         <!-- CSRF token -->
@@ -89,7 +92,8 @@
 
         <!-- <input type="hidden" name="_method" value="DELETE"> -->
         @method("DELETE")
-        <input type="submit" name="recru" id="recru" value="Recruter {{ $candidat->nom.' '.$candidat->prenom  }}" >
+        <input class="btn btn-success btn-block" type="submit" name="recru" id="recru" value="Recruter {{ $candidat->nom.' '.$candidat->prenom  }}" >
     </form>
+    </div>
 
 @endsection

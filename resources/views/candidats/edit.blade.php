@@ -2,10 +2,10 @@
 @section("title", "Editer un candidat")
 @section("content")
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="container " style="background: orangered" id="title">
-                <h1>Vous avez bésoin d'un travail ? Créer votre profil en remplissant les fourmulaires ci-dessous</h1>
+<div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
+
+            <div class="container " style="text-color: white" id="title">
+                <h1 class="text-center">Déposez votre candidature</h1>
             </div>
 
 
@@ -13,7 +13,7 @@
 	@if (isset($candidat))
 
 	    <!-- Le formulaire est géré par la route "contats.update" -->
-	    <form method="POST" action="{{ route('candidats.update', $candidat) }}" class="mb-10px" >
+	    <form method="POST" action="{{ route('candidats.update', $candidat) }}" enctype="multipart/form-data" class="mb-10px" >
 
 		<!-- <input type="hidden" name="_method" value="PUT"> -->
 		@method('PUT')
@@ -21,7 +21,7 @@
 	@else
 
 	    <!-- Le formulaire est géré par la route "candidats.store" -->
-	    <form method="POST" action="{{ route('candidats.store') }}" >
+	    <form class="mb-10px"  enctype="multipart/form-data" method="POST" action="{{ route('candidats.store') }}" >
 
 	@endif
 
@@ -68,21 +68,37 @@
 			@error("lieu_naissance")
 			<div class="form-group">{{ $message }}</div>
 			@enderror
-		</div>
+		</div><br>
         <div class="form-group">
-			<label for="genre" >Genre</label>
+			<label for="genre" >Genre</label><span class="text-danger required" aria-hidden="true">*</span> :
+            @if (isset($candidat))
+                @if ($candidat->genre == "Homme")
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genre" checked='checked' id="inlineRadio1" value="genre">
+                        <label class="form-check-label" for="inlineRadio1">Homme</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genre" id="inlineRadio2" value="Femme">
+                        <label class="form-check-label" for="inlineRadio2">Femme</label>
+                    </div>
+                @endif
+            @else
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre"  id="inlineRadio1" value="genre">
+                <label class="form-check-label" for="inlineRadio1">Homme</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genre" id="inlineRadio2" value="Femme">
+                <label class="form-check-label" for="inlineRadio2">Femme</label>
+            </div>
+            @endif
 
-			<select name="genre" id="genre" class="form-control">
-                <option value="#" >Choisissez ici</option>
-                <option value="Homme">Homme</option>
-                <option value="Femme">Femme</option>
-            </select>
 
 			<!-- Le message d'erreur pour "genre" -->
 			@error("genre")
 			<div class="form-group">{{ $message }}</div>
 			@enderror
-		</div>
+		</div><br>
         <div class="form-group">
 			<label for="nationalite" >Nanitonalité</label>
 
@@ -175,17 +191,35 @@
 			@error("email")
 			<div class="form-group">{{ $message }}</div>
 			@enderror
-		</div>
+		</div><br>
         <div class="form-group">
-			<label for="situation_familiale" >Situation matrimoniale</label>
-
-			<input type="text" name="situation_familiale" value="{{ isset($candidat->situation_familiale) ? $candidat->situation_familiale : old('marge_nette') }}"  id="situation_familiale" placeholder="Marier ou celibataire" class="form-control">
-
+			<label for="genre" >Situation matrimoniale</label><span class="text-danger required" aria-hidden="true">*</span> :
+            @if (isset($candidat))
+                @if ($candidat->situation_familiale == "Célibataire")
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="situation_familiale" checked='checked' id="inlineRadio1" value="Célibataire">
+                        <label class="form-check-label" for="inlineRadio1">Célibataire</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="situation_familiale" id="inlineRadio2" value="Marié">
+                        <label class="form-check-label" for="inlineRadio2">Marié</label>
+                    </div>
+                @endif
+            @else
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="situation_familiale"  id="inlineRadio1" value="Célibataire">
+                <label class="form-check-label" for="inlineRadio1">Célibataire</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="situation_familiale" id="inlineRadio2" value="Marié">
+                <label class="form-check-label" for="inlineRadio2">Marié</label>
+            </div>
+            @endif
 			<!-- Le message d'erreur pour "situation_familiale" -->
 			@error("situation_familiale")
 			<div class="form-group">{{ $message }}</div>
 			@enderror
-		</div>
+		</div><br>
         <div class="form-group">
 			<label for="enfants_encharge" >Enfants en charge</label>
 
@@ -218,7 +252,7 @@
         <div class="form-group">
 			<label for="avatar">Inserez votre photo</label>
 
-			<input class="form-control" type="file" name="avatar"  id="avatar" >
+			<input class="form-control" type="file" name="avatar"  id="avatar" action="/upload">
 
 			<!-- Le message d'erreur pour "avatar" -->
 			@error("avatar")
@@ -236,7 +270,7 @@
 			@enderror
 		</div>
         <div class="form-group">
-			<label for="poste_candidate" >Poste</label>
+			<label for="poste_candidate" >Vou postulez pour quel poste</label>
             <select class="form-control" name="poste_candidate" id="poste_candidate">
                 <option value="#" >Choisissez ici</option>
                 <option value="Chauffeur">Chauffeur</option>
@@ -250,21 +284,43 @@
 			@error("poste_candidate")
 			<div class="form-group">{{ $message }}</div>
 			@enderror
-		</div>
+		</div><br>
         <div class="form-group">
-			<label for="horaire_travail_souhaite" >Heure de travail souhaite</label>
-
-            <select class="form-control" name="horaire_travail_souhaite" id="horaire_travail_souhaite">
-                <option value="#" >Choisissez ici</option>
-                <option value="Temps plein">Temps plein</option>
-                <option value="Temps partiel">Temps partiel</option>
-                <option value="Mi-temps">Mis temps</option>
-            </select>
+			<label for="horaire_travail_souhaite" >Heure de travail souhaité</label><span class="text-danger required" aria-hidden="true">*</span> :
+            @if (isset($candidat))
+                @if ($candidat->horaire_travail_souhaite == "Temps plein")
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="horaire_travail_souhaite" checked='checked' id="inlineRadio1" value="Temps plein">
+                        <label class="form-check-label" for="inlineRadio1">Temps plein</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="horaire_travail_souhaite" id="inlineRadio2" value="Temps partiel">
+                        <label class="form-check-label" for="inlineRadio2">Temps partiel</label>
+                    </div>
+					<div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="horaire_travail_souhaite" id="inlineRadio2" value="Mis temps">
+                        <label class="form-check-label" for="inlineRadio3">Mis temps</label>
+                    </div>
+                @endif
+            @else
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="horaire_travail_souhaite"  id="inlineRadio1" value="Temps plein">
+					<label class="form-check-label" for="inlineRadio1">Temps plein</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="horaire_travail_souhaite" id="inlineRadio2" value="Temps partiel">
+					<label class="form-check-label" for="inlineRadio2">Temps partiel</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="horaire_travail_souhaite" id="inlineRadio2" value="Mis temps">
+					<label class="form-check-label" for="inlineRadio3">Mis temps</label>
+				</div>
+            @endif
 			<!-- Le message d'erreur pour "horaire_travail_souhaite" -->
 			@error("horaire_travail_souhaite")
 			<div class="form-group">{{ $message }}</div>
 			@enderror
-		</div>
+		</div><br>
         <div class="form-group">
 			<label for="objectif" >Objectif</label>
 
@@ -294,68 +350,127 @@
 			@error("savoir_faire")
 			<div class="form-group">{{ $message }}</div>
 			@enderror
-		</div>
+		</div><br>
         <div class="form-group">
-			<label for="disponible_a_loger" >Estes vous disponible à loger?</label>
+			<label for="disponible_a_loger" >Estes vous disponible à loger ?</label><span class="text-danger required" aria-hidden="true">*</span> :
+            @if (isset($candidat))
+                @if ($candidat->disponible_a_loger == "Non")
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="disponible_a_loger" checked='checked' id="inlineRadio1" value="Temps plein">
+                        <label class="form-check-label" for="inlineRadio1">Non</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="disponible_a_loger" id="inlineRadio2" value="Oui">
+                        <label class="form-check-label" for="inlineRadio2">Oui</label>
+                    </div>
 
-			<input class="form-control" type="text" name="disponible_a_loger" value="{{ isset($candidat->disponible_a_loger) ? $candidat->disponible_a_loger : old('disponible_a_loger') }}"  id="disponible_a_loger" placeholder="oui/non !" >
+                @endif
+            @else
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="disponible_a_loger"  id="inlineRadio1" value="Non">
+					<label class="form-check-label" for="inlineRadio1">Non</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="disponible_a_loger" id="inlineRadio2" value="Oui">
+					<label class="form-check-label" for="inlineRadio2">Oui</label>
+				</div>
 
+            @endif
 			<!-- Le message d'erreur pour "disponible_a_loger" -->
 			@error("disponible_a_loger")
 			<div class="form-group">{{ $message }}</div>
 			@enderror
-		</div>
+		</div><br>
         <div class="form-group">
-			<label for="nature_contrat" >Nature du contrat</label>
-            <select class="form-control" name="nature_contrat" id="nature_contrat">
-                <option value="#" >Choisissez ici</option>
-                <option value="CDD">CDD</option>
-                <option value="CDI">CDI</option>
-                <option value="Contrat de formation">Contrat de formation</option>
-                <option value="Autres">Autres</option>
-            </select>
+			<label for="nature_contrat" >Nature contrat</label><span class="text-danger required" aria-hidden="true">*</span> :
+            @if (isset($candidat))
+                @if ($candidat->nature_contrat == "CDD")
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="nature_contrat" checked='checked' id="inlineRadio1" value="CDD">
+                        <label class="form-check-label" for="inlineRadio1">CDD</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="nature_contrat" id="inlineRadio2" value="CDI">
+                        <label class="form-check-label" for="inlineRadio2">CDI</label>
+                    </div>
+                @endif
+            @else
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="nature_contrat"  id="inlineRadio1" value="CDD">
+					<label class="form-check-label" for="inlineRadio1">CDD</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="nature_contrat" id="inlineRadio2" value="CDI">
+					<label class="form-check-label" for="inlineRadio2">CDI</label>
+				</div>
+            @endif
 			<!-- Le message d'erreur pour "nature_contrat" -->
 			@error("nature_contrat")
 			<div class="form-group">{{ $message }}</div>
 			@enderror
-		</div>
+		</div><br>
         <div class="form-group">
-			<label for="oraire_travail_passe" >Horaire de travail passé</label>
-
-            <select class="form-control" name="oraire_travail_passe" id="oraire_travail_passe">
-                <option value="#" >Choisissez ici</option>
-                <option value="Temps plein">Temps plein</option>
-                <option value="Temps partiel">Temps partiel</option>
-                <option value="Mi-temps">Mis temps</option>
-            </select>
+			<label for="oraire_travail_passe" >Heure du travail passé</label><span class="text-danger required" aria-hidden="true">*</span> :
+            @if (isset($candidat))
+                @if ($candidat->horaire_travail_souhaite == "Temps plein")
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="oraire_travail_passe" checked='checked' id="inlineRadio1" value="Temps plein">
+                        <label class="form-check-label" for="inlineRadio1">Temps plein</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="oraire_travail_passe" id="inlineRadio2" value="Temps partiel">
+                        <label class="form-check-label" for="inlineRadio2">Temps partiel</label>
+                    </div>
+					<div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="oraire_travail_passe" id="inlineRadio2" value="Mis temps">
+                        <label class="form-check-label" for="inlineRadio3">Mis temps</label>
+                    </div>
+                @endif
+            @else
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="oraire_travail_passe"  id="inlineRadio1" value="Temps plein">
+					<label class="form-check-label" for="inlineRadio1">Temps plein</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="oraire_travail_passe" id="inlineRadio2" value="Temps partiel">
+					<label class="form-check-label" for="inlineRadio2">Temps partiel</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="oraire_travail_passe" id="inlineRadio2" value="Mis temps">
+					<label class="form-check-label" for="inlineRadio3">Mis temps</label>
+				</div>
+            @endif
 			<!-- Le message d'erreur pour "oraire_travail_passe" -->
 			@error("oraire_travail_passe")
 			<div class="form-group">{{ $message }}</div>
 			@enderror
-		</div>
+		</div><br>
 
                 <!-- Si nous avons un candidat $candidat -->
-	        @if (isset($candidat))
 
             <button type="submit" class="btn btn-success btn-block">Modifier</button>
+
+
+
+
+		<h3 class="text-center">Avez vous déjà d'expériences ?</h3>
+
+				<div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <!-- Lien pour ajouter les expériences : "experienceDuCandidats.create" -->
+                    <a type="submit" href="{{ route('experienceDuCandidats.create') }}" title="expérences" class="btn btn-success btn-block">Oui</a>
+                    <button  type="submit" name="valider" class="btn btn-info btn-block ">Non</button>
+
+                </div>
+
         </form>
 
-     @else
-     <button type="submit" class="btn btn-success btn-block">Pas d'expériences</button>
-
-    </form>
-
-    <div class="form-group">
-        <form style="margin: 50px "  action="{{ route('experienceDuCandidats.create') }}"  >
-            <button type="submit" class="btn btn-warning btn-block">Vos expériences</button>
-        </form>
-    </div>
 
 
-
-    @endif
-
-        </div>
-    </div>
+</div>
 
 @endsection
+
+
+
+
+

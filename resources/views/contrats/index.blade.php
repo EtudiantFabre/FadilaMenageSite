@@ -2,15 +2,16 @@
 @section("title", "Tous les contrats")
 @section("content")
 
-	<h1>Tous les contrats</h1>
+	<h1 class="text-center">Tous les contrats</h1>
+  <div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
 
-	<p>
+	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 		<!-- Lien pour créer un nouvel contrat : "contrat.create" -->
-		<a href="{{ route('contrats.create') }}" title="Créer un contrat" >Enregistrer un nouveau contrat</a>
-	</p>
+		<a class="btn btn-success btn-block" href="{{ route('contrats.create') }}" title="Créer un contrat" >Enregistrer un nouveau contrat</a>
+	</div>
 
 	<!-- Le tableau pour lister les contrats -->
-	<table>
+	<table class="table table-primary table-hover table-striped rounded table-bordered border-primary text-center table-curved justify-content-center">
 		<thead>
 			<tr>
                 <th>Numéro</th>
@@ -21,7 +22,7 @@
                 <th>Echeance</th>
                 <th>service</th>
                 <th>local</th>
-                <th>Adresse</th>
+
                 <th>Temps</th>
                 <th>Frequence</th>
                 <th>Salaire</th>
@@ -43,7 +44,7 @@
                     <td>{{ $contrat->echeance_contrat}}</td>
                     <td>{{ $contrat->service}}</td>
                     <td>{{ $contrat->local}}</td>
-                    <td>{{ $contrat->adresse}}</td>
+
                     <td>{{ $contrat->temps}}</td>
                     <td>{{ $contrat->frequence}}</td>
                     <td>{{ $contrat->salaire}}</td>
@@ -74,5 +75,6 @@
 			@endforeach
 		</tbody>
 	</table>
+</div>
 
 @endsection
