@@ -194,7 +194,7 @@ return [
         */
 
         //SimpleSoftwareIO\QrCode\Facades\QrCode::class,
-
+        Barryvdh\DomPDF\ServiceProvider::class,
         /* 
         
         */
@@ -223,6 +223,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        "PDF" => Barryvdh\DomPDF\Facade::class
         //'Flashy' => MercurySeries\Flashy\Flashy::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),

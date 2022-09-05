@@ -10,7 +10,7 @@
     <title>AFFICHAGE D'UNE FACTURE</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
         <h1>AFFICHAGE D'UNE FACTURE</h1>
         <form action="{{route('factures.index')}}" method="GET">
             @csrf
@@ -63,8 +63,42 @@
                     </tr>
                 </table>
             </div>
-            <div class="d-grid gap-2 col-6 mx-auto">
+            <div class="d-grid gap-2 d-md-block">
                 <button class="btn btn-primary btn-lg" type="submit">J'ai vu</button>
+                <form action="{{$pdf->download()}}">
+                    <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Voir le PDF</button>
+                </form>
+                
+
+                <!--div>                    
+                    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">PDF de la facture N° {{$facture->id_facture}}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                            <input type="text" class="form-control" id="recipient-name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="message-text" class="col-form-label">Message:</label>
+                                            <textarea class="form-control" id="message-text"></textarea>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Send message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div-->
             </div>
         </form>
     </div>

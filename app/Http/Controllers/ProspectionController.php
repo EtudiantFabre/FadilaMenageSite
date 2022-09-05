@@ -14,7 +14,7 @@ class ProspectionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -26,7 +26,7 @@ class ProspectionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -40,7 +40,7 @@ class ProspectionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -76,7 +76,7 @@ class ProspectionController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Prospection  $prospection
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(Prospection $prospection)
     {
@@ -88,7 +88,7 @@ class ProspectionController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Prospection  $prospection
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(Prospection $prospection)
     {
@@ -105,7 +105,7 @@ class ProspectionController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Prospection  $prospection
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, Prospection $prospection)
     {
@@ -152,7 +152,7 @@ class ProspectionController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Prospection  $prospection
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(Prospection $prospection)
     {

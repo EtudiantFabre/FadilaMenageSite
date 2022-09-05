@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Facture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Str;
 
 class FactureController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -22,7 +24,7 @@ class FactureController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -33,7 +35,7 @@ class FactureController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -57,19 +59,26 @@ class FactureController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Facture  $facture
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(Facture $facture)
     {
-        
         return view('factures.show')->with('facture', $facture);
+    }
+
+    public function imprimer(Facture $facture)
+    {
+        $pdf = PDF::loadView('factures.show', compact('facture'));
+
+        //->with('pdf', $pdf->download(Str::slug($facture->total_ttc).".pdf"));
+        return $pdf->download(Str::slug($facture->total_ttc).".pdf");
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Facture  $facture
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(Facture $facture)
     {
@@ -83,7 +92,7 @@ class FactureController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Facture  $facture
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, Facture $facture)
     {
@@ -117,7 +126,7 @@ class FactureController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Facture  $facture
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(Facture $facture)
     {

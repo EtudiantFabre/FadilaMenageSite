@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Evaluation extends Model
 {
     use HasFactory;
-    protected $fillable = ['periodicite', 'debut_periode', 'fin_periode', 'note_sur_vingt', 'commentaire', 'sugestion', 'id_agent'];
+    protected $fillable = ['periodicite', 'debut_periode', 'fin_periode',
+        'note_sur_vingt', 'commentaire', 'sugestion', 'id_agent'];
     protected $primaryKey = 'id_evaluation';
 
     /**

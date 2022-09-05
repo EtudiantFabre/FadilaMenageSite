@@ -43,7 +43,6 @@
             </div>
             <br>
             <div>
-                <label for="competence_rechercher">
                     Compétence recherché<span class="text-danger required" aria-hidden="true">*</span> :
                     <select class="form-select form-select-lg" name="competence_rechercher" id="competence_rechercher">
                         <option value="NOUNOU">NOUNOU</option>
@@ -51,7 +50,6 @@
                         <option value="CUISINIER">CUISINIER</option>
                         <option value="ENTRETIEN">ENTRETIEN</option>
                     </select>
-                </label>
             </div>
             <br>
             <div class="input-group mb-3">

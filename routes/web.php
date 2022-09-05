@@ -2,22 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AgentController;
-use App\Http\Controllers\CandidatController;
-use App\Http\Controllers\ExperienceDuCandidatController;
-use App\Http\Controllers\PersonnelController;
-use App\Http\Controllers\ContratController;
-use App\Http\Controllers\RelanceContratController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\VenteController;
 
-
-
-
-=======
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AgentPonctuelController;
 use App\Http\Controllers\VenteController;
 use App\Http\Controllers\SuiviController;
@@ -32,11 +17,11 @@ use App\Http\Controllers\ContratController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\ExperienceDuCandidatController;
 use App\Http\Controllers\FactureController;
-use App\Http\Controllers\PersonneController;
 use App\Http\Controllers\PersonneAprevenirController;
 use App\Http\Controllers\PersonnelController;
 use App\Http\Controllers\AgentController;
->>>>>>> main
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,11 +41,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/*Route::get('/test', function () {
+    $pdf = Pdf::loadView('test');
+    return view('test')->with('pdf', $pdf->stream('test.pdf'));//
+});*/
+
+//Route::get('imprimer', 'FactureController@imprimer')->name('imprimer');
 
 //  Route ajouter par moi :
 
 //  Agents
-<<<<<<< HEAD
 
 Route::resource('agents',AgentController::class);
 Route::resource("candidats", CandidatController::class);
@@ -74,8 +64,6 @@ Route::resource('experienceDuCandidats',ExperienceDuCandidatController::class);
 
 
 
-=======
-Route::resource('agents', AgentController::class);
 
 //  AgentPonctuel
 
@@ -178,10 +166,10 @@ Route::get('{experience_candidat}/mise-a-jour', [ExperienceDuCandidatController:
 
 //  Facture
 Route::resource('factures', FactureController::class);
-/*
 
-Route::get('liste-factures', [FactureController::class, 'index'], 'liste_factures');
-Route::post('sauvegarde-facture', [FactureController::class, 'store'], 'sauvegarde_facture');
+
+//Route::get('liste-factures', 'FactureController@index')->name('liste_factures');
+/*Route::post('sauvegarde-facture', [FactureController::class, 'store'], 'sauvegarde_facture');
 Route::get('creation-facture', [FactureController::class, 'create'], 'creation_facture');
 Route::get('afficher-facture/{facture}', [FactureController::class, 'show'], 'afficher_facture');
 Route::post('mettre-a-jour-facture/{facture}', [FactureController::class, 'update'], 'mettre_a_jour_facture');
@@ -191,18 +179,7 @@ Route::get('{facture}/mise-a-jour', [FactureController::class, 'edit'], 'mise_a_
 //                              //
 
 
-//  Personne
-Route::resource('personnes', PersonneController::class);
-/*
-Route::get('liste-personnes', [PersonneController::class, 'index'], 'liste_personnes');
-Route::post('sauvegarde-personne', [PersonneController::class, 'store'], 'sauvegarde_personne');
-Route::get('creation-personne', [PersonneController::class, 'create'], 'creation_personne');
-Route::get('afficher-personne/{personne}', [PersonneController::class, 'show'], 'afficher_personne');
-Route::post('mettre-a-jour-personne/{personne}', [PersonneController::class, 'update'], 'mettre_a_jour_personne');
-Route::post('suppression-personne/{personne}', [PersonneController::class, 'destroy'], 'suppression_personne');
-Route::get('{personne}/mise-a-jour', [PersonneController::class, 'edit'], 'mise_a_jour');
-*/
-//                              //
+                            //
 
 
 //  PersonneAprevenir
@@ -315,7 +292,6 @@ Route::post('suppression-vente/{vente}', [VenteController::class, 'destroy'], 's
 Route::get('vente}/mise-a-jour-vente', [VenteController::class, 'edit'], 'mise_a_jour');
 */
 //                              //
->>>>>>> main
 
 Auth::routes();
 

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('numero_aao');
             $table->integer('montant_propose');
             $table->integer('nbre_concurents');
-
             $table->string('classement');
             $table->json('adresse_autorite_contractante');
             $table->date('date_depot');

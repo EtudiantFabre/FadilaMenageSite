@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('situation_familiale');
             $table->string('enfants_encharge');
             $table->string('profession');
-            $table->string('photo_id');
+            //$table->string('photo_id');
             $table->string('avatar');
             $table->string('poste_candidate');
             $table->string('horaire_travail_souhaite');

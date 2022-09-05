@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('debut_periode');
             $table->string('fin_periode');
             $table->string('note_sur_vingt');
-            $table->string('commentaire');
-            $table->string('sugestion');
+            $table->string('commentaire')->nullable();
+            $table->string('sugestion')->nullable();
             $table->integer('id_agent');
             $table->timestamps();
             $table->softDeletes();

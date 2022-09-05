@@ -12,7 +12,7 @@ class ExperienceDuCandidatController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class ExperienceDuCandidatController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -39,7 +39,7 @@ class ExperienceDuCandidatController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -74,7 +74,7 @@ class ExperienceDuCandidatController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\ExperienceDuCandidat  $experienceDuCandidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(ExperienceDuCandidat $experienceDuCandidat)
     {
@@ -86,7 +86,7 @@ class ExperienceDuCandidatController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\ExperienceDuCandidat  $experienceDuCandidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(ExperienceDuCandidat $experienceDuCandidat)
     {
@@ -99,7 +99,7 @@ class ExperienceDuCandidatController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\ExperienceDuCandidat  $experienceDuCandidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, ExperienceDuCandidat $experienceDuCandidat)
     {
@@ -135,7 +135,7 @@ class ExperienceDuCandidatController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\ExperienceDuCandidat  $experienceDuCandidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(ExperienceDuCandidat $experienceDuCandidat)
     {

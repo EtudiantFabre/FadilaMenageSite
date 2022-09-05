@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use Illuminate\Http\Request;
-use App\Models\Agent;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 
 
 class AgentController extends Controller
@@ -13,7 +13,7 @@ class AgentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class AgentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -37,7 +37,7 @@ class AgentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -83,7 +83,7 @@ class AgentController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Agent  $agent
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(Agent $agent)
     {
@@ -94,7 +94,7 @@ class AgentController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Agent  $agent
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(Agent $agent)
     {
@@ -109,11 +109,10 @@ class AgentController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Agent  $agent
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, Agent $agent)
     {
-<<<<<<< HEAD
          // 1. La validation
 
     // Les règles de validation pour "title" et "content"
@@ -123,15 +122,7 @@ class AgentController extends Controller
    // ];
 
     // Si une nouvelle image est envoyée
-    if ($request->has("photo_id")) {
-        // On ajoute la règle de validation pour "picture"
-        $rules["photo_id"] = 'bail|required|image|max:1024';
-=======
-        
 
-        return redirect()->route('agents.index');
->>>>>>> main
-    }
 
     //$this->validate($request, $rules);
 
@@ -180,21 +171,14 @@ class AgentController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Agent  $agent
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(Agent $agent)
     {
-<<<<<<< HEAD
 
     $agent->delete();
 
     // Redirection route "posts.index"
     return redirect(route('agents.index'));
-=======
-        
-        $agent->delete();
-        return redirect()->route('agents.index');
->>>>>>> main
     }
-
 }
