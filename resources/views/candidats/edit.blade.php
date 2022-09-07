@@ -458,7 +458,7 @@
 				<div class="d-grid gap-2 d-md-flex justify-content-md-center">
                     <!-- Lien pour ajouter les expériences : "experienceDuCandidats.create" -->
                     <a type="submit" href="{{ route('experienceDuCandidats.create') }}" title="expérences" class="btn btn-success btn-block">Oui</a>
-                    <button  type="submit" name="valider" class="btn btn-info btn-block ">Non</button>
+                    <button type="submit" name="valider" class="btn btn-info btn-block ">Non</button>
 
                 </div>
 

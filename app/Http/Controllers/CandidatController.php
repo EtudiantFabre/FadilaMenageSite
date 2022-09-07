@@ -8,6 +8,7 @@ use App\Models\Agent;
 
 
 use Illuminate\Http\Request;
+use PDF;
 
 class CandidatController extends Controller
 {
@@ -122,8 +123,14 @@ class CandidatController extends Controller
      */
     public function show(Candidat $candidat)
     {
-       // $candidat = Candidat::find($candidat);
-        return view("candidats.show", compact("candidat"));
+
+       /* $pdf = PDF::loadView('candidats.show',compact('candidat'))->setOptions(['defaultFont' => 'Courier', "defaultPaperSize" => "a4",
+        "dpi" => 130]);
+       return $pdf->stream();*/
+       return view('candidats.show',compact('candidat'));
+
+
+
     }
 
     /**
