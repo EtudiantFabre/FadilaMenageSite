@@ -25,7 +25,9 @@ insert into personnels (nom, prenom, date_naissance, lieu_naissance, genre, nati
 
 
 
+Remarque :
 
+agents.create m'affiche d'autre page différente de create d'agent. Regarde attentivement ton code, il y a eu de petit inatention de ta part.
 
 
 

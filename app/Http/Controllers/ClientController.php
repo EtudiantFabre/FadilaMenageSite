@@ -39,13 +39,34 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "nom" => "required",
+            'tel' => "required",
+            "ville" => "required",
+            "quartier" => "required",
+            "email" => "required",
+            "type_service_rechercher" => "required",
+            "frequence_souhaiter" => "required"
+        ]);
 
-        Client::create($request->all());
+        $clients = Client::all()->where("nom", "=", $request->nom)->where("tel", "=", $request->tel)->where("ville", "=", $request->ville);
+        if (count($clients) !=0) {
+            
+        } else {
+            $client = Client::create($request->all());    
+        }
+        
         
         //  Affichage de tout les agents (CD 1)
         $agents = Agent::all()->where('poste_candidate', '=', $request->type_service_rechercher);
+        if ((count($agents) !=0) && (count($clients) !=0)) {
+            return view("agents.listeAgents")->with('agents', $agents)->with('clients', $clients);
+        } else {
+            if (count($clients) == 0) {
+                return view("agents.listeAgents")->with('agents', $agents)->with('client', $client)->with('succes', "Aucun agent ne correspond à votre demande !!!");
+            }
+        }
         
-        return view("agents.listeAgents")->with('agents', $agents);
 
         //return redirect(route("clients.index"));
     }
@@ -72,13 +93,7 @@ class ClientController extends Controller
         return view("clients.edit", compact("client"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Client  $client
-     * @return \Illuminate\Contracts\View\Factory
-     */
+
     public function update(Request $request, Client $client)
     {
         $client->update([
@@ -94,7 +109,7 @@ class ClientController extends Controller
 
 
         // 4. On affiche le client modifié :
-    return redirect(route("clients.index", $client));
+        return redirect(route("clients.index", $client));
     }
 
     /**

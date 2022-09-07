@@ -23,9 +23,10 @@ use App\Http\Controllers\AppelOffreController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\PersonneAprevenirController;
-
+use App\Http\Controllers\MessageController;
 
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Prospection;
 
 
 /*
@@ -45,6 +46,23 @@ use Barryvdh\DomPDF\Facade\Pdf;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/test-contact', function () {
+    return new App\Mail\Contact([
+        'nom' => 'Durand',
+        'email' => 'fabricetoyi87@gmail.com',
+        'message' => 'Je voulais te dire que tout viens de commencer !!'
+    ]);
+});
+
+/*
+Route::get("message", "MessageController@formMessageGoogle");
+Route::post("message", "MessageController@sendMessageGoogle")->name('send.message.google');*/
+
+
+Route::get('message', [MessageController::class], 'formMessageGoogle');
+Route::post('message', [MessageController::class], 'sendMessageGoogle')->name('send.message.google');
 
 /*Route::get('/test', function () {
     $pdf = Pdf::loadView('test');
@@ -236,6 +254,9 @@ Route::get('{ponctuel}/mise-a-jour', [PonctuelController::class, 'edit'], 'mise_
 
 //  Prospection
 Route::resource('prospections', ProspectionController::class);
+
+Route::post('enregistrement-client-prospections', [ProspectionController::class, 'prosClient'])->name('prosClient');
+
 /*
 Route::get('liste-prospections', [ProspectionController::class, 'index'], 'liste_prospections');
 Route::post('sauvegarde-prospection', [ProspectionController::class, 'store'], 'sauvegarde_prospection');

@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('info_complementaire')->nullable();
             $table->integer('budget');
             $table->string('actions_menees');
-            $table->string('aboutissement');
+            $table->string('aboutissement')->nullable();
             $table->integer('id_agent');
             $table->integer('id_client');
             $table->timestamps();

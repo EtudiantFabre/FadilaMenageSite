@@ -111,7 +111,7 @@ class UserSeeder extends Seeder
             'enfants_encharge' => '5',
             'profession' => 'Professeur',
             'avatar' => 'forme.png',
-            'poste_candidate' => 'MENAGE',
+            'poste_candidate' => 'Nounou',
             'horaire_travail_souhaite' => '7H À 18H',
             'objectif' => 'AIDER PLUS DE PERSONNE',
             'qualite_personnelles' => 'AMOUR',
@@ -122,6 +122,38 @@ class UserSeeder extends Seeder
             'date_retenu' => '10/11/2022',
             'status' => 'ACTIF',
             'telephone' => '70254578'
+        ]);
+
+        Agent::create([
+            'nom' => "ALLASAN",
+            'prenom' => 'Afez',
+            'date_naissance' => '13/02/1997',
+            'lieu_naissance' => 'Sokodé',
+            'genre' => 'Masculin',
+            'nationalite' => 'Togolaise',
+            'piece_identite' => "Carte d'identite",
+            'numero_de_piece' => 'DER2-12-DERZ', 
+            'date_delivrer' => '10/12/2020',
+            'date_expiration' => '10/12/2025',
+            'ville_residence' => 'Sokodé',
+            'quartier' => 'Zongo',
+            'rue' => '20',
+            'email' => 'afez@gmail.com',
+            'situation_familiale' => 'Célibataire',
+            'enfants_encharge' => '5',
+            'profession' => 'Eleve',
+            'avatar' => 'forme.png',
+            'poste_candidate' => 'Nounou',
+            'horaire_travail_souhaite' => '7H À 18H',
+            'objectif' => 'AIDER PLUS DE PERSONNE',
+            'qualite_personnelles' => 'AMOUR',
+            'savoir_faire' => 'COUTURE',
+            'disponible_a_loger' => 'OUI',
+            'nature_contrat' => 'CDD',
+            'oraire_travail_passe' => '17H',
+            'date_retenu' => '10/11/2022',
+            'status' => 'ACTIF',
+            'telephone' => '91584697'
         ]);
     }
 }
