@@ -46,7 +46,7 @@
             @foreach ($agents as $agt)
                 <div class="col">
                     <div class="card">
-                        <form action="{{route('prosClientsss')}}" method="post">
+                        <form action="{{route('prosClient')}}" method="post">
                             @csrf
                             
                             <img src="/toutfadila2.jpg" class="card-img-top" alt="...">

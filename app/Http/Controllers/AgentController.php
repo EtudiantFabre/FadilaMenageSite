@@ -194,9 +194,9 @@ class AgentController extends Controller
 
     public function listAgents(Request $request)
     {
-        dd($request);
-        /*$agents = Agent::all()->where('ville_residence', '=', $request->ville)->where('poste_candidate', '=', $request->type_service_rechercher);
-        return view('agents.listAgents')->with('agents', $agents)->with('agents', $agents);*/
+        //dd($request);
+        $agents = Agent::all()->where('ville_residence', '=', $request->ville)->where('poste_candidate', '=', $request->type_service_rechercher);
+        return view('agents.listAgents')->with('agents', $agents)->with('agents', $agents);
 
     }
 
