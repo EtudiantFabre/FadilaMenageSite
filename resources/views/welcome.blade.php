@@ -10,6 +10,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/css/carousel.css">
 
         <!-- Styles -->
         <style>
@@ -21,27 +22,70 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        <style>
+          .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+          }
+    
+          @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+            }
+          }
+    
+          .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+          }
+    
+          .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+          }
+    
+          .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+          }
+    
+          .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+          }
+    
+          .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+          }
+        </style>
+    
     </head>
-    <body class="antialiased">
+    <body class="antialiased ">
         <!--div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <?php 
+            /*
             use SimpleSoftwareIO\QrCode\Facades\QrCode;
                 $qrcode = QrCode::size(200)->generate("https://www.youtube.com/channel/UC9H0uvq-93Bbf1hJJ5mJa8A");
                 echo $qrcode;
+            */
             ?>
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+            
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
@@ -176,19 +220,62 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div-->
+        
+        <header>
+          <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src="/Original_on_Transparent.png" style="width: 200px; height: 50px;" alt="FADILA MÉNAGE"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarCollapse">
+                <!--ul class="navbar-nav me-auto mb-2 mb-md-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                  </li>
+                </ul-->
+                <!--form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form-->
+                @if (Route::has('login'))
+                  <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                      @auth
+                          <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                      @else
+                          <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
-        <section>
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                          @if (Route::has('register'))
+                              <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                          @endif
+                      @endauth
+                  </div>
+                @endif
               </div>
-              <div class="carousel-inner">
+            </div>
+          </nav>
+        </header>
+        
+        
+
+        <main>
+            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner" id="#">
                 <div class="carousel-item active">
-                  <img src="toutfadila2.jpg" class="d-block w-100 img-custom" alt="..." >
-                  <div class="carousel-caption d-none d-md-block text-start">
-                    <h5>Bienvenue sur notre site officiel Fadila Ménage</h5>
+                  <img src="/toutfadila2.jpg" class="d-block w-100 img-custom bd-placeholder-img" width="100%" height="100%" alt="..." aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%" fill="#777" >
+                  <div class="carousel-caption d-none d-md-block text-start container">
+                    <h1>Bienvenue sur notre site officiel Fadila Ménage</h1>
                     <p>Demander un devis en cliquant directement sur ce bouton</p>
                     <form action="{{route('clients.create')}}">
                        <button class="btn btn-primary">Demander un service</button>
@@ -196,9 +283,9 @@
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img src="fadila1.png" class="d-block w-100 img-custom" alt="...">
+                  <img src="/toutfadila6.jpeg" class="d-block w-100 img-custom bd-placeholder-img" width="100%" height="100%" alt="..." aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%" fill="#777">
                   <div class="carousel-caption d-none d-md-block">
-                    <h5>Bienvenue sur notre site officiel</h5>
+                    <h1>Bienvenue sur notre site officiel</h1>
                     <p>Accédez directement à notre Page facebook à partir d'ici.</p>
                     <form action="https://www.facebook.com/TOAFIS.IFN.SOK" target="_blank">
                       <button class="btn btn-primary">Facebook</button>
@@ -206,7 +293,7 @@
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img src="Original.png" class="d-block w-100 img-custom" alt="...">
+                  <img src="/toutfadila7.jpeg" class="d-block w-100 img-custom bd-placeholder-img" width="100%" height="100%" alt="..." aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%" fill="#777">
                   <div class="carousel-caption d-none d-md-block text-end">
                     <h5>Bienvenue sur notre site officiel</h5>
                     <p>Accédez directement à notre whatsapp à partir d'ici</p>
@@ -216,76 +303,134 @@
                   </div>
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-        </section>
-        <br>
 
-        <div class="text-center fs-1 fw-bolder text-warning">
-          <label for="text">
-            Histoire : <br>
-            Créée en 2017, FADILA MÉNAGE est spécialisée dans le placement du personnel de ménage, le nettoyage professionnel et la conception de panier-cadeau. Notre mission est d'apporter le bonheur et la joie dans vos ménages.
-          </label>
-        </div>
-        <br>
-        <section>
-          <div class="row row-cols-2 row-cols-md-2 g-4" style="margin-top: auto; margin-bottom: auto;">
-            <div class="card mb-3 bg-warning " style="max-width: 999px;">
-              <div class="row g-1">
-                <div class="col-md-4">
-                  <img src="logo.png" class="img-fluid rounded-start" alt="img">
+            
+
+
+            <!-- Marketing messaging and featurettes
+            ================================================== -->
+            <!-- Wrap the rest of the page in another container to center all the content. -->
+
+            
+              
+
+              <!-- START THE FEATURETTES -->
+
+            <div class="container marketing">
+              <div class="row featurette">
+                <div class="col-md-7">
+                  <h2 class="featurette-heading fw-normal lh-1">Première activité, Ça va vous époustoufler</h2>
+                  <p class="lead">Pour commencer, nous offrons une formation proffesionnel aux personnes désirant travailler à Fadila ménage et pourtant ne disposant d'aucune compétence.</p>
                 </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
+                <div class="col-md-5">
+                  <!--svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg-->
+                  <img src="/fadila2.png" alt="" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded" width="500" height="500" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
                 </div>
               </div>
-            </div>
 
-            <div class="card mb-3 bg-warning " style="max-width: 999px;">
-              <div class="row g-1">
-                <div class="col-md-4">
-                  <img src="logo.png" class="img-fluid rounded-start" alt="img">
+              <hr class="featurette-divider">
+
+              <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                  <h2 class="featurette-heading fw-normal lh-1">Oh yeah, c'est très bien.</h2>
+                  <p class="lead">Plus encore ? Nous vous permettons de gagner facilement et gratuitement du travail avec nôtre entreprise. Si vous aimeriez commencez, nous vous invitions à candidater sur ce site.</p>
                 </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
+                <div class="col-md-5 order-md-1">
+                  <!--svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg-->
+                  <img src="/toutfadila4.jpeg" alt="" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded" width="500" height="500" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                </div>
+              </div>
+
+              <hr class="featurette-divider">
+
+              <div class="row featurette">
+                <div class="col-md-7">
+                  <h2 class="featurette-heading fw-normal lh-1">Et enfin, celui-ci. <span class="text-muted">Échec et mat.</span></h2>
+                  <p class="lead">Enfin oui, ceci est encore une des activité possible sur ce site. Vous pouvez demander un service pour recevoir chez vous un agent de Fadila qui travaillera chez vous pour un contrat à durée déterminé ou indéterminé. </p>
+                </div>
+                <div class="col-md-5">
+                  <!--svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg-->
+                  <img src="/toutfadila5.jpeg" alt="" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded" width="500" height="500" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                </div>
+              </div>
+
+              <hr class="featurette-divider">
+
+              <!-- /END THE FEATURETTES -->
+
+            </div><!-- /.container -->
+
+            <div class="container my-5">
+              <div class="bg-light p-5 rounded">
+                <div class="col-sm-8 py-5 mx-auto">
+                  <h1 class="display-5 fw-normal">Pétite histoire </h1>
+                  <p class="fs-5">Créée en 2017, FADILA MÉNAGE est spécialisée dans le placement du personnel de ménage, le nettoyage professionnel et la conception de panier-cadeau.<a href="../examples/navbar-static/">top</a> and <a href="../examples/navbar-fixed/">fixed top</a> examples.</p>
+                  <p class="text-danger">Notre mission est d'apporter le bonheur et la joie dans vos ménages.</p>
+              </div>
+              </div>
+            </div>
+          <div class="container">
+            <hr class="featurette-divider">
+          </div>
+          
+          <div>
+            <h1 class="display-5 fw-normal">Localisation de l'entreprise</h1>
+          </div>
+          <div class="w-auto">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2448.080653868778!2d1.1833252916149195!3d6.196182999322801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xae79e4aa5b839cab!2zNsKwMTEnNDYuNiJOIDHCsDExJzAzLjkiRQ!5e1!3m2!1sfr!2stg!4v1662765306613!5m2!1sfr!2stg" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+        </main>
+        
+
+
+        <!--div class="row row-cols-2 row-cols-md-2 g-4" style="margin-top: auto; margin-bottom: auto;">
+          <div class="card mb-3 bg-warning " style="max-width: 999px;">
+            <div class="row g-1">
+              <div class="col-md-4">
+                <img src="logo.png" class="img-fluid rounded-start" alt="img">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+
+          <div class="card mb-3 bg-warning " style="max-width: 999px;">
+            <div class="row g-1">
+              <div class="col-md-4">
+                <img src="logo.png" class="img-fluid rounded-start" alt="img">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div-->
+
+        <footer class="container">
+          <p class="float-end"><a href="#">Retour au sommet</a></p>
+          <p>&copy; 2017–2022 Compagnie, Inc. &middot; <a href="#">Privé</a> &middot; <a href="#">Fadila ménage</a></p>
+        </footer>
 
     </body>
-
-    <footer>
-      <div class="bg-secondary bg-gradient position-relative bottom-0 start-50 translate-middle-x text-center">
-        <label for="coririth">
-          Copyright © 2022 Fadila Ménage   Tous droits réservés.
-        </label>
-      </div>
-    </footer>
 </html>
 
-<style>
-    .img-custom{
-      height: 500px !important;
-      object-fit: cover;
-    }
-
-    .
-  </style>
 @endsection

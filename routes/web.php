@@ -61,8 +61,9 @@ Route::get("message", "MessageController@formMessageGoogle");
 Route::post("message", "MessageController@sendMessageGoogle")->name('send.message.google');*/
 
 
-Route::get('message', [MessageController::class], 'formMessageGoogle');
-Route::post('message', [MessageController::class], 'sendMessageGoogle')->name('send.message.google');
+
+Route::get('message', [MessageController::class, 'formMessageGoogle']);
+Route::post('message', [MessageController::class, 'sendMessageGoogle'])->name('send.message.google');
 
 /*Route::get('/test', function () {
     $pdf = Pdf::loadView('test');
@@ -95,7 +96,7 @@ Route::resource('agents', AgentController::class);
 //  AgentPonctuel
 
 Route::resource('agentPonctuels', AgentPonctuelController::class);
-Route::post('liste-des-agents', [AgentController::class], 'listeAgents')->name('liste-agents');
+Route::post('/liste-des-agents', [AgentController::class], 'listeAgents')->name('liste-agents');
 /*
 Route::get('liste-agent-ponctuels', [AgentPonctuelController::class, 'index']);//->name('liste_agent_ponctuels');
 Route::post('enregistrement-agent-ponctuel', [AgentPonctuelController::class, 'store'], 'enregistrement_agent_ponctuel');
@@ -255,7 +256,7 @@ Route::get('{ponctuel}/mise-a-jour', [PonctuelController::class, 'edit'], 'mise_
 //  Prospection
 Route::resource('prospections', ProspectionController::class);
 
-Route::post('enregistrement-client-prospections', [ProspectionController::class, 'prosClient'])->name('prosClient');
+Route::post('/enregistrement-client-prospections', [ProspectionController::class, 'prosClient'])->name('prosClient');
 
 /*
 Route::get('liste-prospections', [ProspectionController::class, 'index'], 'liste_prospections');

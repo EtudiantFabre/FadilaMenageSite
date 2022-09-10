@@ -49,9 +49,9 @@ class ClientController extends Controller
             "frequence_souhaiter" => "required"
         ]);
 
-        $clients = Client::all()->where("nom", "=", $request->nom)->where("tel", "=", $request->tel)->where("ville", "=", $request->ville);
+        $clients = Client::all()->where("nom", "=", $request->nom)->where("tel", "=", $request->tel)->where("ville", "=", $request->ville);//->first();
         if (count($clients) !=0) {
-            
+            session()->flash("message", "Client déjà existant");
         } else {
             $client = Client::create($request->all());    
         }
@@ -63,7 +63,9 @@ class ClientController extends Controller
             return view("agents.listeAgents")->with('agents', $agents)->with('clients', $clients);
         } else {
             if (count($clients) == 0) {
-                return view("agents.listeAgents")->with('agents', $agents)->with('client', $client)->with('succes', "Aucun agent ne correspond à votre demande !!!");
+                return view("agents.listeAgents")->with('agents', $agents)->with('client', $client)->flash('message', "Aucun agent ne correspond à votre demande !!!");
+            } else {
+                return view("clients.create")->flash('message', "ATTENTION : un client existe déjà sous ce nom. Essayer avec un autre nom");
             }
         }
         

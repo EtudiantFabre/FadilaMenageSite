@@ -30,8 +30,7 @@ class MessageGoogle extends Mailable
      */
     public function build()
     {
-        return $this->from("fabricetoyi87@gmail.com")
-            ->subject("Message via le SMTP Google")
+        return $this->subject("TEST DE L'ENVOI DE MAIL")
             ->view('emails.message-google');
     }
 }

@@ -2,7 +2,7 @@
 @section("title", "Editer un client")
 @section("content")
 
-<div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
+<div class="container rounded-4 shadow-lg p-3 mb-5 bg-div" style="background: rgb(198, 228, 241)">
     
 
 
@@ -31,125 +31,125 @@
 		@csrf
 
 		<div class="form-group">
-			<label for="nom">Nom</label><br/>
+			<label for="nom">Nom</label><span class="text-danger required" aria-hidden="true">*</span><br/>
 
 			<input class="form-control" type="text" name="nom" value="{{ isset($client->nom) ? $client->nom : old('nom') }}"  id="nom" placeholder="Entrez votre nom" >
 
 			<!-- Le message d'erreur pour "nom" -->
 			@error("nom")
-			<div>{{ $message }}</div>
+			<div class="text-danger required">{{ $message }}</div>
 			@enderror
 		</div>
+		<br>
 
 		<div class="form-group">
-			<label for="tel" >Numéro de téléphone</label><br/>
+			<label for="tel" >Numéro de téléphone</label><span class="text-danger required" aria-hidden="true">*</span><br/>
 
 			<input class="form-control" type="text" name="tel" value="{{ isset($client->tel) ? $client->tel : old('tel') }}"  id="tel" placeholder="numéro téléphone" >
 
 			<!-- Le message d'erreur pour "tel" -->
 			@error("tel")
-			<div>{{ $message }}</div>
+			<div class="text-danger required">{{ $message }}</div>
 			@enderror
 		</div>
+		<br>
         <div class="form-group">
-			<label for="ville" >Ville</label><br/>
+			<label for="ville" >Ville</label><span class="text-danger required" aria-hidden="true">*</span><br/>
 
 			<input class="form-control" type="text" name="ville" value="{{ isset($client->ville) ? $client->ville : old('ville') }}"  id="ville" placeholder="Votre ville de résidence" >
 
 			<!-- Le message d'erreur pour "ville" -->
 			@error("ville")
-			<div>{{ $message }}</div>
+			<div class="text-danger required">{{ $message }}</div>
 			@enderror
 		</div>
+		<br>
         <div class="form-group">
-			<label for="quartier">Quartier</label><br/>
+			<label for="quartier">Quartier</label><span class="text-danger required" aria-hidden="true">*</span><br/>
 
 			<input class="form-control" type="text" name="quartier" value="{{ isset($client->quartier) ? $client->quartier : old('quartier') }}"  id="quartier" placeholder="Votre quartier" >
 
 			<!-- Le message d'erreur pour "quartier" -->
 			@error("quartier")
-			<div>{{ $message }}</div>
+			<div class="text-danger required">{{ $message }}</div>
 			@enderror
 		</div>
+		<br>
         <div class="form-group">
-			<label for="email">Adresse email</label><br/>
+			<label for="email">Adresse email</label><span class="text-danger required" aria-hidden="true">*</span><br/>
 
 			<input class="form-control" type="text" name="email" value="{{ isset($client->email) ? $client->email : old('email') }}"  id="email" placeholder="votre adresse email" >
 
 			<!-- Le message d'erreur pour "email" -->
 			@error("email")
-			<div>{{ $message }}</div>
+			<div class="text-danger required">{{ $message }}</div>
 			@enderror
 		</div>
+		<br>
         <div class="form-group">
-			<label for="type_service_rechercher" >Quel type de services rechercer vous ?</label><br/><span class="text-danger required" aria-hidden="true">*</span> :
-            @if (isset($candidat))
-            @if ($candidat->genre == "Nounou")
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type_service_rechercher" checked='checked' id="inlineRadio1" value="Nounou">
-                    <label class="form-check-label" for="inlineRadio1">Nounou</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Cusinier">
-                    <label class="form-check-label" for="inlineRadio2">Cuisinier</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Netoyage et entretient">
-                    <label class="form-check-label" for="inlineRadio2">Netoyage et entretient</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Aide-menagère">
-                    <label class="form-check-label" for="inlineRadio2">Cuisinier</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Chaffeure">
-                    <label class="form-check-label" for="inlineRadio2">Chaffeure</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Conception de pannier cadeau">
-                    <label class="form-check-label" for="inlineRadio2">Conception de pannier cadeau</label>
-                </div>
-            @endif
-        @else
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type_service_rechercher"  id="inlineRadio1" value="Nounou">
-            <label class="form-check-label" for="inlineRadio1">Nounou</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Cusinier">
-            <label class="form-check-label" for="inlineRadio2">Cuisinier</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Netoyage et entretient">
-            <label class="form-check-label" for="inlineRadio2">Netoyage et entretient</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Aide-menagère">
-            <label class="form-check-label" for="inlineRadio2">Cuisinier</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Chaffeure">
-            <label class="form-check-label" for="inlineRadio2">Chaffeure</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Conception de pannier cadeau">
-            <label class="form-check-label" for="inlineRadio2">Conception de pannier cadeau</label>
-        </div>
-        @endif
+			<label for="type_service_rechercher" >Quel type de services rechercer vous ?</label><span class="text-danger required" aria-hidden="true">*</span>
+            @if (isset($client))
+				@if ($client->type_service_rechercher == "Nounou")
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="type_service_rechercher" checked='checked' id="inlineRadio1" value="Nounou">
+						<label class="form-check-label" for="inlineRadio1">NOUNOU</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="CUISINIER">
+						<label class="form-check-label" for="inlineRadio2">CUISINIER</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="ENTRETIEN">
+						<label class="form-check-label" for="inlineRadio2">NETOYAGE ET ENTRETIEN</label>
+					</div>
+
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="CHAUFFEUR">
+						<label class="form-check-label" for="inlineRadio2">CHAUFFEUR</label>
+					</div>
+					<!--div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Conception de pannier cadeau">
+						<label class="form-check-label" for="inlineRadio2">Conception de pannier cadeau</label>
+					</div-->
+            	@endif
+			@else
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="type_service_rechercher"  id="inlineRadio1" value="Nounou">
+					<label class="form-check-label" for="inlineRadio1">NOUNOU</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="CUISINIER">
+					<label class="form-check-label" for="inlineRadio2">CUISINIER</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="ENTRETIEN">
+					<label class="form-check-label" for="inlineRadio2">NETOYAGE ET ENTRETIEN</label>
+				</div>
+
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="CHAUFFEUR">
+					<label class="form-check-label" for="inlineRadio2">CHAUFFEUR</label>
+				</div>
+			<!--div class="form-check form-check-inline">
+				<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="Conception de pannier cadeau">
+				<label class="form-check-label" for="inlineRadio2">Conception de pannier cadeau</label>
+			</div-->
+			@endif
 
 			<!-- Le message d'erreur pour "type_service_rechercher" -->
 			@error("type_service_rechercher")
-			<div>{{ $message }}</div>
+				<div class="text-danger required">{{ $message }}</div>
 			@enderror
 		</div>
+		<br>
         <div class="form-group">
-			<label for="frequence_souhaiter" >Frequence souhaité</label><br/>
+			<label for="frequence_souhaiter" >Frequence souhaité</label><span class="text-danger required" aria-hidden="true">*</span><br/>
 
 			<input class="form-control" type="number" name="frequence_souhaiter" value="{{ isset($client->frequence_souhaiter) ? $client->frequence_souhaiter : old('frequence_souhaiter') }}"  id="frequence_souhaiter" placeholder="Fréquence souhaité" >
 
 			<!-- Le message d'erreur pour "frequence_souhaiter" -->
 			@error("frequence_souhaiter")
-			<div>{{ $message }}</div>
+				<div class="text-danger required">{{ $message }}</div>
 			@enderror
 		</div>
 		<br>

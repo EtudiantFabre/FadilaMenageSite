@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('taille_famille')->nullable();
             $table->string('info_complementaire')->nullable();
             $table->integer('budget');
-            $table->string('actions_menees');
+            $table->string('actions_menees')->nullable();
             $table->string('aboutissement')->nullable();
             $table->integer('id_agent');
             $table->integer('id_client');
