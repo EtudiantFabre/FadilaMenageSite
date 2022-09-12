@@ -102,7 +102,7 @@
                             @enderror
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="remember">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             <label class="form-check-label" for="remember">{{ __('Se souvenir de moi') }}</label>
                         </div>
                         <div class="text-center">
@@ -126,8 +126,8 @@
               <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('/toutfadila6.jpeg');
           background-size: cover;">
                 <span class="mask bg-gradient-primary opacity-6"></span>
-                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new currency"</h4>
-                <p class="text-white position-relative">The more effortless the writing looks, the more effort the writer actually put into the process.</p>
+                <h4 class="mt-5 text-white font-weight-bolder position-relative">"L'attention est la nouvelle devise"</h4>
+                <p class="text-white position-relative">Qui aime bien châtie bien.</p>
               </div>
             </div>
           </div>

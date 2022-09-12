@@ -7,6 +7,9 @@ use Illuminate\Database\Seeder;
 use App\Models\Personnel;
 use App\Models\Candidat;
 use App\Models\Agent;
+use App\Models\Client;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -118,7 +121,7 @@ class UserSeeder extends Seeder
             'savoir_faire' => 'COUTURE',
             'disponible_a_loger' => 'OUI',
             'nature_contrat' => 'CDD',
-            'oraire_travail_passe' => '14H',
+            'horaire_travail_passe' => '14H',
             'date_retenu' => '10/11/2022',
             'status' => 'ACTIF',
             'telephone' => '70254578'
@@ -150,10 +153,29 @@ class UserSeeder extends Seeder
             'savoir_faire' => 'COUTURE',
             'disponible_a_loger' => 'OUI',
             'nature_contrat' => 'CDD',
-            'oraire_travail_passe' => '17H',
+            'horaire_travail_passe' => '17H',
             'date_retenu' => '10/11/2022',
             'status' => 'ACTIF',
             'telephone' => '91584697'
         ]);
+
+        
+        Client::create([
+            'nom' => 'Fare',
+            'tel' => 'Kpante',
+            'ville' => 'Sokodé',
+            'quartier' => 'Bamabodolo',
+            'email' => 'fare@gmail.com',
+            'type_service_rechercher' => 'nounou',
+            'frequence_souhaiter' => '5'
+        ]);
+
+        User::create([
+            'name' => 'Loukman',
+            'email' => 'dg@fadilamenage.com',
+            'password' => Hash::make('12345678'),
+            'type' => 'ADMIN',
+        ]);
+
     }
 }

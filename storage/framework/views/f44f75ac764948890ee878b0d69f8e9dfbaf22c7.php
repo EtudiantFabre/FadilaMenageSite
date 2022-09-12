@@ -19,6 +19,14 @@
     <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="col/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="col/css/style.css">
+
     
 
     <!-- CSRF Token -->

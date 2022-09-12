@@ -58,15 +58,16 @@ class ClientController extends Controller
         
         
         //  Affichage de tout les agents (CD 1)
-        $agents = Agent::all()->where('poste_candidate', '=', $request->type_service_rechercher);
+        $agents = Agent::all()->where('poste_candidate', '=', strtoupper($request->type_service_rechercher));
         if ((count($agents) !=0) && (count($clients) !=0)) {
+            //session()->flash("message", "Client déjà existant");
             return view("agents.listeAgents")->with('agents', $agents)->with('clients', $clients);
         } else {
             if (count($clients) == 0) {
-                return view("agents.listeAgents")->with('agents', $agents)->with('client', $client)->flash('message', "Aucun agent ne correspond à votre demande !!!");
-            } else {
-                return view("clients.create")->flash('message', "ATTENTION : un client existe déjà sous ce nom. Essayer avec un autre nom");
+                return view("agents.listeAgents")->with('agents', $agents)->with('client', $client);//->flash('message', "Aucun agent ne correspond à votre demande !!!");
             }
+            //  On ramène le client à la vue de création de client
+            return view("clients.create");//->flash('message', "ATTENTION : un client existe déjà sous ce nom. Essayer avec un autre nom");
         }
         
 

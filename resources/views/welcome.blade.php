@@ -285,17 +285,17 @@
                 <div class="carousel-item">
                   <img src="/toutfadila6.jpeg" class="d-block w-100 img-custom bd-placeholder-img" width="100%" height="100%" alt="..." aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%" fill="#777">
                   <div class="carousel-caption d-none d-md-block">
-                    <h1>Bienvenue sur notre site officiel</h1>
-                    <p>Accédez directement à notre Page facebook à partir d'ici.</p>
-                    <form action="https://www.facebook.com/TOAFIS.IFN.SOK" target="_blank">
-                      <button class="btn btn-primary">Facebook</button>
+                    <h1 class="bg-green">Vous pouvez visiter nôtre page linkedin en cliquant sur cet bouton</h1>
+                    <p>Accédez directement à notre Page linkedin à partir d'ici.</p>
+                    <form action="https://tg.linkedin.com/company/fadila-menage" target="_blank">
+                      <button class="btn btn-primary">Linkedin</button>
                     </form>
                   </div>
                 </div>
                 <div class="carousel-item">
                   <img src="/toutfadila7.jpeg" class="d-block w-100 img-custom bd-placeholder-img" width="100%" height="100%" alt="..." aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%" fill="#777">
                   <div class="carousel-caption d-none d-md-block text-end">
-                    <h5>Bienvenue sur notre site officiel</h5>
+                    <h1>Bienvenue sur notre site officiel</h1>
                     <p>Accédez directement à notre whatsapp à partir d'ici</p>
                     <form action="https://chat.whatsapp.com/HYxRZx6Z4h62TgGdwHShJc" target="_blank">
                       <button class="btn btn-primary">Whatsapp</button>

@@ -42,7 +42,7 @@ return new class extends Migration
             $table->string('nature_contrat');
             $table->string('horaire_travail_passe');
             $table->string('date_retenu');
-            $table->string('status')->default('Disponible');
+            $table->string('status')->default('DISPONIBLE');
             $table->string('telephone');
             $table->timestamps();
             $table->softDeletes();

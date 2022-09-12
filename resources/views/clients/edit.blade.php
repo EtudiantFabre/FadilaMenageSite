@@ -89,9 +89,9 @@
         <div class="form-group">
 			<label for="type_service_rechercher" >Quel type de services rechercer vous ?</label><span class="text-danger required" aria-hidden="true">*</span>
             @if (isset($client))
-				@if ($client->type_service_rechercher == "Nounou")
+				@if ($client->type_service_rechercher == "NOUNOU")
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type_service_rechercher" checked='checked' id="inlineRadio1" value="Nounou">
+						<input class="form-check-input" type="radio" name="type_service_rechercher" checked='checked' id="inlineRadio1" value="NOUNOU">
 						<label class="form-check-label" for="inlineRadio1">NOUNOU</label>
 					</div>
 					<div class="form-check form-check-inline">
@@ -114,7 +114,7 @@
             	@endif
 			@else
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="type_service_rechercher"  id="inlineRadio1" value="Nounou">
+					<input class="form-check-input" type="radio" name="type_service_rechercher"  id="inlineRadio1" value="NOUNOU">
 					<label class="form-check-label" for="inlineRadio1">NOUNOU</label>
 				</div>
 				<div class="form-check form-check-inline">
