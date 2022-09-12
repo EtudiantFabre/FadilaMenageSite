@@ -16,7 +16,7 @@
             <thead class="table-dark">
                 <tr>
                     <th>Raison social</th>
-                    <th>Date</th>
+                    <th>Date de prospection</th>
                     <th>Canal</th>
                     <th>Compétence recherché</th>
                     <th>Type de maison</th>
@@ -37,7 +37,7 @@
                     {{$prospection->raison_social}}
                 </td>
                 <td>
-                    {{$prospection->date}}
+                    {{$prospection->date_prospection}}
                 </td>
                 <td>
                     {{$prospection->canal}}

@@ -11,7 +11,7 @@ class EvaluationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -22,7 +22,7 @@ class EvaluationController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -34,7 +34,7 @@ class EvaluationController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -61,7 +61,7 @@ class EvaluationController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Evaluation  $evaluation
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(Evaluation $evaluation)
     {
@@ -72,7 +72,7 @@ class EvaluationController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Evaluation  $evaluation
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(Evaluation $evaluation)
     {
@@ -85,7 +85,7 @@ class EvaluationController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Evaluation  $evaluation
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, Evaluation $evaluation)
     {
@@ -114,7 +114,7 @@ class EvaluationController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Evaluation  $evaluation
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(Evaluation $evaluation)
     {

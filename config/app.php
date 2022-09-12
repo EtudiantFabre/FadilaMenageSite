@@ -199,6 +199,7 @@ return [
 
         /*
 
+
         */
 
 
@@ -225,10 +226,11 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        "PDF" => Barryvdh\DomPDF\Facade::class
         //'Flashy' => MercurySeries\Flashy\Flashy::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
         // Façade DomPDF
-    "PDF" => Barryvdh\DomPDF\Facade::class,
+    
     ])->toArray(),
 
 

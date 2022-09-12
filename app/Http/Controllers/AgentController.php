@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 
 
 class AgentController extends Controller
@@ -12,7 +13,7 @@ class AgentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -25,13 +26,12 @@ class AgentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
 
-        //return view('agents.edit');
-
+        return view('agents.create');
 
     }
 
@@ -39,17 +39,17 @@ class AgentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
 
         $request->validate([
 
-            //'nom' => 'required',
-            //'prenom' => 'required',
-            //'date_offre' => 'required',
-            //'domaine'    => 'required'
+            'nom' => 'required',
+            'prenom' => 'required',
+            'date_offre' => 'required',
+            'domaine'    => 'required'
         ]);
 
 
@@ -78,7 +78,8 @@ class AgentController extends Controller
         $agents->rue = $request->rue;
         $agents->telephone = $request->telephone;
         $agents->save();
-        return redirect()->route('agents.store');
+        //return redirect()->route('agents.store');
+
 
 
         return redirect()->route('agents.index');
@@ -89,10 +90,11 @@ class AgentController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Agent  $agent
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(Agent $agent)
     {
+
 
         return view('agents.show', compact("agent"));
 
@@ -102,12 +104,15 @@ class AgentController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Agent  $agent
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(Agent $agent)
     {
 
-        return view("agents.edit", compact("agent"));
+        if (View::exists('agents.edit')){
+            return view('agents.edit', compact('agent'));
+        }
+
 
     }
 
@@ -116,10 +121,13 @@ class AgentController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Agent  $agent
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, Agent $agent)
     {
+
+         // 1. La validation
+
 
         $rules = [
             'nom' => 'bail|required|string|max:255',
@@ -175,11 +183,20 @@ class AgentController extends Controller
         }
 
 
-    // 3. On met à jour les informations de l'agent
-    $input = $request->all();
-    $candidat->update($input);
-    return redirect('agents')->with('flash_message', 'Vos modifications sont enregistré!');
+        // 3. On met à jour les informations de l'agent
+        $input = $request->all();
+        $candidat->update($input);
+        return redirect('agents')->with('flash_message', 'Vos modifications sont enregistré!');
 
+
+
+    }
+
+    public function listAgents(Request $request)
+    {
+        //dd($request);
+        $agents = Agent::all()->where('ville_residence', '=', $request->ville)->where('poste_candidate', '=', $request->type_service_rechercher);
+        return view('agents.listAgents')->with('agents', $agents)->with('agents', $agents);
 
     }
 
@@ -187,7 +204,7 @@ class AgentController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Agent  $agent
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(Agent $agent)
     {
@@ -198,5 +215,4 @@ class AgentController extends Controller
     return redirect(route('agents.index'));
 
     }
-
 }

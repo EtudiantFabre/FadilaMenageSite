@@ -16,7 +16,7 @@
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Date</th>
+                    <th>Date de prospection</th>
                     <!--th>Canal</th>
                     <th>Compétence recherché</th>
                     <th>Type de maison</th>
@@ -28,7 +28,6 @@
                     <th>Conclusion</th-->
                     <th>Agent sélectionné</th>
                     <th>Client sélectionné</th>
-                    <th>Facture sélectionné</th>
                     <th class="bg-danger">Actions</th>
                 </tr>
             </thead>
@@ -39,7 +38,7 @@
                         {{$prospection->id_prospection}}
                     </td>
                     <td>
-                        {{$prospection->date}}
+                        {{$prospection->date_prospection}}
                     </td>
                     <!--td>
                         {{$prospection->canal}}
@@ -74,9 +73,7 @@
                     <td>
                         {{$prospection->id_client}}
                     </td>
-                    <td>
-                        {{$prospection->id_facture}}
-                    </td>
+                    
                     <td>
                         <div class="d-flex dropdown mr-1">
                             <form action="{{route('prospections.show', $prospection->id_prospection)}}" method="GET">

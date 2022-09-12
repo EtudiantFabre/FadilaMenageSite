@@ -6,7 +6,7 @@
  <div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <!-- Lien pour créer un nouvel personnel : "personnel.create" -->
-        <a class="btn btn-success btn-block" href="{{ route('candidats.create') }}" title="Créer un agent" >Recurter un nouveau agents</a>
+        <a class="btn btn-success btn-block" href="{{ route('agents.create') }}" title="Créer un agent" >Recurter un nouveau agents</a>
     </div><br>
 
 <!-- Le tableau pour lister les agents -->

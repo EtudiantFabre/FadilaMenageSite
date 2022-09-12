@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\CandidatController;
@@ -22,6 +23,10 @@ use App\Http\Controllers\AppelOffreController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\PersonneAprevenirController;
+use App\Http\Controllers\MessageController;
+
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Prospection;
 
 
 /*
@@ -43,6 +48,30 @@ Route::get('/', function () {
 });
 
 
+Route::get('/test-contact', function () {
+    return new App\Mail\Contact([
+        'nom' => 'Durand',
+        'email' => 'fabricetoyi87@gmail.com',
+        'message' => 'Je voulais te dire que tout viens de commencer !!'
+    ]);
+});
+
+/*
+Route::get("message", "MessageController@formMessageGoogle");
+Route::post("message", "MessageController@sendMessageGoogle")->name('send.message.google');*/
+
+
+
+Route::get('message', [MessageController::class, 'formMessageGoogle']);
+Route::post('message', [MessageController::class, 'sendMessageGoogle'])->name('send.message.google');
+
+/*Route::get('/test', function () {
+    $pdf = Pdf::loadView('test');
+    return view('test')->with('pdf', $pdf->stream('test.pdf'));//
+});*/
+
+//Route::get('imprimer', 'FactureController@imprimer')->name('imprimer');
+
 //  Route ajouter par moi :
 
 //  Agents
@@ -61,11 +90,13 @@ Route::resource('experienceDuCandidats',ExperienceDuCandidatController::class);
 
 
 
+
 Route::resource('agents', AgentController::class);
 
 //  AgentPonctuel
 
 Route::resource('agentPonctuels', AgentPonctuelController::class);
+Route::post('/liste-des-agents', [AgentController::class], 'listeAgents')->name('liste-agents');
 /*
 Route::get('liste-agent-ponctuels', [AgentPonctuelController::class, 'index']);//->name('liste_agent_ponctuels');
 Route::post('enregistrement-agent-ponctuel', [AgentPonctuelController::class, 'store'], 'enregistrement_agent_ponctuel');
@@ -164,10 +195,10 @@ Route::get('{experience_candidat}/mise-a-jour', [ExperienceDuCandidatController:
 
 //  Facture
 Route::resource('factures', FactureController::class);
-/*
 
-Route::get('liste-factures', [FactureController::class, 'index'], 'liste_factures');
-Route::post('sauvegarde-facture', [FactureController::class, 'store'], 'sauvegarde_facture');
+
+//Route::get('liste-factures', 'FactureController@index')->name('liste_factures');
+/*Route::post('sauvegarde-facture', [FactureController::class, 'store'], 'sauvegarde_facture');
 Route::get('creation-facture', [FactureController::class, 'create'], 'creation_facture');
 Route::get('afficher-facture/{facture}', [FactureController::class, 'show'], 'afficher_facture');
 Route::post('mettre-a-jour-facture/{facture}', [FactureController::class, 'update'], 'mettre_a_jour_facture');
@@ -175,6 +206,7 @@ Route::post('suppression-facture/{facture}', [FactureController::class, 'destroy
 Route::get('{facture}/mise-a-jour', [FactureController::class, 'edit'], 'mise_a_jour');
 */
 //                              //
+
 
 
 //  Personne
@@ -189,6 +221,9 @@ Route::post('suppression-personne/{personne}', [PersonneController::class, 'dest
 Route::get('{personne}/mise-a-jour', [PersonneController::class, 'edit'], 'mise_a_jour');
 */
 //                              //
+
+                            //
+
 
 
 //  PersonneAprevenir
@@ -235,6 +270,9 @@ Route::get('{ponctuel}/mise-a-jour', [PonctuelController::class, 'edit'], 'mise_
 
 //  Prospection
 Route::resource('prospections', ProspectionController::class);
+
+Route::post('/enregistrement-client-prospections', [ProspectionController::class, 'prosClient'])->name('prosClient');
+
 /*
 Route::get('liste-prospections', [ProspectionController::class, 'index'], 'liste_prospections');
 Route::post('sauvegarde-prospection', [ProspectionController::class, 'store'], 'sauvegarde_prospection');
@@ -308,6 +346,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('/candidature', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function(){
+/*Route::get('/', function(){
     return view('candidature');
-});
+});*/

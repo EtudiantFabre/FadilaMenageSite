@@ -9,6 +9,8 @@ class Societe extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['sigle', 'description', 'date_offre', 'domaine'];
+    protected $fillable = ['sigle', 'description', 'date_offre',
+        'domaine'
+    ];
     protected $primaryKey = 'id_societe';
 }

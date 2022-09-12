@@ -302,13 +302,22 @@
                 <div class="form-floating" >
                     Autres traveaux (ceci est optionnel):
                     <textarea class="form-control" placeholder="Pricisez si vous avez" id="floatingTextarea2" style="height: 100px" name="autres_traveaux"></textarea>
+                </div>
+                <br>
+                <div class="form-floating" >
+                    Problème (ceci est optionnel):
+                    <textarea class="form-control" placeholder="Pricisez si vous avez" id="floatingTextarea2" style="height: 100px" name="probleme"></textarea>
+                </div> 
+                <br>
+                <div class="form-floating" >
+                    Commentaire (ceci est optionnel):
+                    <textarea class="form-control" placeholder="Pricisez si vous avez" id="floatingTextarea2" style="height: 100px" name="commentaire"></textarea>
                 </div>            
             </div>
             <br>
             <div class="d-grid gap-2 col-6 mx-auto">
                 <input type="submit" class="btn btn-primary" value="ENREGISTRER LE SUIVI"/>
             </div>
-            
         </form>
     </div>
 </body>

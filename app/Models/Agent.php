@@ -29,6 +29,7 @@ return $this->hasMany(Contrat::class,'id_contrat' );
     public function evaluation()
     {
     return $this->hasMany(Evaluation::class,'id_evaluation');
+    
     }
 
     public function personne()

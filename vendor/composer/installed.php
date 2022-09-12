@@ -3,7 +3,15 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
+<<<<<<< HEAD
         'reference' => 'b3083df3524868b6242d54d1666630fa4627d22a',
+=======
+<<<<<<< HEAD
+        'reference' => 'f55f912cebf6820013ed626c6dba2631fbb45079',
+=======
+        'reference' => '15282c3183308152844db622f229c0f408ad45c8',
+>>>>>>> b3083df3524868b6242d54d1666630fa4627d22a
+>>>>>>> baf4f171c06f3b4397cb8a48370368b646aec0c9
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -412,7 +420,15 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+<<<<<<< HEAD
             'reference' => 'b3083df3524868b6242d54d1666630fa4627d22a',
+=======
+<<<<<<< HEAD
+            'reference' => 'f55f912cebf6820013ed626c6dba2631fbb45079',
+=======
+            'reference' => '15282c3183308152844db622f229c0f408ad45c8',
+>>>>>>> b3083df3524868b6242d54d1666630fa4627d22a
+>>>>>>> baf4f171c06f3b4397cb8a48370368b646aec0c9
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -635,6 +651,27 @@
             'pretty_version' => '0.5.4',
             'version' => '0.5.4.0',
             'reference' => 'dd448ad1ce34c63d09baccd05415e361300c35b4',
+<<<<<<< HEAD
+=======
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phenx/php-font-lib',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'phenx/php-svg-lib' => array(
+            'pretty_version' => '0.4.1',
+            'version' => '0.4.1.0',
+            'reference' => '4498b5df7b08e8469f0f8279651ea5de9626ed02',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phenx/php-svg-lib',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'phpdocumentor/reflection-common' => array(
+            'pretty_version' => '2.2.0',
+            'version' => '2.2.0.0',
+            'reference' => '1d01c49d4ed62f25aa84a747ad35d5a16924662b',
+>>>>>>> baf4f171c06f3b4397cb8a48370368b646aec0c9
             'type' => 'library',
             'install_path' => __DIR__ . '/../phenx/php-font-lib',
             'aliases' => array(),

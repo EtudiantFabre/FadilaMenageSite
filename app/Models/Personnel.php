@@ -9,7 +9,6 @@ class Personnel extends Model
 {
     use HasFactory;
     protected $fillable = ['nom','prenom','date_naissance','lieu_naissance','genre','nationalite','piece_identite','numero_de_piece', 'date_delivrer',
-
     'date_expiration','ville_residence','quartier','rue','email','situation_familiale','enfants_en_charge',
     'profession','avatar','salaire','post_ocuper','nature_contrat','telephone'];
 

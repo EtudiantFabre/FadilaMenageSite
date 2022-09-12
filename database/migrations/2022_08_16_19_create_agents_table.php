@@ -40,9 +40,9 @@ return new class extends Migration
             $table->string('savoir_faire')->nullable();
             $table->string('disponible_a_loger');
             $table->string('nature_contrat');
-            $table->string('oraire_travail_passe');
+            $table->string('horaire_travail_passe');
             $table->string('date_retenu');
-            $table->string('status')->default('Disponible');
+            $table->string('status')->default('DISPONIBLE');
             $table->string('telephone');
             $table->integer('pretention_salarial');
             $table->string('niveau_etude')->nullable();

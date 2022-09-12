@@ -24,8 +24,10 @@ return new class extends Migration
             $table->integer('frais');
             $table->integer('tva');
             $table->integer('total_ttc');
+            $table->integer('id_prospection');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('id_prospection')->references('id_prospection')->on('prospections');
         });
     }
 

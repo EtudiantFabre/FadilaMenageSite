@@ -17,7 +17,7 @@ class CandidatController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -27,7 +27,7 @@ class CandidatController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -39,7 +39,7 @@ class CandidatController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -97,7 +97,7 @@ class CandidatController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Candidat  $candidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(Candidat $candidat)
     {
@@ -115,7 +115,7 @@ class CandidatController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Candidat  $candidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(Candidat $candidat)
     {
@@ -128,7 +128,7 @@ class CandidatController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Candidat  $candidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, Candidat $candidat)
     {
@@ -194,7 +194,7 @@ class CandidatController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Candidat  $candidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(Candidat $candidat)
     {
