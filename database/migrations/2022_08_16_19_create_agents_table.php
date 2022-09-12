@@ -27,12 +27,11 @@ return new class extends Migration
             $table->date('date_expiration');
             $table->string('ville_residence');
             $table->string('quartier');
-            $table->string('rue');
-            $table->string('email');
+            $table->string('rue')->nullable();
+            $table->string('email')->nullable();
             $table->string('situation_familiale');
-            $table->string('enfants_encharge');
-            $table->string('profession');
-            $table->string('photo_id');
+            $table->string('enfants_encharge')->nullable();
+            $table->string('profession')->nullable();
             $table->string('avatar');
             $table->string('poste_candidate');
             $table->string('horaire_travail_souhaite');
@@ -41,9 +40,9 @@ return new class extends Migration
             $table->string('savoir_faire');
             $table->string('disponible_a_loger');
             $table->string('nature_contrat');
-            $table->string('oraire_travail_passe');
+            $table->string('horaire_travail_passe');
             $table->string('date_retenu');
-            $table->string('status');
+            $table->string('status')->default('DISPONIBLE');
             $table->string('telephone');
             $table->timestamps();
             $table->softDeletes();

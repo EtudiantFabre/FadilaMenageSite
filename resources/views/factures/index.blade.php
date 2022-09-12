@@ -9,7 +9,16 @@
         <title>Listes des factures</title>
     </head>
     <body>
-        <div class="container">
+        <div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
+            <h1>Listes des factures</h1>
+            <section>
+                <form action="{{route('factures.create')}}">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-primary">CRÉER UNE FACTURE</button>
+                    </div>
+                </form>
+            </section>
+            <br>
             <table class="table table-primary table-hover table-striped table-bordered border-primary text-center justify-content-center">
                 <thead class="table-dark">
                     <tr>
@@ -83,13 +92,6 @@
                 @endforeach
             </table>
         </div>
-        <section>
-            <form action="{{route('factures.create')}}">
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="submit" class="btn btn-primary">CRÉER UNE FACTURE</button>
-                </div>
-            </form>
-        </section>
     </body>
     </html>
 

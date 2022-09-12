@@ -9,7 +9,8 @@ class Ponctuel extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date', 'nom', 'prenom', 'adresse', 'forfait', 'montant_ttc'];
+    protected $fillable = ['date', 'nom', 'prenom', 'adresse',
+        'forfait', 'montant_ttc'];
     protected $primaryKey = 'id_ponctuel';
 
     protected $casts = ['adresse' => 'array'];

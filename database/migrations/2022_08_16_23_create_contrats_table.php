@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('echeance_contrat');
             $table->string('service');
             $table->string('local');
-            $table->string('adresse');
             $table->string('temps');
             $table->string('frequence');
             $table->string('facturation');

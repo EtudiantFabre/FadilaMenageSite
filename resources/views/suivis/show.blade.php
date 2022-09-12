@@ -34,6 +34,8 @@
                             <th>Repassage</th>
                             <th>Personnel</th>
                             <th>Agent</th>
+                            <th>Problème</th>
+                            <th>Commentaire</th>
                         </tr>
                     </thead>
                     <tr>
@@ -87,6 +89,12 @@
                         </td>
                         <td>
                             {{$suivi->agent->nom}} {{$suivi->agent->prenom}}
+                        </td>
+                        <td>
+                            {{$suivi->probleme}}
+                        </td>
+                        <td>
+                            {{$suivi->commentaire}}
                         </td>
                     </tr>
                 </table>
