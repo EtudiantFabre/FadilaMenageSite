@@ -31,7 +31,7 @@ class ExperienceDuCandidatController extends Controller
     public function create()
     {
         $last_row = DB::table('candidats')->latest()->get();
-        Log::debug($last_row);
+        //Log::debug($last_row);
 
         return view("experienceDuCandidats.edit",compact('last_row'));
 
@@ -52,13 +52,12 @@ class ExperienceDuCandidatController extends Controller
 
 
          // 2. On enregistre les informations de lexperience du candidat
-         $last_row = DB::table('candidats')->latest('id_candidat')->first();
+         $last_row = DB::table('candidats')->latest('id_candidat')->get();
 
+        foreach ($last_row as $last) {
+            $idCandidat = $last->id_candidat;
 
-            $idCandidat = ($last_row['id_candidat']);
-
-            //Log::debug( $idCandidat);
-
+            
          ExperienceDuCandidat::create([
             "nbr_annee_experience" => $request->nbr_annee_experience,
             "nbr_voiture_conduit" => $request->nbr_voiture_conduit,
@@ -73,7 +72,7 @@ class ExperienceDuCandidatController extends Controller
 
         ]);
 
-
+    }
 
 
         // 3. On retourne vers tous les experiences :

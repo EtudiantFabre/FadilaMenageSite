@@ -43,36 +43,8 @@ class CandidatController extends Controller
      */
     public function store(Request $request)
     {
-        /*$this->validate($request, [
-            'nom' => 'bail|required|string|max:255',
-            "prenom" => 'bail|required|string|max:255',
-            "date_naissance" => 'bail|required',
-            "lieu_naissance" => 'bail|required|string',
-            "genre" => 'bail|required|string',
-            "nationalite" => 'bail|required|string',
-            "piece_identite" => 'bail|required',
-            "numero_de_piece" => 'bail|required',
-            "date_delivrer" => 'bail|required',
-            "date_expiration" => 'bail|required',
-            "ville_residence" => 'bail|required',
-            "quartier" => 'bail|required',
-            "rue" => 'bail|required|string',
-            "email" => 'bail|required|email',
-            "situation_familiale" => 'bail|required',
-            "enfants_encharge" => 'bail|required',
-            "profession" => 'bail|required',
-            "avatar" => 'required|image|mimes:png,jpg,jpeg|max:2048',
-            "telephone" => 'bail|required',
-            "poste_candidate" => 'bail|required',
-            "horaire_travail_souhaite" => 'bail|required',
-            "objectif" => 'bail|required|string|max:255',
-            "qualite_personnelles" => 'bail|required|string|max:255',
-            "savoir_faire" => 'bail|required|string|max:255',
-            "disponible_a_loger" => 'bail|required',
-            "nature_contrat" => 'bail|required',
-            "oraire_travail_passe" => 'bail|required'
 
-        ]);*/
+        
         // 2. On upload l'image dans "/storage/app/public/candidat"
          $request->hasFile('avatar');
             $newFile = $request->avatar;

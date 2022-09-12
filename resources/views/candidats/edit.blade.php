@@ -292,10 +292,10 @@
                     <h3>Avez vous déjà d'expériences ?</h3>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-right">
+
                         <!-- Lien pour ajouter les expériences : "experienceDuCandidats.create" -->
-                        <!--a type="submit" href="" title="expérences" class="btn btn-success btn-block">Oui</a-->
-                        
-                        <a name="valider" type="submit" href="{{ route('experienceDuCandidats.create') }}" title="expérences" class="btn btn-success btn-block">Oui</a>
+
+                        <a name="valider" type="submit" href="{{ route('experienceDuCandidats.create') }}" id="candidat" class="btn btn-success btn-block">Oui</a>
 
                         <button type="submit" name="valider"  class="btn btn-info btn-block ">Non</button>
 
