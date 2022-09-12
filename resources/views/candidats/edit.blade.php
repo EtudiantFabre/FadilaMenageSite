@@ -1,476 +1,309 @@
-@extends("layout")
-@section("title", "Editer un candidat")
+@extends("layouts.app")
 @section("content")
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>FormWizard_v10</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="colorlib.com">
 
-<div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="{{ asset('fonts/material-design-iconic-font/css/material-design-iconic-font.css') }}">
 
-            <div class="container " style="text-color: white" id="title">
-                <h1 class="text-center">Déposez votre candidature</h1>
-            </div>
+		<!-- DATE-PICKER -->
+		<link rel="stylesheet" href="{{ asset('vendor/date-picker/css/datepicker.min.css') }}">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <script>
+            $(document).ready(function(){
+              $("form").submit(function(){
+                alert("Submitted");
+              });
+            });
+            </script>
+	</head>
+	<body>
+
+        <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+
+		<!-- JQUERY STEP -->
+		<script src="{{ asset('js/jquery.steps.js') }}"></script>
+
+		<!-- DATE-PICKER -->
+		<script src="{{ asset('vendor/date-picker/js/datepicker.js') }}"></script>
+		<script src="{{ asset('vendor/date-picker/js/datepicker.en.js') }}"></script>
 
 
-	<!-- Si nous avons un candidat $candidat -->
-	@if (isset($candidat))
+		<script src="{{ asset('js/main.js') }}"></script>
 
-	    <!-- Le formulaire est géré par la route "contats.update" -->
-	    <form method="POST" action="{{ route('candidats.update', $candidat) }}" enctype="multipart/form-data" class="mb-10px" >
+		<div class="wrapper">
+            <!-- Si nous avons un candidat $candidat -->
+	        @if (isset($candidat))
 
-		<!-- <input type="hidden" name="_method" value="PUT"> -->
-		@method('PUT')
+            <form method="POST" action="{{ route('candidats.update', $candidat) }}" enctype="multipart/form-data" class="mb-10px" id="wizard">
+                <!-- <input type="hidden" name="_method" value="PUT"> -->
+		        @method('PUT')
 
-	@else
-
-	    <!-- Le formulaire est géré par la route "candidats.store" -->
-	    <form class="mb-10px"  enctype="multipart/form-data" method="POST" action="{{ route('candidats.store') }}" >
-
-	@endif
-
-		<!-- Le token CSRF -->
-		@csrf
-
-		<div class="form-group">
-			<label for="nom" >Nom</label>
-
-			<input type="text" name="nom" value="{{ isset($candidat->nom) ? $candidat->nom : old('nom') }}"  id="nom" placeholder="Votre nom" class="form-control" >
-
-			<!-- Le message d'erreur pour "title" -->
-			@error("nom")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-
-		<div class="form-group">
-			<label for="prenom" >Prenom</label>
-
-			<input type="text" name="prenom" value="{{ isset($candidat->prenom) ? $candidat->prenom : old('prenom') }}"  id="prenom" placeholder="Votre prenom" class="form-control" >
-
-			<!-- Le message d'erreur pour "prenom" -->
-			@error("prenom")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="date_naissance" >Date de naissance</label>
-
-			<input type="date" name="date_naissance" value="{{ isset($candidat->date_naissance) ? $candidat->date_naissance : old('date_naissance') }}"  id="date_naissance" placeholder="Votre date de naissance" class="form-control" class="form-control" >
-
-			<!-- Le message d'erreur pour "date_naissance" -->
-			@error("date_naissance")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="lieu_naissance" >Lieux de naissance</label>
-
-			<input type="text" name="lieu_naissance" value="{{ isset($candidat->lieu_naissance) ? $candidat->lieu_naissance : old('lieu_naissance') }}"  id="lieu_naissance" placeholder="La ville où vous êtes née" class="form-control">
-
-			<!-- Le message d'erreur pour "lieu_naissance" -->
-			@error("lieu_naissance")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div><br>
-        <div class="form-group">
-			<label for="genre" >Genre</label><span class="text-danger required" aria-hidden="true">*</span> :
-            @if (isset($candidat))
-                @if ($candidat->genre == "Homme")
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genre" checked='checked' id="inlineRadio1" value="genre">
-                        <label class="form-check-label" for="inlineRadio1">Homme</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genre" id="inlineRadio2" value="Femme">
-                        <label class="form-check-label" for="inlineRadio2">Femme</label>
-                    </div>
-                @endif
             @else
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="genre"  id="inlineRadio1" value="genre">
-                <label class="form-check-label" for="inlineRadio1">Homme</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="genre" id="inlineRadio2" value="Femme">
-                <label class="form-check-label" for="inlineRadio2">Femme</label>
-            </div>
-            @endif
+
+            <!-- Le formulaire est géré par la route "candidats.store" -->
+            <form method="POST" action="{{ route('candidats.store') }}" enctype="multipart/form-data" class="mb-10px" id="wizard">
+
+	        @endif
 
 
-			<!-- Le message d'erreur pour "genre" -->
-			@error("genre")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div><br>
-        <div class="form-group">
-			<label for="nationalite" >Nanitonalité</label>
+            @csrf
+        		<!-- SECTION 1 -->
+                <h4></h4>
+                <section>
+                    <div class="inner">
+                    	<a href="#" class="avartar">
+                    		<img src="{{ asset('images/avartar.png') }}" alt="">
+                    	</a>
+                    	<div class="form-row form-group">
+                    		<div class="form-holder">
+                    			<input type="text" class="form-control" name="nom" value="{{ isset($candidat->nom) ? $candidat->nom : old('nom') }}"  id="nom" placeholder="Nom" aria-required="true">
+                    		</div>
+                    		<div class="form-holder">
+                    			<input type="text" class="form-control" name="prenom" value="{{ isset($candidat->prenom) ? $candidat->prenom : old('prenom') }}"  id="prenom" placeholder="Prenom" aria-required="true">
+                    		</div>
+                    	</div>
+                    	<div class="form-row">
+                    		<div class="form-holder">
+                                Date de naissance :	<input type="date" name="date_naissance" value="{{ isset($candidat->date_naissance) ? $candidat->date_naissance : old('date_naissance') }}"  id="date_naissance"  class="form-control" aria-required="true" >
 
-			<input type="text" name="nationalite" value="{{ isset($candidat->nationalite) ? $candidat->nationalite : old('nationalite') }}"  id="nationalite" placeholder="Votre nationalité" class="form-control" >
+                    		</div>
+                    	</div>
+                    	<div class="form-row">
+                    		<div class="form-holder">
+                                <input type="text" name="lieu_naissance" value="{{ isset($candidat->lieu_naissance) ? $candidat->lieu_naissance : old('lieu_naissance') }}"  id="lieu_naissance" placeholder="Lieu de naissance" class="form-control" riquired>
+                    			<i class="zmdi zmdi-flag small"></i>
+                    		</div>
+                    	</div>
+                    	<div class="form-row">
+                    		<div class="form-holder">
+                                <input class="form-control" type="text" name="telephone" value="{{ isset($candidat->telephone) ? $candidat->telephone : old('telephone') }}"  id="telephone" placeholder="Numéro de téléphone" aria-required="true">
+                    			<i class="zmdi zmdi-smartphone-android"></i>
+                    		</div>
+                    	</div>
+                    	<div class="form-row">
+                    		<div class="form-holder">
+                                <label class="label">Email : </label>
+                                <input type="text" name="email" value="{{ isset($candidat->email) ? $candidat->email : old('email') }}"  id="email" placeholder="exemple@gmail.com" class="form-control" aria-required="true">
+                                <i class="zmdi zmdi-email small"></i>
+                    		</div>
+                    	</div>
 
-			<!-- Le message d'erreur pour "nationalite" -->
-			@error("nationalite")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="piece_identite" >Pièce d'identité</label>
-
-            <select name="piece_identite" id="piece_identite" class="form-control">
-                <option value="#" >Choisissez ici</option>
-                <option value="Carte nationale">Carte nationale</option>
-                <option value="Carte nationale">Carte d'électeur</option>
-                <option value="Carte nationale">Passport</option>
-
-            </select>
-			<!-- Le message d'erreur pour "piece_identite" -->
-			@error("piece_identite")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="numero_de_piece" >Numéro de la pièce d'identité</label>
-			<input type="text" name="numero_de_piece" value="{{ isset($candidat->numero_de_piece) ? $candidat->numero_de_piece : old('numero_de_piece') }}"  id="numero_de_piece" placeholder="Le numéro de vorte carte" class="form-control" >
-
-			<!-- Le message d'erreur pour "numero_de_piece" -->
-			@error("numero_de_piece")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="date_delivrer" >Date delivrer</label>
-			<input type="date" name="date_delivrer" value="{{ isset($candidat->date_delivrer) ? $candidat->date_delivrer : old('date_delivrer') }}"  id="date_delivrer" placeholder="date de delivrance de votre carte"  class="form-control">
-
-			<!-- Le message d'erreur pour "date_delivrer" -->
-			@error("date_delivrer")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="date_expiration" >Date d'expiration</label>
-
-			<input type="date" name="date_expiration" value="{{ isset($candidat->date_expiration) ? $candidat->date_expiration : old('date_expiration') }}"  id="date_expiration" placeholder="Date d'expiration" class="form-control">
-
-			<!-- Le message d'erreur pour "date_expiration" -->
-			@error("date_expiration")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="ville_residence" >Villle résidence</label>
-
-			<input type="text" name="ville_residence" value="{{ isset($candidat->ville_residence) ? $candidat->ville_residence : old('agent_assigne') }}"  id="ville_residence" placeholder="Votre ville de résidence" class="form-control">
-
-			<!-- Le message d'erreur pour "ville_residence" -->
-			@error("ville_residence")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="quartier" >Quartier</label>
-
-			<input type="text" name="quartier" value="{{ isset($candidat->quartier) ? $candidat->quartier : old('quartier') }}"  id="Votre quartier" placeholder="quartier" class="form-control">
-
-			<!-- Le message d'erreur pour "quartier" -->
-			@error("quartier")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="rue" >Rue</label>
-
-			<input type="text" name="rue" value="{{ isset($candidat->rue) ? $candidat->rue : old('rue') }}"  id="rue" placeholder="Rue" class="form-control">
-
-			<!-- Le message d'erreur pour "rue" -->
-			@error("rue")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="email" >Adrees E-mail</label>
-
-			<input type="text" name="email" value="{{ isset($candidat->email) ? $candidat->email : old('email') }}"  id="email" placeholder="email" class="form-control">
-
-			<!-- Le message d'erreur pour "email" -->
-			@error("email")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div><br>
-        <div class="form-group">
-			<label for="genre" >Situation matrimoniale</label><span class="text-danger required" aria-hidden="true">*</span> :
-            @if (isset($candidat))
-                @if ($candidat->situation_familiale == "Célibataire")
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="situation_familiale" checked='checked' id="inlineRadio1" value="Célibataire">
-                        <label class="form-check-label" for="inlineRadio1">Célibataire</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="situation_familiale" id="inlineRadio2" value="Marié">
-                        <label class="form-check-label" for="inlineRadio2">Marié</label>
-                    </div>
-                @endif
-            @else
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="situation_familiale"  id="inlineRadio1" value="Célibataire">
-                <label class="form-check-label" for="inlineRadio1">Célibataire</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="situation_familiale" id="inlineRadio2" value="Marié">
-                <label class="form-check-label" for="inlineRadio2">Marié</label>
-            </div>
-            @endif
-			<!-- Le message d'erreur pour "situation_familiale" -->
-			@error("situation_familiale")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div><br>
-        <div class="form-group">
-			<label for="enfants_encharge" >Enfants en charge</label>
+                </section>
 
-			<input class="form-control" type="number" name="enfants_encharge" value="{{ isset($candidat->enfants_encharge) ? $candidat->enfants_encharge : old('enfants_encharge') }}"  id="enfants_encharge" placeholder="Combien d'enfants avez vous ?" >
+				<!-- SECTION 2 -->
+                <h4></h4>
+                <section>
+                	<div class="inner">
+                		<a href="#" class="avartar">
+                    		<img src="{{ asset('images/avartar.png') }}" alt="">
+                    	</a>
+                        <div class="form-row form-group">
+                            <div class="form-holder">
+                                <input type="text" name="nationalite" value="{{ isset($candidat->nationalite) ? $candidat->nationalite : old('nationalite') }}"  id="nationalite" placeholder="Notionalité" class="form-control" required>
+                            </div>
+                            <div class="form-row">
+                                    <select name="piece_identite" id="piece_identite" class="form-control" required>
+                                        <option >Pièce d'identité</option>
+                                        <option value="Passport">Passport</option>
+                                        <option value="Carte national">Carte national</option>
+                                        <option value="Carte d'électeur">Carte d'électeur</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                    		<div class="form-holder">
+                                <input type="text" name="numero_de_piece" value="{{ isset($candidat->numero_de_piece) ? $candidat->numero_de_piece : old('numero_de_piece') }}"  id="numero_de_piece" placeholder="Le numéro de la pièce" class="form-control" >
+                    		</div>
+                    	</div>
+                        <div class="form-row">
+                            <div class="form-holder">
+                                <input type="date" class="form-control datepicker-here" name="date_delivrer" value="{{ isset($candidat->date_delivrer) ? $candidat->date_delivrer : old('date_delivrer') }}"  id="date_delivrer" placeholder="date délivrance">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-holder">
+                                <input type="date" name="date_expiration" class="form-control" value="{{ isset($candidat->date_expiration) ? $candidat->date_expiration : old('date_expiration') }}"  id="date_expiration" placeholder="date d'expiration">
+                            </div>
+                        </div>
 
-			<!-- Le message d'erreur pour "enfants_encharge" -->
-			@error("enfants_encharge")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="profession">Profession</label>
+                        <div class="form-row form-group">
+                            <div class="form-holder">
+                                <input type="text" name="ville_residence" value="{{ isset($candidat->ville_residence) ? $candidat->ville_residence : old('ville_residence') }}"  id="ville_residence" placeholder="Votre ville de résidence" class="form-control">
+                                <i class="zmdi zmdi-home small"></i>
+                            </div>
+                            <div class="form-holder">
+                                <input type="text" name="quartier" value="{{ isset($candidat->quartier) ? $candidat->quartier : old('quartier') }}"  id="Votre quartier" placeholder="Quartier" class="form-control">
+                                <i class="zmdi zmdi-bookmark small"></i>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="form-holder">
+                                <input type="text" name="rue" value="{{ isset($candidat->rue) ? $candidat->rue : old('rue') }}"  id="rue" placeholder="Rue" class="form-control">
+                                <i class="zmdi zmdi-city-alt small"></i>
+                            </div>
+                            <div class="form-holder">
+                                <i class="zmdi zmdi-caret-down small"></i>
+                                <select name="genre" id="genre" class="form-control" required>
+                                    <option>Genre</option>
+                                    <option value="Homme">Homme</option>
+                                    <option value="Femme">Femme</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                        </div>
+                	</div>
+                </section>
 
-			<input class="form-control" type="text" name="profession" value="{{ isset($candidat->profession) ? $candidat->profession : old('profession') }}"  id="profession" placeholder="Votre profession actuelle" >
+                <!-- SECTION 3 -->
+                <h4></h4>
+                <section class="section-3">
+                    <div class="inner">
+                		<a href="#" class="avartar">
+                    		<img src="{{ asset('images/avartar.png') }}" alt="">
+                    	</a>
+                        <div class="form-holder">
+                            <div class="form-row">
+                                <i class="zmdi zmdi-caret-down small"></i>
+                                <select name="situation_familiale" id="situation_familiale" class="form-control" required>
+                                    <option >Situation matrimonial</option>
+                                    <option value="Marié">Marié</option>
+                                    <option value="Célibataire">Célibataire</option>
+                                </select>
+                            </div>
+                        </div><br>
+                        <div class="form-row form-group">
+                            <div class="form-holder">
+                                <input class="form-control" type="number" name="enfants_encharge" value="{{ isset($candidat->enfants_encharge) ? $candidat->enfants_encharge : old('enfants_encharge') }}"  id="enfants_encharge" placeholder="Nombre d'enfants">
+                            </div>
+                            <div class="form-holder">
+                                    <select name="disponible_a_loger" id="disponible_a_loger" class="form-control">
+                                        <option>Disponible à loger</option>
+                                        <option value="Oui">Oui</option>
+                                        <option value="Non">Non</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                    		<div class="form-holder">
+                                <input class="form-control" type="text" name="profession" value="{{ isset($candidat->profession) ? $candidat->profession : old('profession') }}"  id="profession" placeholder="Votre profession actuelle" aria-required="true">
+                    		</div>
+                            <div class="form-holder">
+                                    <select name="poste_candidate" id="poste_candidate" class="form-control">
+                                        <option>Poste candidaté</option>
+                                        <option value="Chauffeur">Chauffeur</option>
+                                        <option value="Nounou">Nounou</option>
+                                        <option value="Agent d'entretient">Agent d'entretient</option>
+                                        <option value="Cuisinier(e)">Cuisinier(e)</option>
+                                        <option value="Menagère">Menagère</option>
+                                    </select>
+                            </div>
+                    	</div>
+                        <div class="form-row">
+                            @if(isset($candidat->avatar))
+                            <div class="form-holder">
+                                <span>Photo actuelle</span>
+                                <img src="{{ asset('storage/'.$candidat->avatar) }}" alt="photo" style="max-height: 70px;" >
+                            </div>
+                            @endif
+                            <div class="form-holder">
+                                <span>Votre photo</span>
+                                <input class="form-control" type="file" name="avatar"  id="avatar" action="/upload" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-holder">
+                                <textarea class="form-control" name="objectif" id="objectif"  placeholder="L'objectif de votre candidature" aria-required="true">{{ isset($candidat->objectif) ? $candidat->objectif : old('objectif') }}</textarea>
+                            </div>
+                        </div>
+                	</div>
+                </section>
 
-			<!-- Le message d'erreur pour "profession" -->
-			@error("profession")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
+                <!-- SECTION 4 -->
+                <h4></h4>
+                <section class="section-4">
+                    <div class="inner">
+                		<a href="#" class="avartar">
+                    		<img src="{{ asset('images/avartar.png') }}" alt="">
+                    	</a>
+                        <div class="form-row form-group">
+                            <div class="form-holder">
+                                <input class="form-control" type="text" name="niveau_etude" value="{{ isset($candidat->niveau_etude) ? $candidat->niveau_etude : old('niveau_etude') }}"  id="niveau_etude" placeholder="Niveau d'étude" aria-required="false">
+                                <i class="zmdi zmdi-graduation-cap small"></i>
+                            </div>
+                            <div class="form-holder">
+                                <input class="form-control" type="number" name="pretention_salarial" value="{{ isset($candidat->pretention_salarial) ? $candidat->pretention_salarial : old('pretention_salarial') }}"  id="pretention_salarial" placeholder="Prétention salarial" aria-required="true">
+                                <i class="zmdi zmdi-plaster small"></i>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <select name="nature_contrat" id="nature_contrat" class="form-control">
+                                <option>Nature Contrat</option>
+                                <option value="CDD">CDD</option>
+                                <option value="CDI">CDI</option>
+                                <option value="Autre">Autre</option>
+                            </select>
 
-        <!-- S'il y a une image $post->picture, on l'affiche -->
-		@if(isset($candidat->avatar))
-		<div class="form-group">
-			<span>Couverture actuelle</span>
-			<img src="{{ asset('storage/'.$candidat->avatar) }}" alt="image de couverture actuelle" style="max-height: 200px;" >
-		</div>
-		@endif
+                        </div>
+                        <div class="form-row">
+                            <select name="horaire_travail_souhaite" id="horaire_travail_souhaite" class="form-control">
+                                <option>Horaire de travail souhaité</option>
+                                <option value="Temps plein">Temps plein</option>
+                                <option value="Temps poyenne">Temps moyenne</option>
+                                <option value="Mis temps">Mis temps</option>
+                                <option value="Mis temps">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <select name="horaire_travail_passe" id="horaire_travail_passe" class="form-control">
+                                <option>Horaire de travail passé</option>
+                                <option value="Temps plein">Temps plein</option>
+                                <option value="Temps poyenne">Temps moyenne</option>
+                                <option value="Mis temps">Mis temps</option>
+                                <option value="Mis temps">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-holder">
+                                <textarea class="form-control" name="qualite_personnelles" id="qualite_personnelles"  placeholder="vos qualités personnel" >{{ isset($candidat->qualite_personnelles) ? $candidat->qualite_personnelles : old('qualite_personnelles') }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-holder">
+                                <textarea class="form-control" name="savoir_faire" id="savoir_faire"  placeholder="Qu'est ce que vous savez faire d'autre" >{{ isset($candidat->savoir_faire) ? $candidat->savoir_faire : old('savoir_faire') }}</textarea>
+                            </div>
+                        </div>
+                	</div>
+                </section>
+                @if (isset($candidat))
 
-        <div class="form-group">
-			<label for="avatar">Inserez votre photo</label>
+                    <button type="submit" name="valider" class="btn btn-info btn-block ">Mettre à jour</button>
 
-			<input class="form-control" type="file" name="avatar"  id="avatar" action="/upload">
+                @else
 
-			<!-- Le message d'erreur pour "avatar" -->
-			@error("avatar")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="telephone" >Votre numero de téléphone</label>
+                    <h3>Avez vous déjà d'expériences ?</h3>
 
-			<input class="form-control" type="text" name="telephone" value="{{ isset($candidat->telephone) ? $candidat->telephone : old('telephone') }}"  id="telephone" placeholder="Numéro de téléphone" >
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-right">
+                        <!-- Lien pour ajouter les expériences : "experienceDuCandidats.create" -->
+                        <!--a type="submit" href="" title="expérences" class="btn btn-success btn-block">Oui</a-->
+                        
+                        <a name="valider" type="submit" href="{{ route('experienceDuCandidats.create') }}" title="expérences" class="btn btn-success btn-block">Oui</a>
 
-			<!-- Le message d'erreur pour "telephone" -->
-			@error("telephone")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="poste_candidate" >Vou postulez pour quel poste</label>
-            <select class="form-control" name="poste_candidate" id="poste_candidate">
-                <option value="#" >Choisissez ici</option>
-                <option value="Chauffeur">Chauffeur</option>
-                <option value="Nounou">Nounou</option>
-                <option value="Agent d'entretient">Agent d'entretient</option>
-                <option value="Cuisinier(e)">Cuisinier(e)</option>
-                <option value="Menagère">Menagère</option>
-            </select>
+                        <button type="submit" name="valider"  class="btn btn-info btn-block ">Non</button>
 
-			<!-- Le message d'erreur pour "poste_candidate" -->
-			@error("poste_candidate")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div><br>
-        <div class="form-group">
-			<label for="horaire_travail_souhaite" >Heure de travail souhaité</label><span class="text-danger required" aria-hidden="true">*</span> :
-            @if (isset($candidat))
-                @if ($candidat->horaire_travail_souhaite == "Temps plein")
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="horaire_travail_souhaite" checked='checked' id="inlineRadio1" value="Temps plein">
-                        <label class="form-check-label" for="inlineRadio1">Temps plein</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="horaire_travail_souhaite" id="inlineRadio2" value="Temps partiel">
-                        <label class="form-check-label" for="inlineRadio2">Temps partiel</label>
-                    </div>
-					<div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="horaire_travail_souhaite" id="inlineRadio2" value="Mis temps">
-                        <label class="form-check-label" for="inlineRadio3">Mis temps</label>
-                    </div>
-                @endif
-            @else
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="horaire_travail_souhaite"  id="inlineRadio1" value="Temps plein">
-					<label class="form-check-label" for="inlineRadio1">Temps plein</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="horaire_travail_souhaite" id="inlineRadio2" value="Temps partiel">
-					<label class="form-check-label" for="inlineRadio2">Temps partiel</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="horaire_travail_souhaite" id="inlineRadio2" value="Mis temps">
-					<label class="form-check-label" for="inlineRadio3">Mis temps</label>
-				</div>
-            @endif
-			<!-- Le message d'erreur pour "horaire_travail_souhaite" -->
-			@error("horaire_travail_souhaite")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div><br>
-        <div class="form-group">
-			<label for="objectif" >Objectif</label>
-
-			<textarea class="form-control" name="objectif" id="objectif"  placeholder="L'objectif de votre candidature" >{{ isset($candidat->objectif) ? $candidat->objectif : old('objectif') }}</textarea>
-
-			<!-- Le message d'erreur pour "objectif" -->
-			@error("objectif")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="qualite_personnelles" >Qualités personnel</label>
-
-			<textarea class="form-control" name="qualite_personnelles" id="qualite_personnelles"  placeholder="vos qualités personnel" >{{ isset($candidat->qualite_personnelles) ? $candidat->qualite_personnelles : old('qualite_personnelles') }}</textarea>
-
-			<!-- Le message d'erreur pour "qualite_personnelles" -->
-			@error("qualite_personnelles")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="savoir_faire" >Savoir faire</label>
-
-			<textarea class="form-control" name="savoir_faire" id="savoir_faire"  placeholder="Qu'est ce que vous savez faire d'autre" >{{ isset($candidat->savoir_faire) ? $candidat->savoir_faire : old('savoir_faire') }}</textarea>
-
-			<!-- Le message d'erreur pour "savoir_faire" -->
-			@error("savoir_faire")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div><br>
-        <div class="form-group">
-			<label for="disponible_a_loger" >Estes vous disponible à loger ?</label><span class="text-danger required" aria-hidden="true">*</span> :
-            @if (isset($candidat))
-                @if ($candidat->disponible_a_loger == "Non")
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="disponible_a_loger" checked='checked' id="inlineRadio1" value="Temps plein">
-                        <label class="form-check-label" for="inlineRadio1">Non</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="disponible_a_loger" id="inlineRadio2" value="Oui">
-                        <label class="form-check-label" for="inlineRadio2">Oui</label>
-                    </div>
 
                 @endif
-            @else
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="disponible_a_loger"  id="inlineRadio1" value="Non">
-					<label class="form-check-label" for="inlineRadio1">Non</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="disponible_a_loger" id="inlineRadio2" value="Oui">
-					<label class="form-check-label" for="inlineRadio2">Oui</label>
-				</div>
 
-            @endif
-			<!-- Le message d'erreur pour "disponible_a_loger" -->
-			@error("disponible_a_loger")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div><br>
-        <div class="form-group">
-			<label for="nature_contrat" >Nature contrat</label><span class="text-danger required" aria-hidden="true">*</span> :
-            @if (isset($candidat))
-                @if ($candidat->nature_contrat == "CDD")
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="nature_contrat" checked='checked' id="inlineRadio1" value="CDD">
-                        <label class="form-check-label" for="inlineRadio1">CDD</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="nature_contrat" id="inlineRadio2" value="CDI">
-                        <label class="form-check-label" for="inlineRadio2">CDI</label>
-                    </div>
-                @endif
-            @else
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="nature_contrat"  id="inlineRadio1" value="CDD">
-					<label class="form-check-label" for="inlineRadio1">CDD</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="nature_contrat" id="inlineRadio2" value="CDI">
-					<label class="form-check-label" for="inlineRadio2">CDI</label>
-				</div>
-            @endif
-			<!-- Le message d'erreur pour "nature_contrat" -->
-			@error("nature_contrat")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div><br>
-        <div class="form-group">
-			<label for="oraire_travail_passe" >Heure du travail passé</label><span class="text-danger required" aria-hidden="true">*</span> :
-            @if (isset($candidat))
-                @if ($candidat->horaire_travail_souhaite == "Temps plein")
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="oraire_travail_passe" checked='checked' id="inlineRadio1" value="Temps plein">
-                        <label class="form-check-label" for="inlineRadio1">Temps plein</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="oraire_travail_passe" id="inlineRadio2" value="Temps partiel">
-                        <label class="form-check-label" for="inlineRadio2">Temps partiel</label>
-                    </div>
-					<div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="oraire_travail_passe" id="inlineRadio2" value="Mis temps">
-                        <label class="form-check-label" for="inlineRadio3">Mis temps</label>
-                    </div>
-                @endif
-            @else
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="oraire_travail_passe"  id="inlineRadio1" value="Temps plein">
-					<label class="form-check-label" for="inlineRadio1">Temps plein</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="oraire_travail_passe" id="inlineRadio2" value="Temps partiel">
-					<label class="form-check-label" for="inlineRadio2">Temps partiel</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="oraire_travail_passe" id="inlineRadio2" value="Mis temps">
-					<label class="form-check-label" for="inlineRadio3">Mis temps</label>
-				</div>
-            @endif
-			<!-- Le message d'erreur pour "oraire_travail_passe" -->
-			@error("oraire_travail_passe")
-			<div class="form-group">{{ $message }}</div>
-			@enderror
-		</div><br>
-
-                <!-- Si nous avons un candidat $candidat -->
-
-            <button type="submit" class="btn btn-success btn-block">Modifier</button>
-
-
-
-
-		<h3 class="text-center">Avez vous déjà d'expériences ?</h3>
-
-				<div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                    <!-- Lien pour ajouter les expériences : "experienceDuCandidats.create" -->
-                    <a type="submit" href="{{ route('experienceDuCandidats.create') }}" title="expérences" class="btn btn-success btn-block">Oui</a>
-                    <button type="submit" name="valider" class="btn btn-info btn-block ">Non</button>
-
-                </div>
-
-        </form>
-
-
-
-</div>
-
+            </form>
+		</div>
+    </body>
+</html>
 @endsection
-
-
-
-
-

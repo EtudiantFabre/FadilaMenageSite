@@ -21,7 +21,6 @@ use App\Http\Controllers\PonctuelController;
 use App\Http\Controllers\AppelOffreController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\FactureController;
-use App\Http\Controllers\PersonneController;
 use App\Http\Controllers\PersonneAprevenirController;
 
 
@@ -179,7 +178,7 @@ Route::get('{facture}/mise-a-jour', [FactureController::class, 'edit'], 'mise_a_
 
 
 //  Personne
-Route::resource('personnes', PersonneController::class);
+//Route::resource('personnes', PersonneController::class);
 /*
 Route::get('liste-personnes', [PersonneController::class, 'index'], 'liste_personnes');
 Route::post('sauvegarde-personne', [PersonneController::class, 'store'], 'sauvegarde_personne');
@@ -307,3 +306,8 @@ Route::get('vente}/mise-a-jour-vente', [VenteController::class, 'edit'], 'mise_a
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/candidature', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', function(){
+    return view('candidature');
+});

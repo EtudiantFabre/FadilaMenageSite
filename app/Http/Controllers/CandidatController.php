@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Models\Candidat;
 use App\Models\Agent;
 //use Illuminate\Support\Facades\Storage; // <= importer Storage
@@ -29,6 +31,7 @@ class CandidatController extends Controller
      */
     public function create()
     {
+
         return view('candidats.edit');
     }
 
@@ -41,7 +44,7 @@ class CandidatController extends Controller
     public function store(Request $request)
     {
         /*$this->validate($request, [
-            /*'nom' => 'bail|required|string|max:255',
+            'nom' => 'bail|required|string|max:255',
             "prenom" => 'bail|required|string|max:255',
             "date_naissance" => 'bail|required',
             "lieu_naissance" => 'bail|required|string',
@@ -58,7 +61,7 @@ class CandidatController extends Controller
             "situation_familiale" => 'bail|required',
             "enfants_encharge" => 'bail|required',
             "profession" => 'bail|required',
-            //"avatar" => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            "avatar" => 'required|image|mimes:png,jpg,jpeg|max:2048',
             "telephone" => 'bail|required',
             "poste_candidate" => 'bail|required',
             "horaire_travail_souhaite" => 'bail|required',
@@ -71,10 +74,10 @@ class CandidatController extends Controller
 
         ]);*/
         // 2. On upload l'image dans "/storage/app/public/candidat"
-        $file = $request->hasFile('avatar');
-            $newFile = $request->file('avatar');
+         $request->hasFile('avatar');
+            $newFile = $request->avatar;
             $file_path = $newFile->store('images');
-            //dd(asset('/starage/' .$file_path));
+
 
         // 3. On enregistre les informations du candidat
        // $input = $request->all();
@@ -93,7 +96,7 @@ class CandidatController extends Controller
             "quartier" => $request->quartier,
             "rue" => $request->rue,
             "email" => $request->email,
-            "situation_familiale" => "Célibataire",
+            "situation_familiale" =>$request->situation_familiale,
             "enfants_encharge" => $request->enfants_encharge,
             "profession" => $request->profession,
             "avatar" => $file_path,
@@ -103,15 +106,18 @@ class CandidatController extends Controller
             "objectif" => $request->objectif,
             "qualite_personnelles" => $request->qualite_personnelles,
             "savoir_faire" => $request->savoir_faire,
+            "pretention_salarial" => $request->pretention_salarial,
+            "niveau_etude" => $request->niveau_etude,
             "disponible_a_loger" => $request->disponible_a_loger,
             "nature_contrat" => $request->nature_contrat,
-            //"oraire_travail_passe" => $request->oraire_travail_passe
+            "horaire_travail_passe" => $request->horaire_travail_passe
 
         ]);
 
         // 4. On retourne vers tous les candidat : route("candidats.index")
 
         return redirect('candidats')->with('flash_message', 'Votre candidature est enregisrer ave succès!');
+
 
     }
 
@@ -180,7 +186,7 @@ class CandidatController extends Controller
             "savoir_faire" => 'bail|required|string|max:255',
             "disponible_a_loger" => 'bail|required',
             "nature_contrat" => 'bail|required',
-            "oraire_travail_passe" => 'bail|required'
+            "horaire_travail_passe" => 'bail|required'
         ];
 
         // Si une nouvelle image est envoyée
@@ -250,9 +256,10 @@ class CandidatController extends Controller
             $agents->savoir_faire = $candidat->savoir_faire;
             $agents->disponible_a_loger = $candidat->disponible_a_loger;
             $agents->nature_contrat = $candidat->nature_contrat;
-            $agents->oraire_travail_passe = "temps plein";
+            $agents->oraire_travail_passe = $candidat->horaire_travail_passe;
             $agents->date_retenu = date('d-m-y h:i:s');
-            $agents->status = 'disponible';
+            $agents->pretention_salarial = $candidat->pretention_salarial;
+            $agents->niveau_etude = $candidat->telephone;
 
             $agents->telephone = $candidat->telephone;
             $agents->save();

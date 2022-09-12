@@ -12,7 +12,7 @@ class Agent extends Model
     protected $fillable = ['nom','prenom','date_naissance','lieu_naissance','genre','nationalite','piece_identite','numero_de_piece','date_delivrer',
     'date_expiration','ville_residence','quartier','rue','email','situation_familiale','enfants_encharge','profession',
     'avatar','poste_candidate','horaire_travail_souhaite','objectif','qualite_personnelles','savoir_faire','disponible_a_loger',
-    'nature_contrat','oraire_travail_passe','date_retenu','status' ,'telephone'];
+    'nature_contrat','oraire_travail_passe','date_retenu','telephone','prention_salarial','niveau_etude'];
 protected $primaryKey = 'id_agent';
 
 public function contrat()

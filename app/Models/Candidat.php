@@ -12,7 +12,7 @@ class Candidat extends Model
                           'date_expiration','ville_residence','quartier','rue','email','situation_familiale','enfants_encharge','profession',
 
                           'avatar','telephone','poste_candidate','horaire_travail_souhaite','objectif','qualite_personnelles','savoir_faire','disponible_a_loger',
-                          'nature_contrat','oraire_travail_passe'];
+                          'nature_contrat','horaire_travail_passe','pretention_salarial','niveau_etude'];
                           protected $primaryKey = 'id_candidat';
 
 

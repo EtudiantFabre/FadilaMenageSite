@@ -6,19 +6,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!-- Font-->
-        <link rel="stylesheet" type="text/css" href="css/montserrat-font.css">
-        <link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-        <!-- Main Style Css -->
-        <link rel="stylesheet" href="css/style.css"/>
+
         <title>@yield('title', config('app.name'))</title>
 
     </head>
+    <body class="form-v10-content">
+        @yield('content')
 
-      <body class="form-v10-content">
-         @yield('content')
-
-      </body>
+     </body>
 
 
         <!--Footer-->
