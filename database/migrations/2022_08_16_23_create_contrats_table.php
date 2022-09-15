@@ -19,13 +19,11 @@ return new class extends Migration
             $table->integer('client');
             $table->date('date_contrat');
             $table->date('debut_contrat');
-            $table->date('echeance_contrat');
+            $table->string('echeance_contrat');
             $table->string('service');
             $table->string('local');
-            $table->string('adresse');
             $table->string('temps');
             $table->string('frequence');
-            $table->string('agent_assigne');
             $table->string('facturation');
             $table->string('salaire');
             $table->string('tva');

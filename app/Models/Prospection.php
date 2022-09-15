@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Prospection extends Model
 {
     use HasFactory;
-    protected $fillable = ['raison_social', 'date', 'canal', 'competence_rechercher', 'type_maison', 'nbre_de_chambre', 'nbre_wc_douche', 'taille_famille', 'info_complementaire', 'budget', 'actions_menees', 'conclusion', 'id_agent', 'id_client', 'id_facture'];
+    protected $fillable = ['raison_social', 'date_prospection', 'canal', 'competence_rechercher', 
+    'type_maison', 'nbre_de_chambre', 'nbre_wc_douche', 'taille_famille', 'info_complementaire',
+    'budget', 'actions_menees', 'aboutissement', 'id_agent', 'id_client'];
     protected $primaryKey = 'id_prospection';
 
 
@@ -17,7 +19,7 @@ class Prospection extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function agent(): BelongsTo
+    public function agent()
     {
         return $this->belongsTo(Agent::class, 'id_agent');
     }
@@ -27,19 +29,9 @@ class Prospection extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function client(): BelongsTo
+    public function client()
     {
         return $this->belongsTo(Client::class, 'id_client');
     }
-
     
-    /**
-     * Get the facture associated with the Prospection
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function facture(): HasOne
-    {
-        return $this->hasOne(Facture::class, 'id_facture');
-    }
 }

@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Facture extends Model
 {
     use HasFactory;
-    protected $fillable = ['remuneration_brut', 'remuneration_net', 'conciliation_social', 'provision_sociales', 'cotisation_provisoir_conges', 'total_debour', 'frais', 'tva', 'total_ttc'];
+    protected $fillable = ['remuneration_brut', 'remuneration_net', 'conciliation_social', 
+        'provision_sociales', 'cotisation_provisoir_conges', 'total_debour', 'frais', 'tva', 
+        'total_ttc', 'id_prospection'
+    ];
     protected $primaryKey = 'id_facture';
 
     /**
@@ -16,7 +19,7 @@ class Facture extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function personnel(): BelongsTo
+    public function personnel()
     {
         return $this->belongsTo(Personnel::class, 'id_personnel');
     }
@@ -26,7 +29,7 @@ class Facture extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function prospection(): BelongsTo
+    public function prospections()
     {
         return $this->belongsTo(Prospection::class, 'id_prospection');
     }

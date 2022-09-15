@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PersonneAprevenir extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom', 'prenom', 'lien_de_parente', 'id_candidat'];
+    protected $fillable = ['nom', 'prenom', 'tel', 
+        'quartier', 'profession', 'lien_de_parente', 
+        'id_candidat'
+    ];
     protected $primaryKey = 'id_personne_a_prevenir';
 
     /**
@@ -16,7 +19,7 @@ class PersonneAprevenir extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function candidat(): BelongsTo
+    public function candidat()
     {
         return $this->belongsTo(Candidat::class, 'id_candidat');
     }

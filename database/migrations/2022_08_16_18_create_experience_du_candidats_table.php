@@ -16,16 +16,20 @@ return new class extends Migration
         Schema::create('experience_du_candidats', function (Blueprint $table) {
             $table->bigIncrements('id_experience');
             $table->integer('nbr_annee_experience');
-            $table->integer('nbr_voiture_conduit');
-            $table->string('type_voiture');
-            $table->string('type_contrat');
-            $table->string('adresse_societe');
-            $table->string('adresse_employeur');
+            $table->integer('nbr_voiture_conduit')->nullable();
+            $table->string('type_voiture')->nullable()->default('Non renseigné');
+            $table->string('type_contrat')->nullable()->default('Non renseigné');
+            $table->string('nom_employeur')->nullable()->default('Non renseigné');
+            $table->string('numero_employeur')->nullable()->default('Non renseigné');
             $table->integer('dernier_salaire');
-            $table->date('date_demission');
-            $table->integer('pretention_salarial');
+            $table->integer('nombre_enfants_garde')->nullable();
+            $table->date('date_demission')->nullable();
+            $table->integer('candidat');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('candidat')->references('id_candidat')->on('candidats')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

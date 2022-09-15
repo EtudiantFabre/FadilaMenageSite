@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('appel_offres', function (Blueprint $table) {
             $table->bigIncrements('id_appel');
+            
+            $table->date('date_invitation');
+            $table->string('autorite_contractante');
+            $table->string('numero_aao');
+            $table->integer('montant_propose');
+            $table->integer('nbre_concurents');
             $table->string('classement');
             $table->json('adresse_autorite_contractante');
             $table->date('date_depot');
