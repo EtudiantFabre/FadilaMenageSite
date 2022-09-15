@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="/Original_on_Transparent.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/Original.png">
+    <link rel="icon" type="image/png" href="/Original.png">
     <title>
         Fadila Ménage
     </title>
@@ -20,12 +20,7 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
 
-
-    <!-- MATERIAL DESIGN ICONIC FONT -->
-    <link rel="stylesheet" href="col/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-
-    <!-- STYLE CSS -->
-    <link rel="stylesheet" href="col/css/style.css">
+    
 
     
 
@@ -38,11 +33,17 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!--style>
+        body {
+            background-image: url("background.jpg");
+            background-color: #cccccc;
+        }
+    </style-->
     <!-- Scripts -->
     <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
 </head>
-<body>
-    <div id="app">
+<body >
+    <div id="" class="">
         <?php if(auth()->guard()->check()): ?>
             <nav class="navbar navbar-expand-md  navbar-inverse rounded shadow " style="background: rgb(203, 237, 243)">
                 <div class="container">
@@ -77,19 +78,19 @@
                                 </ul>
                             </div-->
                         </div>
-                        <!--ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                        <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Link
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <!--ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
+                                </ul-->
                             </li>
-                        </ul-->
+                        </ul>
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ms-auto">

@@ -9,24 +9,16 @@
 
         <title>@yield('title', config('app.name'))</title>
 
-        <style>
-
-
-            th{
-                background-color: orangered;
-            }
-
-            #title{
-                text-align: center;
-                color: #fff;
-                margin: auto;
-
-            }
-
-
-        </style>
     </head>
-        <body>
+
+    <body class="form-v10-content">
+        @yield('content')
+
+
+
+
+
+
 
 
             <div>
@@ -39,8 +31,9 @@
                         </ul>
                     </div>
                 @endif
+
             </div>
-            
+
             @yield('content')
 
 
@@ -57,6 +50,7 @@
                 <!--/.Copyright-->
 
             </footer>
+
 
 
 

@@ -45,7 +45,8 @@ use App\Models\Prospection;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('accueil');
+
 
 
 Route::get('/test-contact', function () {
@@ -59,6 +60,8 @@ Route::get('/test-contact', function () {
 /*
 Route::get("message", "MessageController@formMessageGoogle");
 Route::post("message", "MessageController@sendMessageGoogle")->name('send.message.google');*/
+
+
 
 
 
@@ -96,7 +99,9 @@ Route::resource('agents', AgentController::class);
 //  AgentPonctuel
 
 Route::resource('agentPonctuels', AgentPonctuelController::class);
-Route::post('/liste-des-agents', [AgentController::class], 'listeAgents')->name('liste-agents');
+Route::post('liste-des-agents/', [AgentController::class, 'ListAgents'])->name('liste.agents');
+
+Route::get('information-clt/', [ClientController::class, 'creerUnClient'])->name('clients.prospect');
 /*
 Route::get('liste-agent-ponctuels', [AgentPonctuelController::class, 'index']);//->name('liste_agent_ponctuels');
 Route::post('enregistrement-agent-ponctuel', [AgentPonctuelController::class, 'store'], 'enregistrement_agent_ponctuel');
@@ -208,7 +213,22 @@ Route::get('{facture}/mise-a-jour', [FactureController::class, 'edit'], 'mise_a_
 //                              //
 
 
+
+//  Personne
+//Route::resource('personnes', PersonneController::class);
+/*
+Route::get('liste-personnes', [PersonneController::class, 'index'], 'liste_personnes');
+Route::post('sauvegarde-personne', [PersonneController::class, 'store'], 'sauvegarde_personne');
+Route::get('creation-personne', [PersonneController::class, 'create'], 'creation_personne');
+Route::get('afficher-personne/{personne}', [PersonneController::class, 'show'], 'afficher_personne');
+Route::post('mettre-a-jour-personne/{personne}', [PersonneController::class, 'update'], 'mettre_a_jour_personne');
+Route::post('suppression-personne/{personne}', [PersonneController::class, 'destroy'], 'suppression_personne');
+Route::get('{personne}/mise-a-jour', [PersonneController::class, 'edit'], 'mise_a_jour');
+*/
+//                              //
+
                             //
+
 
 
 //  PersonneAprevenir
@@ -256,7 +276,8 @@ Route::get('{ponctuel}/mise-a-jour', [PonctuelController::class, 'edit'], 'mise_
 //  Prospection
 Route::resource('prospections', ProspectionController::class);
 
-Route::post('/enregistrement-client-prospections', [ProspectionController::class, 'prosClient'])->name('prosClient');
+Route::post('formulaire-client-prospections/', [ProspectionController::class, 'prosClient'])->name('prosClient');
+Route::post('enregistrer-ma-prospection', [ProspectionController::class, 'enregistrerProsCLient'])->name('enregistrer.prospection.client');
 
 /*
 Route::get('liste-prospections', [ProspectionController::class, 'index'], 'liste_prospections');
@@ -329,3 +350,8 @@ Route::get('vente}/mise-a-jour-vente', [VenteController::class, 'edit'], 'mise_a
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/candidature', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/*Route::get('/', function(){
+    return view('candidature');
+});*/

@@ -9,11 +9,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Création d'une prospection</title>
 </head>
-<body>
-    <div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
+<style>
+    .body {
+        background-image: url('background.png');
+    }
+</style>
+<body class="body">
+    <div class="container rounded-4 shadow-lg p-3 mb-5 bg-div">
         <h1 class="text-center">Remplir ce formulaire pour terminer vôtre demande</h1>
         
-        <form action="{{route('prospections.store')}}" method="POST">
+        <form action="{{route('enregistrer.prospection.client')}}" method="POST">
             @csrf
             @method('post')
             <div>
@@ -27,6 +32,8 @@
                     </div>
                 @endif
             </div>
+
+           
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Raison social<span class="text-danger required" aria-hidden="true">*</span></span>
                 <input type="text" name="raison_social" id="raison_social" class="form-control">
@@ -67,7 +74,7 @@
             <br>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Budget<span class="text-danger required" aria-hidden="true">*</span></span>
-                <input type="number" id="budget" name="budget" min="1" class="form-control">
+                <input type="number" id="budget" name="budget" value="{{$agent->pretention_salarial}}" min="1" class="form-control">
             </div>
             <br>
             <div class="input-group mb-3">
@@ -90,6 +97,10 @@
                 <input type="hidden" name="client-prospection" value="vrai">
                 <input type="hidden" name="aboutissement" value="Attente">
             </div>
+            <div>
+                <label for=""><strong class="underline">NB :</strong> Le symbole <span class="text-danger required" aria-hidden="true">*</span> signifie que ces champs sont obligatoire</label>
+            </div>
+            <br>
             <!--div class="form-floating">
                 Aboutissement (ceci est optionnel) : 
                 <input type="text" name="aboutissement" autocomplete="additional-name" class="form-control">
@@ -151,12 +162,12 @@
         dateProspection.setAttribute("min", "0"+laDate.getDate()+"/0"+(laDate.getMonth()+1)+"/"+laDate.getFullYear());
     }
     
+    budget.addEventListener("change", activationBouton);
     raisonSocial.addEventListener("change", activationBouton);
     dateProspection.addEventListener("change", activationBouton);
     canal.addEventListener("change", activationBouton);
-    budget.addEventListener("change", activationBouton);
 
-    function activationBouton () {
+    function activationBouton(){
         if ((raisonSocial.value === "") || (dateProspection.value === "") || (canal.value === "") || (budget.value == "")){
             btnFormulaire.disabled = true;
         } else{

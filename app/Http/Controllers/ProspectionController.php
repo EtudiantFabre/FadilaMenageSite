@@ -9,6 +9,8 @@ use App\Models\Client;
 use App\Models\Agent;
 use App\Models\Facture;
 use PHPUnit\Framework\Constraint\IsEmpty;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailClientProspection;
 
 class ProspectionController extends Controller
 {
@@ -19,7 +21,7 @@ class ProspectionController extends Controller
      */
     public function index()
     {
-        $prospections = Prospection::all();
+        $prospections = Prospection::orderBy('id_prospection', 'DESC')->get();
         //echo 'Rien de bon';
         return view('prospections.index', compact('prospections'));
     }
@@ -74,11 +76,12 @@ class ProspectionController extends Controller
                 $request->all()
             );
         }
-        if (isset($request['client-prospection'])) {
+        /*if (isset($request['client-prospection'])) {
             return view('welcome');
         } else {
             return redirect()->route('prospections.index');
-        }
+        }*/
+        return redirect()->route('prospections.index');
     }
 
     public function prosClient(Request $request){
@@ -86,6 +89,45 @@ class ProspectionController extends Controller
         $client = Client::find($request->id_client);
         $agent = Agent::find($request->id_agent);
         return view('prospections.prosClient')->with('client', $client)->with('agent', $agent);
+    }
+
+    public function enregistrerProsCLient(Request $request){
+        $request->validate([
+            'raison_social' => "required",
+            'date_prospection' => "required", 
+            'canal' => "required", 
+            'competence_rechercher' => "required",
+            //'type_maison' =>"required", 
+            //'nbre_de_chambre' => "required", 
+            //'nbre_wc_douche' => "required", 
+            //'taille_famille' => "required", 
+            //'info_complementaire' => "required", 
+            'budget' => "required", 
+            //'actions_menees' => "required", 
+            //'aboutissement' => "required", 
+            'id_agent' => "required", 
+            'id_client' => "required", 
+        ]);
+
+        $prospection = Prospection::all()->where('date', "=", $request->date)->where('id_agent', "=", $request->id_agent)->where('id_client', "=", $request->id_client);
+        if (count($prospection) !=0) {
+            //dd($prospection);
+            foreach ($prospection as $pros){
+                Mail::to($pros->client->email)->queue(new MailClientProspection($request->all()));
+            }
+
+            //return back()->withText("Message envoyer avec succès !");
+        } else {
+            $prospection = Prospection::create(
+                $request->all()
+            );
+            foreach ($prospection as $pros){
+                $clt = Client::all()->where("id_client", "=", $pros->id_client);
+
+                Mail::to($clt->email)->queue(new MailClientProspection($request->all()));
+            }
+        }
+        return redirect()->route('accueil');
     }
 
     /**
@@ -128,7 +170,7 @@ class ProspectionController extends Controller
     {
         $request->validate([
             'raison_social' => "required",
-            'date' => "required",
+            'date_prospection' => "required",
             'canal' => "required", 
             'competence_rechercher' => "required",
             //'type_maison' =>"required", 
@@ -141,7 +183,6 @@ class ProspectionController extends Controller
             //'aboutissement' => "required", 
             'id_agent' => "required", 
             'id_client' => "required", 
-            'id_facture' => "required"
         ]);
 
         $prospection->raison_social = $request->raison_social;

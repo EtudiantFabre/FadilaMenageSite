@@ -107,163 +107,533 @@ Js du programme
 
 
 
+@extends('layouts.app')
+@section('content')
 
-@extends("layout")
-@section("title", "Editer un client")
-@section("content")
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Création d'une prospection</title>
+</head>
+<style>
+    .body {
+        background-image: url('background.png');
+    }
+</style>
+<body class="body">
+    <div class="container rounded-4 shadow-lg p-3 mb-5 bg-div">
+        <h1 class="text-center">Remplir ce formulaire pour terminer vôtre demande</h1>
+        
+        <form method="POST" action="{{route('prospections.store')}}" >
+            @csrf
+            @method('POST')
+            <div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
 
-<div class="container rounded-4 shadow-lg p-3 mb-5 bg-div" style="background: rgb(166, 219, 243)">
+            @switch($client->type_service_rechercher)
+                @case("NOUNOU")
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Raison social<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="text" name="raison_social" id="raison_social" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Date<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="date" name="date_prospection" id="date_prospection" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Canal<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="text" id="canal" value="SITE WEB" name="canal" class="form-control">
+                    </div>
+                    <!--div>
+                        <input type="hidden" name="competence_rechercher" value="{{$agent->poste_candidate}}">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Type de maison<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="text" id="type_maison" name="type_maison" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre de chambre<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="nbre_de_chambre" name="nbre_de_chambre" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre de WC douche<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="nbre_wc_douche" name="nbre_wc_douche" min="1" class="form-control">
+                    </div-->
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Taille de la famille<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="taille_famille" name="taille_famille" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Budget<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="number" id="budget" name="budget" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Information complémentaire<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="text" id="info_complementaire" name="info_complementaire" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Action menée<span class="text-danger required" aria-hidden="true">*</span></span-->
+                        <input type="hidden" id="actions_menees" name="actions_menees" value="Aucune">
+                    </div>
+                    <div>
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Agent sélectionner :</span> 
+                        <input type="text" id="actions_menees" name="actions_menees" class="text-uppercase form-control fs-1" value="{{$agent->nom.' '.$agent->prenom}}" disabled-->
+                        <input type="hidden" name="id_agent" value="{{$agent->id_agent}}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Client voulant éffectuer la prospection :</span>
+                        <input type="text" id="actions_menees" name="actions_menees" class="form-control" value="{{$client->nom}}"-->
+                        <input type="hidden" name="id_client" value="{{$client->id_client}}">
+                        <input type="hidden" name="client-prospection" value="vrai">
+                        <input type="hidden" name="aboutissement" value="Attente">
+                    </div>
+
+                    <button type="button"  class="btn btn-primary d-grid gap-2 col-6 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnFin">FORMULAIRE REMPLI</button>
+            
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">INFOS POUR LA PROSPECTION</h5>
+                                    <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label text-info fw-bolder">Votre prospection est enregistré avec succès. Veuilez patientez, vous recevrer un mail pour votre demande !!!</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 col-6 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="Compris"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @break
+                @case("CUISINIER")
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Raison social<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="text" name="raison_social" id="raison_social" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Date<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="date" name="date_prospection" id="date_prospection" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Canal<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="text" id="canal" value="SITE WEB" name="canal" class="form-control">
+                    </div>
+                    <div>
+                        <input type="hidden" name="competence_rechercher" value="{{$agent->poste_candidate}}">
+                    </div>
+                    <br>
+                    <!--div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Type de maison<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="text" id="type_maison" name="type_maison" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre de chambre<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="nbre_de_chambre" name="nbre_de_chambre" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre de WC douche<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="nbre_wc_douche" name="nbre_wc_douche" min="1" class="form-control">
+                    </div-->
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Taille de la famille<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="taille_famille" name="taille_famille" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Budget<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="number" id="budget" name="budget" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Information complémentaire<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="text" id="info_complementaire" name="info_complementaire" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Action menée<span class="text-danger required" aria-hidden="true">*</span></span-->
+                        <input type="hidden" id="actions_menees" name="actions_menees" value="Aucune">
+                    </div>
+                    <div>
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Agent sélectionner :</span> 
+                        <input type="text" id="actions_menees" name="actions_menees" class="text-uppercase form-control fs-1" value="{{$agent->nom.' '.$agent->prenom}}" disabled-->
+                        <input type="hidden" name="id_agent" value="{{$agent->id_agent}}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Client voulant éffectuer la prospection :</span>
+                        <input type="text" id="actions_menees" name="actions_menees" class="form-control" value="{{$client->nom}}"-->
+                        <input type="hidden" name="id_client" value="{{$client->id_client}}">
+                        <input type="hidden" name="client-prospection" value="vrai">
+                        <input type="hidden" name="aboutissement" value="Attente">
+                    </div>
+
+                    <button type="button"  class="btn btn-primary d-grid gap-2 col-6 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnFin">FORMULAIRE REMPLI</button>
+            
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">INFOS POUR LA PROSPECTION</h5>
+                                    <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label text-info fw-bolder">Votre prospection est enregistré avec succès. Veuilez patientez, vous recevrer un mail pour votre demande !!!</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 col-6 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="Compris"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @break
+                @case("ENTRETIEN")
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Raison social<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="text" name="raison_social" id="raison_social" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Date<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="date" name="date_prospection" id="date_prospection" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Canal<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="text" id="canal" value="SITE WEB" name="canal" class="form-control">
+                    </div>
+                    <div>
+                        <input type="hidden" name="competence_rechercher" value="{{$agent->poste_candidate}}">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Type de maison<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="text" id="type_maison" name="type_maison" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre de chambre<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="nbre_de_chambre" name="nbre_de_chambre" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre de WC douche<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="nbre_wc_douche" name="nbre_wc_douche" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Taille de la famille<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="taille_famille" name="taille_famille" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Budget<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="number" id="budget" name="budget" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Information complémentaire<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="text" id="info_complementaire" name="info_complementaire" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Action menée<span class="text-danger required" aria-hidden="true">*</span></span-->
+                        <input type="hidden" id="actions_menees" name="actions_menees" value="Aucune">
+                    </div>
+                    <div>
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Agent sélectionner :</span> 
+                        <input type="text" id="actions_menees" name="actions_menees" class="text-uppercase form-control fs-1" value="{{$agent->nom.' '.$agent->prenom}}" disabled-->
+                        <input type="hidden" name="id_agent" value="{{$agent->id_agent}}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Client voulant éffectuer la prospection :</span>
+                        <input type="text" id="actions_menees" name="actions_menees" class="form-control" value="{{$client->nom}}"-->
+                        <input type="hidden" name="id_client" value="{{$client->id_client}}">
+                        <input type="hidden" name="client-prospection" value="vrai">
+                        <input type="hidden" name="aboutissement" value="Attente">
+                    </div>
+
+                    <button type="button"  class="btn btn-primary d-grid gap-2 col-6 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnFin">FORMULAIRE REMPLI</button>
+            
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">INFOS POUR LA PROSPECTION</h5>
+                                    <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label text-info fw-bolder">Votre prospection est enregistré avec succès. Veuilez patientez, vous recevrer un mail pour votre demande !!!</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 col-6 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="Compris"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @break
+                @case("CHAUFFEUR")
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Raison social<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="text" name="raison_social" id="raison_social" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Date<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="date" name="date_prospection" id="date_prospection" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Canal<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="text" id="canal" value="SITE WEB" name="canal" class="form-control">
+                    </div>
+                    <div>
+                        <input type="hidden" name="competence_rechercher" value="{{$agent->poste_candidate}}">
+                    </div>
+                    <br>
+                    <!--div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Type de maison<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="text" id="type_maison" name="type_maison" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre de chambre<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="nbre_de_chambre" name="nbre_de_chambre" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre de WC douche<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="nbre_wc_douche" name="nbre_wc_douche" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Taille de la famille<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="taille_famille" name="taille_famille" min="1" class="form-control">
+                    </div-->
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Budget<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="number" id="budget" name="budget" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Information complémentaire<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="text" id="info_complementaire" name="info_complementaire" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Action menée<span class="text-danger required" aria-hidden="true">*</span></span-->
+                        <input type="hidden" id="actions_menees" name="actions_menees" value="Aucune">
+                    </div>
+                    <div>
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Agent sélectionner :</span> 
+                        <input type="text" id="actions_menees" name="actions_menees" class="text-uppercase form-control fs-1" value="{{$agent->nom.' '.$agent->prenom}}" disabled-->
+                        <input type="hidden" name="id_agent" value="{{$agent->id_agent}}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Client voulant éffectuer la prospection :</span>
+                        <input type="text" id="actions_menees" name="actions_menees" class="form-control" value="{{$client->nom}}"-->
+                        <input type="hidden" name="id_client" value="{{$client->id_client}}">
+                        <input type="hidden" name="client-prospection" value="vrai">
+                        <input type="hidden" name="aboutissement" value="Attente">
+                    </div>
+
+                    <button type="button"  class="btn btn-primary d-grid gap-2 col-6 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnFin">FORMULAIRE REMPLI</button>
+            
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">INFOS POUR LA PROSPECTION</h5>
+                                    <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label text-info fw-bolder">Votre prospection est enregistré avec succès. Veuilez patientez, vous recevrer un mail pour votre demande !!!</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 col-6 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="Compris"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @break
+                @default
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Raison social<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="text" name="raison_social" id="raison_social" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Date<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="date" name="date_prospection" id="date_prospection" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Canal<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="text" id="canal" value="SITE WEB" name="canal" class="form-control">
+                    </div>
+                    <div>
+                        <input type="hidden" name="competence_rechercher" value="{{$agent->poste_candidate}}">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Type de maison<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="text" id="type_maison" name="type_maison" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre de chambre<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="nbre_de_chambre" name="nbre_de_chambre" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre de WC douche<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="nbre_wc_douche" name="nbre_wc_douche" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Taille de la famille<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="number" id="taille_famille" name="taille_famille" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Budget<span class="text-danger required" aria-hidden="true">*</span></span>
+                        <input type="number" id="budget" name="budget" min="1" class="form-control">
+                    </div>
+                    <br>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Information complémentaire<span class="text-danger required" aria-hidden="true"></span></span>
+                        <input type="text" id="info_complementaire" name="info_complementaire" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Action menée<span class="text-danger required" aria-hidden="true">*</span></span-->
+                        <input type="hidden" id="actions_menees" name="actions_menees" value="Aucune">
+                    </div>
+                    <div>
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Agent sélectionner :</span> 
+                        <input type="text" id="actions_menees" name="actions_menees" class="text-uppercase form-control fs-1" value="{{$agent->nom.' '.$agent->prenom}}" disabled-->
+                        <input type="hidden" name="id_agent" value="{{$agent->id_agent}}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <!--span class="input-group-text" id="inputGroup-sizing-default">Client voulant éffectuer la prospection :</span>
+                        <input type="text" id="actions_menees" name="actions_menees" class="form-control" value="{{$client->nom}}"-->
+                        <input type="hidden" name="id_client" value="{{$client->id_client}}">
+                        <input type="hidden" name="client-prospection" value="vrai">
+                        <input type="hidden" name="aboutissement" value="Attente">
+                    </div>
+
+                    <button type="button"  class="btn btn-primary d-grid gap-2 col-6 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnFin">FORMULAIRE REMPLI</button>
+            
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">INFOS POUR LA PROSPECTION</h5>
+                                    <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label text-info fw-bolder">Votre prospection est enregistré avec succès. Veuilez patientez, vous recevrer un mail pour votre demande !!!</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 col-6 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <input type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="Compris"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            @endswitch
+            
+            <!--div class="form-floating">
+                Aboutissement (ceci est optionnel) : 
+                <input type="text" name="aboutissement" autocomplete="additional-name" class="form-control">
+                <textarea name="aboutissement" id="conclusion" class="form-control" rows="-10" placeholder="Entrer la conclusion ici"></textarea>
+            </div-->
+
+
+            <!--div class="d-grid gap-2 col-6 mx-auto">
+                <input type="submit" class="btn btn-primary" value="FORMULAIRE REMPLI"/>
+            </div-->
+        </form>
+    </div>
+</body>
+
+<script type="text/javascript" LAGUAGE= "JavaScript">
+    let btnFormulaire = document.getElementById('btnFin');
+    let raisonSocial = document.getElementById('raison_social');
+    let dateProspection = document.getElementById('date_prospection');
+    let canal = document.getElementById('canal');
+    let typeMaison = document.getElementById('type_maison');
+    let nbreChambre = document.getElementById('nbre_de_chambre');
+    let nbreWcDouche = document.getElementById('nbre_wc_douche');
+    let tailleFamille = document.getElementById('taille_famille');
+    let budget = document.getElementById('budget');
+    let infoComplementaire = document.getElementById('info_complementaire');
+    let actionsMenees = document.getElementById('actions_menees');
     
+    btnFormulaire.disabled = true;
 
+    let laDate = new Date();
+    //alert(laDate.getDate());
+    if ((laDate.getDate() < 10) && ((laDate.getMonth() + 1) < 10)) {
+        //alert("0"+laDate.getDate()+"/0"+(laDate.getMonth()+1)+"/"+laDate.getFullYear());
+        dateProspection.setAttribute("min", "0"+laDate.getDate()+"/0"+(laDate.getMonth()+1)+"/"+laDate.getFullYear());
+    }
+    
+    raisonSocial.addEventListener("change", activationBouton);
+    dateProspection.addEventListener("change", activationBouton);
+    canal.addEventListener("change", activationBouton);
+    budget.addEventListener("change", activationBouton);
 
-	<!-- Si nous avons un client $client -->
-	@if (isset($client))
-		<div class="container " style="text-color: white" id="title">
-			<h1 class="text-center">Editer un client</h1>
-		</div>
-		<!-- Le formulaire est géré par la route "client.update" -->
-		<form method="POST" action="{{ route('clients.update', $client) }}"  class="mb-10px">
+    function activationBouton () {
+        if ((raisonSocial.value === "") || (dateProspection.value === "") || (canal.value === "") || (budget.value == "")){
+            btnFormulaire.disabled = true;
+        } else{
+            btnFormulaire.disabled = false;
+        }
+    }
+    //alert(!(raisonSocial));
 
-		<!-- <input type="hidden" name="_method" value="PUT"> -->
-		@method('PUT')
-
-	@else
-
-	<!-- Le formulaire est géré par la route "clients.store" -->
-		<div class="container " style="text-color: white" id="title">
-			<h1 class="text-center">Renseignez-vous ici</h1>
-		</div>
-		<form method="POST" action="{{ route('clients.store') }}" enctype="multipart/form-data">
-
-	@endif
-
-		<!-- Le token CSRF -->
-		@csrf
-
-		<div class="form-group">
-			<label for="nom">Nom</label><br/>
-
-			<input class="form-control" type="text" name="nom" value="{{ isset($client->nom) ? $client->nom : old('nom') }}"  id="nom" placeholder="Entrez votre nom" >
-
-			<!-- Le message d'erreur pour "nom" -->
-			@error("nom")
-			<div>{{ $message }}</div>
-			@enderror
-		</div>
-
-		<div class="form-group">
-			<label for="tel" >Numéro de téléphone</label><br/>
-
-			<input class="form-control" type="text" name="tel" value="{{ isset($client->tel) ? $client->tel : old('tel') }}"  id="tel" placeholder="numéro téléphone" >
-
-			<!-- Le message d'erreur pour "tel" -->
-			@error("tel")
-			<div>{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="ville" >Ville</label><br/>
-
-			<input class="form-control" type="text" name="ville" value="{{ isset($client->ville) ? $client->ville : old('ville') }}"  id="ville" placeholder="Votre ville de résidence" >
-
-			<!-- Le message d'erreur pour "ville" -->
-			@error("ville")
-			<div>{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="quartier">Quartier</label><br/>
-
-			<input class="form-control" type="text" name="quartier" value="{{ isset($client->quartier) ? $client->quartier : old('quartier') }}"  id="quartier" placeholder="Votre quartier" >
-
-			<!-- Le message d'erreur pour "quartier" -->
-			@error("quartier")
-			<div>{{ $message }}</div>
-			@enderror
-		</div>
-        <div class="form-group">
-			<label for="email">Adresse email</label><br/>
-
-			<input class="form-control" type="text" name="email" value="{{ isset($client->email) ? $client->email : old('email') }}"  id="email" placeholder="votre adresse email" >
-
-			<!-- Le message d'erreur pour "email" -->
-			@error("email")
-			<div>{{ $message }}</div>
-			@enderror
-		</div>
-		<br>
-        <div class="form-group">
-			<label for="type_service_rechercher" >Quel type de services rechercer vous ?</label><span class="text-danger required" aria-hidden="true">*</span>
-            @if (isset($candidat))
-				@if ($candidat->genre == "NOUNOU")
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type_service_rechercher" checked='checked' id="inlineRadio1" value="NOUNOU">
-						<label class="form-check-label" for="inlineRadio1">NOUNOU</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="CUISINIER">
-						<label class="form-check-label" for="inlineRadio2">CUISINIER</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="ENTRETIEN">
-						<label class="form-check-label" for="inlineRadio2">NETOYAGE ET ENTRETIEN</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="CHAUFFEUR">
-						<label class="form-check-label" for="inlineRadio2">CHAUFFEUR</label>
-					</div>
-					<!--div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="CONCEPTION DE PANIER CADEAU">
-						<label class="form-check-label" for="inlineRadio2">CONCEPTION DE PANIER CADEAU</label>
-					</div-->
-				@endif
-			@else
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="type_service_rechercher"  id="inlineRadio1" value="NOUNOU">
-					<label class="form-check-label" for="inlineRadio1">NOUNOU</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="CUISINIER">
-					<label class="form-check-label" for="inlineRadio2">CUISINIER</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="ENTRETIEN">
-					<label class="form-check-label" for="inlineRadio2">NETOYAGE ET ENTRETIENT</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="CHAUFFEUR">
-					<label class="form-check-label" for="inlineRadio2">CHAUFFEUR</label>
-				</div>
-				<!--div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="CONCEPTION DE PANIER CADEAU">
-					<label class="form-check-label" for="inlineRadio2">CONCEPTION DE PANIER CADEAU</label>
-				</div-->
-			@endif
-
-			<!-- Le message d'erreur pour "type_service_rechercher" -->
-			@error("type_service_rechercher")
-			<div>{{ $message }}</div>
-			@enderror
-		</div>
-		<br>
-        <div class="form-group">
-			<label for="frequence_souhaiter" >Frequence souhaité</label><br/>
-
-			<input class="form-control" type="number" name="frequence_souhaiter" value="{{ isset($client->frequence_souhaiter) ? $client->frequence_souhaiter : old('frequence_souhaiter') }}"  id="frequence_souhaiter" placeholder="Fréquence souhaité" >
-
-			<!-- Le message d'erreur pour "frequence_souhaiter" -->
-			@error("frequence_souhaiter")
-			<div>{{ $message }}</div>
-			@enderror
-		</div>
-		<br>
-		<div >
-			<input class="btn btn-secondary" type="submit" name="valider" value="Valider" >
-		</div>
-		
-
-	</form>
-</div>
+</script>
+</html>
 
 @endsection
+
+
+
 

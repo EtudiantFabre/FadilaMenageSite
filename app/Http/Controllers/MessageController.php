@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Client;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MessageGoogle;
+use App\Models\Agent;
 
 class MessageController extends Controller
 {
@@ -18,11 +19,10 @@ class MessageController extends Controller
     public function sendMessageGoogle(Request $request){
         $this->validate($request, ['message' => 'bail|required']);
 
-        $clients = Client::all();
+        $agents = Agent::all()->where("email", "=", $request->email);
 
-        Mail::to($clients)->bcc('fabricetoyi87@gmail.com')
-            ->queue(new MessageGoogle($request->all()));
+        /*Mail::to($agents)->queue(new MessageGoogle($request->all()));
 
-        return back()->withText("Message envoyer avec succès !");
+        return back()->withText("Message envoyer avec succès !");*/
     }
 }

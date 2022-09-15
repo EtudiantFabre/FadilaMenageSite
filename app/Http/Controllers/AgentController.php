@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agent;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
@@ -192,11 +193,43 @@ class AgentController extends Controller
 
     }
 
-    public function listAgents(Request $request)
+    public function ListAgents(Request $request)
     {
-        //dd($request);
+        
+        $request->validate([
+            "nom" => "required",
+            'tel' => "required",
+            "ville" => "required",
+            "quartier" => "required",
+            "email" => "required",
+            "type_service_rechercher" => "required",
+            "frequence_souhaiter" => "required"
+        ]);
+
+        $clients = Client::all()->where("nom", "=", $request->nom)->where("tel", "=", $request->tel)->where("ville", "=", $request->ville);//->first();
+        if (count($clients) !=0) {
+            session()->flash("message", "Client déjà existant");
+        } else {
+            $client = Client::create($request->all());    
+        }
+
+
+        //  Affichage de tout les agents (CD 1)
+        $agents = Agent::all()->where('poste_candidate', '=', strtoupper($request->type_service_rechercher));
+        if ((count($agents) !=0) && (count($clients) !=0)) {
+            //session()->flash("message", "Client déjà existant");
+            return view("agents.listeAgents")->with('agents', $agents)->with('clients', $clients);
+        } else {
+            if (count($clients) == 0) {
+                return view("agents.listeAgents")->with('agents', $agents)->with('client', $client);//->flash('message', "Aucun agent ne correspond à votre demande !!!");
+            }
+            //  On ramène le client à la vue de création de client
+            return view("clients.create");//->flash('message', "ATTENTION : un client existe déjà sous ce nom. Essayer avec un autre nom");
+        }
+
+        /*//dd($request);
         $agents = Agent::all()->where('ville_residence', '=', $request->ville)->where('poste_candidate', '=', $request->type_service_rechercher);
-        return view('agents.listAgents')->with('agents', $agents)->with('agents', $agents);
+        return view('agents.listAgents')->with('agents', $agents)->with('agents', $agents);*/
 
     }
 
@@ -215,4 +248,8 @@ class AgentController extends Controller
     return redirect(route('agents.index'));
 
     }
+	/**
+	 */
+	function __construct() {
+	}
 }

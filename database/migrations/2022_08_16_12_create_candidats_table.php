@@ -40,6 +40,8 @@ return new class extends Migration
             $table->string('qualite_personnelles')->nullable();
             $table->string('savoir_faire')->nullable();
             $table->string('disponible_a_loger');
+            $table->integer('pretention_salarial');
+            $table->string('niveau_etude')->nullable();
             $table->string('nature_contrat');
             $table->string('horaire_travail_passe')->nullable();
             $table->timestamps();

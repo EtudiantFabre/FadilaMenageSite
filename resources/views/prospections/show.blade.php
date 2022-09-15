@@ -28,7 +28,6 @@
                     <th>Conclusion</th>
                     <th>Agent sélectionné</th>
                     <th>Client sélectionné</th>
-                    <th>Facture sélectionné</th>
                 </tr>
             </thead>
 
@@ -71,9 +70,6 @@
                 </td>
                 <td>
                     {{$prospection->id_client}}
-                </td>
-                <td>
-                    {{$prospection->id_facture}}
                 </td>
             </tr>
         </table>

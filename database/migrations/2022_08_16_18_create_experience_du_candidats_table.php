@@ -19,11 +19,11 @@ return new class extends Migration
             $table->integer('nbr_voiture_conduit')->nullable();
             $table->string('type_voiture')->nullable();
             $table->string('type_contrat')->nullable();
-            $table->string('adresse_societe')->nullable();
-            $table->string('adresse_employeur')->nullable();
+            $table->string('nom_employeur')->nullable();
+            $table->string('numero_employeur')->nullable();
             $table->integer('dernier_salaire');
-            $table->date('date_demission');
-            $table->integer('pretention_salarial');
+            $table->integer('nombre_enfants_garde');
+            $table->date('date_demission')->nullable();
             $table->integer('candidat');
             $table->timestamps();
             $table->softDeletes();

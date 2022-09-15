@@ -30,7 +30,8 @@ class MessageGoogle extends Mailable
      */
     public function build()
     {
-        return $this->subject("TEST DE L'ENVOI DE MAIL")
-            ->view('emails.message-google');
+        $mailData = $this->data; // Les donnés du mail à envoyer
+        return $this->subject("TEST DE L'ENVOI DE MAIL") // Le sujet
+            ->view('emails.mailagent', compact('mailData')); // La vue
     }
 }

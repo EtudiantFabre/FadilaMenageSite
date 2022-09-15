@@ -14,6 +14,14 @@
         <!--a href="{{-- route('/creation-suivi')--}}">Commencer</a-->
         <h1 class="text-center">Liste de suivi</h1>
         <div>
+            <section>
+                <form action="{{route('suivis.create')}}">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-primary">Créer un suivi</button>
+                    </div>
+                </form>
+            </section>
+            <br>
             <table class="table table-primary table-hover table-striped rounded table-bordered border-primary text-center table-curved justify-content-center">
                 <thead class="table-success">
                     <tr>
@@ -63,24 +71,7 @@
                 @endforeach
             </table>
         </div>
-
-
-        <section>
-            <form action="{{route('suivis.create')}}">
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="submit" class="btn btn-primary">Créer un suivi</button>
-                </div>
-            </form>
-        </section>
     </div>
-
-
-
-
-
-
-
-
 
 </body>
 </html>

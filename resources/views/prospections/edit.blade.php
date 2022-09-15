@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
-        <h1>Modification d'une prospection</h1>
+        <h1 class="text-center">Modification d'une prospection</h1>
         <form action="{{route('prospections.update', $prospection)}}" method="POST">
             @csrf
             @method('put')
@@ -34,7 +34,7 @@
             <br>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Date de prospection<span class="text-danger required" aria-hidden="true">*</span></span>
-                <input type="date" name="date_prospection" id="date_prospection" class="form-control" value="{{$prospection->date}}">
+                <input type="date" name="date_prospection" id="date_prospection" class="form-control" value="{{$prospection->date_prospection}}">
             </div>
             <br>
             <div class="input-group mb-3">
@@ -136,24 +136,12 @@
                         @if ($unClient['id_client'] == $prospection->unClient)
                             <option selected value={{$unClient['id_client']}}>{{$unClient['id_client']}} 👉️ {{$unClient['nom']}}</option>
                         @else
-                            <option value={{$unClient['id_client']}}>{{$unAgent['id_client']}} 👉️ {{$unClient['nom']}}</option>
+                            <option value={{$unClient['id_client']}}>{{$unClient['id_client']}} 👉️ {{$unClient['nom']}}</option>
                         @endif
                     @endforeach
                 </select>
             </div>
-            <br>
-            <!--div>
-                Facture<span class="text-danger required" aria-hidden="true">*</span> : 
-                <select name="id_facture" id="id_facture">
-                    @foreach ($factures as $facture)
-                        @if ($facture['id_facture'] == $prospection->id_facture)
-                            <option selected value={{$facture['id_facture']}}>{{$facture['id_facture']}}</option>
-                        @else
-                            <option value={{$facture['id_facture']}}>{{$facture['id_facture']}}</option>
-                        @endif
-                    @endforeach
-                </select>
-            </div-->
+
             <br>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Aboutissement<span class="text-danger required" aria-hidden="true"></span></span>

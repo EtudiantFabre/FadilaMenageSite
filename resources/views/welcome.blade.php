@@ -10,7 +10,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/carousel.css">
+        <link rel="stylesheet" href="css/carousel.css">
 
         <!-- Styles -->
         <style>
@@ -76,7 +76,7 @@
         </style>
     
     </head>
-    <body class="antialiased ">
+    <body class=" ">
         <!--div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <?php 
             /*
@@ -245,14 +245,15 @@
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form-->
                 @if (Route::has('login'))
-                  <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                  <div class="hidden btn-toolbar fixed top-0 right-0 px-3 py-4 sm:block">
+                      <a class="text-sm text-gray-900 btn btn-warning underline dark:text-gray-500" href="{{route('clients.prospect')}}">Demander un service</a>
                       @auth
-                          <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                          <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 btn btn-info underline">Home</a>
                       @else
-                          <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                          <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 btn btn-info underline">Se connecter</a>
 
                           @if (Route::has('register'))
-                              <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                              <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline btn btn-info">S'enregistrer</a>
                           @endif
                       @endauth
                   </div>
@@ -273,17 +274,17 @@
               </div>
               <div class="carousel-inner" id="#">
                 <div class="carousel-item active">
-                  <img src="/toutfadila2.jpg" class="d-block w-100 img-custom bd-placeholder-img" width="100%" height="100%" alt="..." aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%" fill="#777" >
+                  <img src="/imageSite.webp" class="d-block w-100 img-custom bd-placeholder-img" width="100%" height="100%" alt="..." aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%" fill="#777" >
                   <div class="carousel-caption d-none d-md-block text-start container">
                     <h1>Bienvenue sur notre site officiel Fadila Ménage</h1>
                     <p>Demander un devis en cliquant directement sur ce bouton</p>
-                    <form action="{{route('clients.create')}}">
+                    <form action="{{route('clients.prospect')}}">
                        <button class="btn btn-primary">Demander un service</button>
                     </form>
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img src="/toutfadila6.jpeg" class="d-block w-100 img-custom bd-placeholder-img" width="100%" height="100%" alt="..." aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%" fill="#777">
+                  <img src="/imageSite1.webp" class="d-block w-100 img-custom bd-placeholder-img" width="100%" height="100%" alt="..." aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%" fill="#777">
                   <div class="carousel-caption d-none d-md-block">
                     <h1 class="bg-green">Vous pouvez visiter nôtre page linkedin en cliquant sur cet bouton</h1>
                     <p>Accédez directement à notre Page linkedin à partir d'ici.</p>
@@ -293,7 +294,7 @@
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img src="/toutfadila7.jpeg" class="d-block w-100 img-custom bd-placeholder-img" width="100%" height="100%" alt="..." aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%" fill="#777">
+                  <img src="/imageSite2.webp" class="d-block w-100 img-custom bd-placeholder-img" width="100%" height="100%" alt="..." aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false" width="100%" height="100%" fill="#777">
                   <div class="carousel-caption d-none d-md-block text-end">
                     <h1>Bienvenue sur notre site officiel</h1>
                     <p>Accédez directement à notre whatsapp à partir d'ici</p>
@@ -373,7 +374,7 @@
               <div class="bg-light p-5 rounded">
                 <div class="col-sm-8 py-5 mx-auto">
                   <h1 class="display-5 fw-normal">Pétite histoire </h1>
-                  <p class="fs-5">Créée en 2017, FADILA MÉNAGE est spécialisée dans le placement du personnel de ménage, le nettoyage professionnel et la conception de panier-cadeau.<a href="../examples/navbar-static/">top</a> and <a href="../examples/navbar-fixed/">fixed top</a> examples.</p>
+                  <p class="fs-5">Créée en 2017, FADILA MÉNAGE est spécialisée dans le placement du personnel de ménage, le nettoyage professionnel et la conception de panier-cadeau.</p>
                   <p class="text-danger">Notre mission est d'apporter le bonheur et la joie dans vos ménages.</p>
               </div>
               </div>

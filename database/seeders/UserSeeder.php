@@ -123,6 +123,7 @@ class UserSeeder extends Seeder
             'nature_contrat' => 'CDD',
             'horaire_travail_passe' => '14H',
             'date_retenu' => '10/11/2022',
+            'pretention_salarial' => '80000',
             'status' => 'ACTIF',
             'telephone' => '70254578'
         ]);
@@ -155,6 +156,7 @@ class UserSeeder extends Seeder
             'nature_contrat' => 'CDD',
             'horaire_travail_passe' => '17H',
             'date_retenu' => '10/11/2022',
+            'pretention_salarial' => '80000',
             'status' => 'ACTIF',
             'telephone' => '91584697'
         ]);

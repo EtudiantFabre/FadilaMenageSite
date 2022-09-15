@@ -17,6 +17,7 @@
             <div>
                 <label for="email">Adresse email</label>
                 <input class="form-control" type="email" name="email" placeholder="Ex:exemple@gmail.com" autocomplete="additional-name">
+                {{ $errors->first("email", ":email")}}
             </div>
             <br>
             <div>

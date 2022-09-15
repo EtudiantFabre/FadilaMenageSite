@@ -56,7 +56,7 @@ class ClientController extends Controller
             $client = Client::create($request->all());    
         }
         
-        
+        /*
         //  Affichage de tout les agents (CD 1)
         $agents = Agent::all()->where('poste_candidate', '=', strtoupper($request->type_service_rechercher));
         if ((count($agents) !=0) && (count($clients) !=0)) {
@@ -69,9 +69,13 @@ class ClientController extends Controller
             //  On ramène le client à la vue de création de client
             return view("clients.create");//->flash('message', "ATTENTION : un client existe déjà sous ce nom. Essayer avec un autre nom");
         }
-        
+        */
 
-        //return redirect(route("clients.index"));
+        return redirect(route("clients.index"));
+    }
+
+    public function creerUnClient(){
+        return view('clients.creerUnClient');
     }
 
     /**
