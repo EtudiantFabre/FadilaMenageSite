@@ -30,27 +30,23 @@
             -moz-user-select: none;
             user-select: none;
           }
-
           @media (min-width: 768px) {
             .bd-placeholder-img-lg {
               font-size: 3.5rem;
             }
           }
-
-          .b-example-divider {
+        .b-example-divider {
             height: 3rem;
             background-color: rgba(0, 0, 0, .1);
             border: solid rgba(0, 0, 0, .15);
             border-width: 1px 0;
             box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
           }
-
-          .b-example-vr {
+         .b-example-vr {
             flex-shrink: 0;
             width: 1.5rem;
             height: 100vh;
           }
-
           .bi {
             vertical-align: -.125em;
             fill: currentColor;
@@ -62,7 +58,6 @@
             height: 2.75rem;
             overflow-y: hidden;
           }
-
           .nav-scroller .nav {
             display: flex;
             flex-wrap: nowrap;
@@ -75,17 +70,18 @@
           }
         </style>
 
+
     </head>
     <body class=" ">
         <!--div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <?php
+
             /*
             use SimpleSoftwareIO\QrCode\Facades\QrCode;
                 $qrcode = QrCode::size(200)->generate("https://www.youtube.com/channel/UC9H0uvq-93Bbf1hJJ5mJa8A");
                 echo $qrcode;
             */
             ?>
-
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
@@ -221,9 +217,10 @@
             </button>
           </div-->
 
+
         <header>
           <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white">
-            <div class="container-fluid">
+           <div class="container-fluid">
               <a class="navbar-brand" href="#"><img src="/Original_on_Transparent.png" style="width: 200px; height: 50px;" alt="FADILA MÉNAGE"></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -244,9 +241,9 @@
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form-->
+
                 <a class="container fixed-left" href="{{ route('candidats.create') }}" style="text-align: center; font-weight: bold; color:#FF5E0E; line-height: 50px;" id="comp-jd97w5lt3label">Candidatez-vous</a>
                 <a class="container fixed-center" href="#" style="text-align: left; color:#FF5E0E; font-weight: bold; line-height: 50px;" id="comp-jd97w5lt3label">Nos services</a>
-
 
                 @if (Route::has('login'))
                   <div class="hidden btn-toolbar fixed top-0 right-0 px-3 py-4 sm:block">
@@ -266,8 +263,6 @@
             </div>
           </nav>
         </header>
-
-
 
         <main>
             <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -319,12 +314,9 @@
             </div>
 
 
-
-
             <!-- Marketing messaging and featurettes
             ================================================== -->
             <!-- Wrap the rest of the page in another container to center all the content. -->
-
 
 
               <!-- START THE FEATURETTES -->
@@ -345,6 +337,7 @@
 
               <div class="row featurette">
                 <div class="col-md-7 order-md-2">
+
 
                   <h2 class="featurette-heading fw-normal lh-1 text-uppercase " style="color:#FF5E0E">Oh yeah, c'est cool en vu d'obtenir un emploi ?</h2>
                   <p class="lead text-uppercase" style="color:#FF5E0E">Fadila Ménage permet aux travailleurs domestiques existants et tout chercheur d’emploi de <a href="{{ route('candidats.create') }}">s'enregistrer</a>, de créer un profil, En vue d’obtenir un emploi selon leur compétence.</p>
@@ -387,7 +380,6 @@
           <div class="container">
             <hr class="featurette-divider">
           </div>
-
           <div>
             <h1 class="display-5 fw-normal">Localisation de l'entreprise</h1>
           </div>
@@ -396,8 +388,6 @@
           </div>
 
         </main>
-
-
 
         <!--div class="row row-cols-2 row-cols-md-2 g-4" style="margin-top: auto; margin-bottom: auto;">
           <div class="card mb-3 bg-warning " style="max-width: 999px;">

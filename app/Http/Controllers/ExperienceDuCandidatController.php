@@ -35,6 +35,9 @@ class ExperienceDuCandidatController extends Controller
         //dd($last);
         return view("experienceDuCandidats.edit",compact('last'));
 
+        //Log::debug($last_row);
+
+
     }
 
     /**
@@ -53,7 +56,10 @@ class ExperienceDuCandidatController extends Controller
 
          // 2. On enregistre les informations de lexperience du candidat
 
+         $last_row = DB::table('candidats')->latest('id_candidat')->get();
 
+        foreach ($last_row as $last) {
+            $idCandidat = $last->id_candidat;
 
          ExperienceDuCandidat::create([
             "nbr_annee_experience" => $request->nbr_annee_experience,
@@ -69,10 +75,15 @@ class ExperienceDuCandidatController extends Controller
 
         ]);
 
+    }
+
         // 3. On retourne vers tous les experiences :
         return redirect('/')->with('flash_message', 'Votre candidature est enregisrer ave succès!');
-
     }
+
+
+
+
 
     /**
      * Display the specified resource.

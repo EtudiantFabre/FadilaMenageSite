@@ -1,3 +1,4 @@
+
 @extends("layouts.app")
 @section("content")
 <!DOCTYPE html>
@@ -344,4 +345,5 @@
 
     </body>
 </html>
+
 @endsection

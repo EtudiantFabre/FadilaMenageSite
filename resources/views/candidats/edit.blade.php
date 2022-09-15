@@ -36,6 +36,7 @@
             }
         </style>
             </head>
+	</head>
 
 	<body>
 
@@ -50,6 +51,7 @@
 
 
 		<script src="{{ asset('js/main.js') }}"></script>
+
         <header>
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white">
               <div class="container-fluid">
@@ -376,6 +378,7 @@
 
                 @if (isset($candidat))
                     <button type="submit" name="valider" class="btn btn-info btn-block ">Mettre à jour</button>
+
                 @endif
 
             </form>

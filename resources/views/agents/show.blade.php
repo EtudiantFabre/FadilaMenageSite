@@ -1,6 +1,7 @@
 @extends("layout")
 @section("title", $agent->nom)
 @section("content")
+
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white mb-5">
         <div class="container-fluid">
@@ -192,4 +193,3 @@
 </div>
 </div>
 @endsection
-

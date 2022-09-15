@@ -20,6 +20,8 @@
           </div>
 
             <a href="{{ route('candidats.create') }}"  class="btn  float-end text-uppercase me-6" style=" font-weight: bold; color:#FF5E0E;">Enregistrer un candidat</a>
+            <a href="{{ route('agents.index') }}"  class="btn  float-end text-uppercase me-6" style=" font-weight: bold; color:#FF5E0E;">Liste des agents</a>
+
 
       </div>
     </div>

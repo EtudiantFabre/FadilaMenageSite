@@ -1,6 +1,7 @@
 @extends("layout")
 @section("title", $candidat->nom)
 @section("content")
+
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white mb-5">
         <div class="container-fluid">
@@ -35,6 +36,7 @@
 <div class="container rounded-4  shadow-lg p-5 mb-5 bg-gray mt-10">
 <div class="container p-10 mt-10">
     <div class="class row mt-10">
+
         <div class="class col-lg-4 bg-dark text-white text-center py-4">
             <div class="header-left">
                 <img class="img-thumbnail rounded-circle mb-2" src="{{ asset('storage/'.$candidat->avatar)}}"  >
@@ -43,6 +45,7 @@
             </div>
 
             <div>
+
                 <h5 class="text-uppercase bg-white text-dark py-2 rounded-pill">Objectif</h5>
                 <ul class="list text-white-50 text-ml-5 py-2 text-left text-capitalize">
                     <li class="list-item">
@@ -52,6 +55,7 @@
             </div>
 
             <div>
+
                 <h5 class="text-uppercase bg-white text-dark py-2 rounded-pill">Informations personnel</h5>
 
                 <ul class="list-unstyled text-white-50 ml-5 py-2 ">
@@ -83,15 +87,13 @@
 
                 </ul>
             </div>
-
-            <div>
+           <div>
                 <h5 class="text-uppercase bg-white text-dark py-2 rounded-pill">Adresse</h5>
 
                 <ul class="list-unstyled text-white-50 ml-5 py-2">
                     <li class="list-item">
                         {{ 'Contatct : '.$candidat->telephone }}
-                        <i class="zmdi zmdi-smartphone-android"></i>
-                    </li>
+                 </li>
                     <li class="list-item">
                         {{'Email : '.$candidat->email }}
                     </li>
@@ -107,7 +109,6 @@
                 </ul>
             </div>
 
-
         </div>
         <div class="col-lg-8 bg-light text-dark py-5 px-5">
             <div class="header-right">
@@ -119,13 +120,14 @@
                 <h4 class="text-uppercase">Niveau d'étude</h4>
                 <hr>
                 <p>{{ $candidat->niveau_etude}}</p>
-            </div>
+           </div>
             <div class="header-right">
                 <h4 class="text-uppercase">Savoir faire</h4>
                 <hr>
                 <p>{{ $candidat->savoir_faire }}</p>
             </div>
             <div class="header-right">
+
                 <h4 class="text-uppercase">Pretention salarial</h4>
                 <hr>
                 <p>{{ $candidat->pretention_salarial }}</p>
@@ -194,7 +196,6 @@
         </div>
 
     </div>
-
 </div>
 </div>
 @endsection

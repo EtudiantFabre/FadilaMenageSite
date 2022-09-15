@@ -9,15 +9,13 @@
 
         <title>@yield('title', config('app.name'))</title>
 
-    
+    </head>
 
     <body class="form-v10-content">
         @yield('content')
 
 
-
-
-            <div>
+           <div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -51,7 +49,7 @@
 
 
 
-        </body>
+    </body>
 
 </html>
 @endsection

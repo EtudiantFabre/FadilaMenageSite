@@ -2,9 +2,6 @@
 @section("title", "Expériences des candidats")
 @section("content")
 
-
-
-
                     <div class="card-header">
                         <h4 class="text-center">Expériences du candidats
                         </h4>
@@ -84,8 +81,5 @@
                             @endforeach
                         </tbody>
                     </table>
-
-
-
 
 @endsection
