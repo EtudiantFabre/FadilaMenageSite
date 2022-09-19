@@ -116,7 +116,7 @@
                                             <div class="text-danger required">{{ $message }}</div>
                                         @enderror
                                     </div>
-    
+
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
@@ -143,7 +143,7 @@
                                     </div>
                                     <div class="form-group">
                                         <h6 for="type_service_rechercher" >Quel type de services rechercer vous ?<span class="text-danger required" aria-hidden="true">*</span></h6>
-                                        
+
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="type_service_rechercher"  id="inlineRadio1" value="NOUNOU">
                                             <label class="form-check-label" for="inlineRadio1">NOUNOU</label>
@@ -156,7 +156,7 @@
                                             <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="ENTRETIEN">
                                             <label class="form-check-label" for="inlineRadio2">NETOYAGE ET ENTRETIEN</label>
                                         </div>
-                            
+
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="type_service_rechercher" id="inlineRadio2" value="CHAUFFEUR">
                                             <label class="form-check-label" for="inlineRadio2">CHAUFFEUR</label>
@@ -172,16 +172,16 @@
                                     </div>
                                     <div class="form-group">
                                         <h6 for="frequence_souhaiter" >Frequence souhaité<span class="text-danger required" aria-hidden="true">*</span></h6>
-                            
+
                                         <input class="form-control" type="number" name="frequence_souhaiter" value="{{ isset($client->frequence_souhaiter) ? $client->frequence_souhaiter : old('frequence_souhaiter') }}"  id="frequence_souhaiter" placeholder="Fréquence souhaité" >
-                            
+
                                         <!-- Le message d'erreur pour "frequence_souhaiter" -->
                                         @error("frequence_souhaiter")
                                             <div class="text-danger required">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <br>
-    
+
                                     <div class="form-btn">
                                         <button class="submit-btn" type="submit">Continuer</button>
                                     </div>
@@ -193,10 +193,9 @@
             </div>
         </div>
     </main>
-	
+
     <footer class="container">
         <p class="float-end"><a href="#">Retour au sommet</a></p>
-        <p>&copy; 2017–2022 Compagnie, Inc. &middot; <a href="#">Privé</a> &middot; <a href="{{route('accueil')}}">Fadila ménage</a></p>
     </footer>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 

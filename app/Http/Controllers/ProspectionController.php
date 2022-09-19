@@ -47,34 +47,35 @@ class ProspectionController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         //dd($request);
         $request->validate([
             'raison_social' => "required",
-            'date_prospection', 'canal' => "required", 
+            'date_prospection', 'canal' => "required",
             'competence_rechercher' => "required",
-            //'type_maison' =>"required", 
-            //'nbre_de_chambre' => "required", 
-            //'nbre_wc_douche' => "required", 
-            //'taille_famille' => "required", 
-            //'info_complementaire' => "required", 
-            'budget' => "required", 
-            //'actions_menees' => "required", 
-            //'aboutissement' => "required", 
-            'id_agent' => "required", 
-            'id_client' => "required", 
+            //'type_maison' =>"required",
+            //'nbre_de_chambre' => "required",
+            //'nbre_wc_douche' => "required",
+            //'taille_famille' => "required",
+            //'info_complementaire' => "required",
+            'budget' => "required",
+            //'actions_menees' => "required",
+            //'aboutissement' => "required",
+            'id_agent' => "required",
+            'id_client' => "required",
         ]);
 
-        
+
         //$request['date_prospection'] = date("d/m/Y", time());
         //dd($request);
         $prospection = Prospection::all()->where('date', "=", $request->date)->where('id_agent', "=", $request->id_agent)->where('id_client', "=", $request->id_client);
         if (count($prospection) !=0) {
-            
+
         } else {
             Prospection::create(
                 $request->all()
             );
+            
         }
         /*if (isset($request['client-prospection'])) {
             return view('welcome');
@@ -94,19 +95,19 @@ class ProspectionController extends Controller
     public function enregistrerProsCLient(Request $request){
         $request->validate([
             'raison_social' => "required",
-            'date_prospection' => "required", 
-            'canal' => "required", 
+            'date_prospection' => "required",
+            'canal' => "required",
             'competence_rechercher' => "required",
-            //'type_maison' =>"required", 
-            //'nbre_de_chambre' => "required", 
-            //'nbre_wc_douche' => "required", 
-            //'taille_famille' => "required", 
-            //'info_complementaire' => "required", 
-            'budget' => "required", 
-            //'actions_menees' => "required", 
-            //'aboutissement' => "required", 
-            'id_agent' => "required", 
-            'id_client' => "required", 
+            //'type_maison' =>"required",
+            //'nbre_de_chambre' => "required",
+            //'nbre_wc_douche' => "required",
+            //'taille_famille' => "required",
+            //'info_complementaire' => "required",
+            'budget' => "required",
+            //'actions_menees' => "required",
+            //'aboutissement' => "required",
+            'id_agent' => "required",
+            'id_client' => "required",
         ]);
 
         $prospection = Prospection::all()->where('date', "=", $request->date)->where('id_agent', "=", $request->id_agent)->where('id_client', "=", $request->id_client);
@@ -138,7 +139,7 @@ class ProspectionController extends Controller
      */
     public function show(Prospection $prospection)
     {
-        
+
         return view('prospections.show')->with('prospection', $prospection);
     }
 
@@ -171,18 +172,18 @@ class ProspectionController extends Controller
         $request->validate([
             'raison_social' => "required",
             'date_prospection' => "required",
-            'canal' => "required", 
+            'canal' => "required",
             'competence_rechercher' => "required",
-            //'type_maison' =>"required", 
-            //'nbre_de_chambre' => "required", 
-            //'nbre_wc_douche' => "required", 
-            //'taille_famille' => "required", 
-            //'info_complementaire' => "required", 
-            'budget' => "required", 
-            //'actions_menees' => "required", 
-            //'aboutissement' => "required", 
-            'id_agent' => "required", 
-            'id_client' => "required", 
+            //'type_maison' =>"required",
+            //'nbre_de_chambre' => "required",
+            //'nbre_wc_douche' => "required",
+            //'taille_famille' => "required",
+            //'info_complementaire' => "required",
+            'budget' => "required",
+            //'actions_menees' => "required",
+            //'aboutissement' => "required",
+            'id_agent' => "required",
+            'id_client' => "required",
         ]);
 
         $prospection->raison_social = $request->raison_social;
@@ -214,7 +215,7 @@ class ProspectionController extends Controller
      */
     public function destroy(Prospection $prospection)
     {
-        
+
         $prospection->delete();
         return redirect()->route('prospections.index');
     }

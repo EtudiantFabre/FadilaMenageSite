@@ -36,6 +36,11 @@ class CandidatController extends Controller
         return view('candidats.edit');
     }
 
+    public function depotDeCandidature()
+    {
+        return view('candidats.candidature');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -122,16 +127,13 @@ class CandidatController extends Controller
        $experiences = ExperienceDuCandidat::all()->where('candidat', '=', $candidat->id_candidat);
        $key = 0;
 
-       if ($experiences == null) {
-        Log::debug($experiences);
+       if (count($experiences) == 0) {
             $experience=0;
             return view('candidats.show',compact('candidat','experience'));
 
        }else{
             while(! isset($experiences[$key])) {
                 $key++;
-                Log::debug($key);
-
             }
 
             $experience = $experiences[$key];

@@ -130,6 +130,8 @@ Route::get('{appel_offre}/mise-a-jour', [AppelOffreController::class, 'edit'], '
 
 //  Candidat
 Route::resource('candidats', CandidatController::class);
+Route::get('se_candidater/', [CandidatController::class, 'depotDeCandidature'])->name('chercher_emploi');
+
 /*
 Route::get('liste-candidats', [CandidatController::class, 'index'], 'liste_candidats');
 Route::post('sauvegarde-candidat', [CandidatController::class, 'store'], 'sauvegarde_candidat');
@@ -350,8 +352,8 @@ Route::get('vente}/mise-a-jour-vente', [VenteController::class, 'edit'], 'mise_a
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::get('/candidature', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /*Route::get('/', function(){
     return view('candidature');
 });*/
+

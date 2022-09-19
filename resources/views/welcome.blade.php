@@ -242,7 +242,7 @@
                   <button class="btn btn-outline-success" type="submit">Search</button>
                 </form-->
 
-                <a class="container fixed-left" href="{{ route('candidats.create') }}" style="text-align: center; font-weight: bold; color:#FF5E0E; line-height: 50px;" id="comp-jd97w5lt3label">Candidatez-vous</a>
+                <a class="container fixed-left" href="{{ route('chercher_emploi') }}" style="text-align: center; font-weight: bold; color:#FF5E0E; line-height: 50px;" id="comp-jd97w5lt3label">Se candidater pour gagner un emploie</a>
                 <a class="container fixed-center" href="#" style="text-align: left; color:#FF5E0E; font-weight: bold; line-height: 50px;" id="comp-jd97w5lt3label">Nos services</a>
 
                 @if (Route::has('login'))
