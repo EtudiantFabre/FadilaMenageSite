@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\PersonneAprevenir;
 use Illuminate\Http\Request;
 use App\Models\Candidat;
@@ -15,10 +15,9 @@ class PersonneAprevenirController extends Controller
      */
     public function index()
     {
-        $persAprev = PersonneAprevenir::orderBy('id_personne_a_prevenir')->simplePaginate(10);
+        $persAprev = PersonneAprevenir::orderBy('id_personne_aprevenir')->simplePaginate(10);
         return view('personneAprevenirs.index', compact('persAprev'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -26,9 +25,22 @@ class PersonneAprevenirController extends Controller
      */
     public function create()
     {
-        $persAprev = PersonneAprevenir::all();
-        $candidats = Candidat::all();
-        return view('personneAprevenirs.create')->with('persAprev', $persAprev)->with('candidats', $candidats);
+
+        $last_row = DB::table('candidats')->latest()->get();
+        if (count($last_row) == 0) {
+            $last = 0;
+            return view('personneAprevenirs.create',compact('last'));
+        } else {
+
+        $last = $last_row[0];
+
+        return view('personneAprevenirs.create',compact('last'));
+
+        //$persAprev = PersonneAprevenir::all();
+        //$candidats = Candidat::all();
+        //return view('personneAprevenirs.create')->with('persAprev', $persAprev)->with('candidats', $candidats);
+    }
+
     }
 
     /**
@@ -42,19 +54,25 @@ class PersonneAprevenirController extends Controller
         $request->validate([
             'nom' => 'required|string',
             'prenom' => 'required|string',
+            //'id_candidat' => 'required',
+            'quartier' => 'required|string',
             'lien_de_parente' => 'required|string',
-            'id_candidat' => 'required',
+            'tel' => 'required|string'
+
         ]);
 
-        $persAprev = PersonneAprevenir::all()->where('id_candidat', '=', $request->id_candidat)->where('prenom', '=', $request->prenom)->where('nom', '=', $request->nom);
-        
+        PersonneAprevenir::create($request->all());
+
+       /* $persAprev = PersonneAprevenir::all()->where('id_candidat', '=', $request->id_candidat)->where('prenom', '=', $request->prenom)->where('nom', '=', $request->nom);
+
         if (count($persAprev) != 0) {
-            
+
         } else {
             //dd($request);
             PersonneAprevenir::create($request->all());
-        }
-        return redirect()->route('personneAprevenirs.index');
+        }*/
+
+        return redirect('/')->with('flash_message', 'Votre candidature est enregisrer ave succès!');
     }
 
     /**

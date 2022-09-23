@@ -14,19 +14,19 @@
 </head>
 <body class="hold-transition sidebar-mini">
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top mb-10">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
-    </ul>
+    <!--ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="index3.html" class="nav-link"></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link"></a>
+        </li>
+      </ul-->
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -61,7 +61,7 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
-            <div class="media">
+            <!--div class="media">
               <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
@@ -71,7 +71,7 @@
                 <p class="text-sm">Call me whenever you can...</p>
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
               </div>
-            </div>
+            </div-->
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
@@ -148,18 +148,18 @@
         </a>
       </li>
     </ul>
-  </nav>
+  </nav> <br><br> <br><br>
   <!-- /.navbar -->
 
 
   <!-- Content Wrapper. Contains page content -->
 
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <!--section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Poste</h1>
+            <h1></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -168,121 +168,356 @@
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
+      </div>
+    </section-->
 
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Poste</h3>
+            <div class="card">
+              <div class="card-header" style=" background-color: #FF5E0E">
+                <h2 class="card-title text-uppercase ">Voici les qualités que recherchent nos employeurs</h2>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <div class="row">
-                  <div class="col-sm-4">
-                    <div class="position-relative p-3 bg-gray" style="height: 180px">
-                      <div class="ribbon-wrapper">
-                        <div class="ribbon bg-primary">
-                          Ribbon
+                    <div class="col-sm-4">
+                        <div class="position-relative p-3 bg-blue" style="height: 180px">
+                          <div class="ribbon-wrapper ribbon-xl">
+                            <div class="ribbon bg-success">
+                              Inteligence
+                            </div>
+                          </div>
+                          L'INTELIGENCE: <br />
+                          <small style="font-weight: bold;">Oui Nous ne sommes pas tous des génies !”, êtes-vous peut-être <br> tenté de vous exclamer. Et vous auriez raison. Mais non, par “intelligence” <br> on entend autre chose que la capacité <br> à résoudre une équation à inconnues multiples</small>
                         </div>
-                      </div>
-                      Ribbon Default <br />
-                      <small>.ribbon-wrapper.ribbon-lg .ribbon</small>
                     </div>
-                  </div>
                   <div class="col-sm-4">
-                    <div class="position-relative p-3 bg-gray" style="height: 180px">
-                      <div class="ribbon-wrapper ribbon-lg">
-                        <div class="ribbon bg-info">
-                          Ribbon Large
-                        </div>
-                      </div>
-                      Ribbon Large <br />
-                      <small>.ribbon-wrapper.ribbon-lg .ribbon</small>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="position-relative p-3 bg-gray" style="height: 180px">
+                    <div class="position-relative p-3 bg-blue" style="height: 180px">
                       <div class="ribbon-wrapper ribbon-xl">
-                        <div class="ribbon bg-secondary">
-                          Ribbon Extra Large
+                        <div class="ribbon bg-success">
+                          RESPPNSABILTÉ
                         </div>
                       </div>
-                      Ribbon Extra Large <br />
-                      <small>.ribbon-wrapper.ribbon-xl .ribbon</small>
+                      LA RESPPNSABILTÉ: <br />
+                      <small style="font-weight: bold;">La capacité à prendre des (ses ?) responsabilités Ce qu’on appelle parfois  <br>« le leadership », Nos employeurs veulent des employés responsables,</small>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="position-relative p-3 bg-green" style="height: 180px">
+                      <div class="ribbon-wrapper ribbon-xl">
+                        <div class="ribbon bg-warning">
+                           LE CÔTÉ SYMPATIQUE
+                        </div>
+                      </div>
+                      LE SYMPATISME <br />
+                      <small style="font-weight: bold;">Lorsqu’on recherche un nouveau collaborateur, c’est évident : <br> on cherche en priorité quelqu’un avec qui l’on peut s’imaginer travailler. Une personne <br> dotée de qualités humaines :  <br> un profil chaleureux, sympathique, ouvert, souriant, et conciliant, ayant un bon relationnel</small>
                     </div>
                   </div>
                 </div>
                 <div class="row mt-4">
                   <div class="col-sm-4">
-                    <div class="position-relative p-3 bg-gray" style="height: 180px">
-                      <div class="ribbon-wrapper ribbon-lg">
-                        <div class="ribbon bg-success text-lg">
-                          Ribbon
+                    <div class="position-relative p-3 bg-blue" style="height: 180px">
+                      <div class="ribbon-wrapper ribbon-xl">
+                        <div class="ribbon bg-success ">
+                            La competence
                         </div>
                       </div>
-                      Ribbon Large <br /> with Large Text <br />
-                      <small>.ribbon-wrapper.ribbon-lg .ribbon.text-lg</small>
+                      LE NIVEAU DE COMPETENCE : <br>
+                      <small style="font-weight: bold;"> Evidemment, vous aurez beau être extrêmement sympathique, excellent en cuisine <br>  ou en conduite, si les compétences-clés pour un poste vous manquent, vous aurez du mal <br> à rassurer votre recruteur.
+                    </small>
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <div class="position-relative p-3 bg-gray" style="height: 180px">
+                    <div class="position-relative p-3 bg-green" style="height: 180px">
                       <div class="ribbon-wrapper ribbon-xl">
-                        <div class="ribbon bg-warning text-lg">
-                          Ribbon
+                        <div class="ribbon bg-warning">
+                          Le courrage
                         </div>
                       </div>
-                      Ribbon Extra Large <br /> with Large Text <br />
-                      <small>.ribbon-wrapper.ribbon-xl .ribbon.text-lg</small>
+                      LE COURAGE DE FAIRE ET DE DIRE LES CHOSES: <br />
+                      <small style="font-weight: bold;">Votre envie de prendre des risques, d’accepter de relever les défis : <br> c’est aussi ce qui fera la différence. Les employeurs apprécient les collaborateurs <br>qui ont le courage de dire non seulement ce qui fonctionne bien, mais aussi <br> ce qui ne fonctionne pas de manière optimale.</small>
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <div class="position-relative p-3 bg-gray" style="height: 180px">
+                    <div class="position-relative p-3 bg-blue" style="height: 180px">
                       <div class="ribbon-wrapper ribbon-xl">
-                        <div class="ribbon bg-danger text-xl">
-                          Ribbon
+                        <div class="ribbon bg-success">
+                            L’intégrité
                         </div>
                       </div>
-                      Ribbon Extra Large <br /> with Extra Large Text <br />
-                      <small>.ribbon-wrapper.ribbon-xl .ribbon.text-xl</small>
+                      L'INTÉGRITÉ, TOUJOURS <br />
+                      <small style="font-weight: bold;">Très certainement l’une des clés de la réussite professionnelle (et personnelle).  <br> Qu’est-ce  que l’intégrité ? L’honnêteté, tant avec soi-même par rapport à ce que l’on est, <br> à ses forces et ses faiblesses, qu’avec les autres. Le fait de ne jamais se cacher derrière de faux  <br> prétextes  pour justifier un échec,  un retard ou tout autre problème dont <br> on serait directement responsable.</small>
                     </div>
                   </div>
-                </div>
-                <div class="row mt-4">
+                </div> <br>
+                <div>
+                    <nav class="navbar navbar-expand-md">
+                     <div class="container-fluid" style=" background-color: #FF5E0E">
+                             <h2>Vous êtes en recherche d'emploi ? Découvrez toutes les offres disponibles sur notre site.</h2>
+                      </div>
+                    </nav>
+                </div> <br>
+
+                <div class="row  mt-4">
                   <div class="col-sm-4">
                     <div class="position-relative">
-                      <img src="../../dist/img/photo1.png" alt="Photo 1" class="img-fluid">
+                      <img src="/imageSite2.webp" alt="Photo 1" class="img-fluid">
                       <div class="ribbon-wrapper ribbon-lg">
                         <div class="ribbon bg-success text-lg">
-                          Ribbon
+                         Nounous
+                        </div>
+                      </div>
+
+                      <div class="mt-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="text-center text-uppercase">Conditions de candidature</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <strong class="text-justify" style=" color: #FF5E0E; font-size: 3ch">Vous voulez postuler au poste de Menager? avant de continuer veillez preparer : </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 1 Une photo paspport sccaner dans votre ordinateur ou téléphone</strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch"> 2 Avoir une pièce d'identité(Nationalité,Carte d'élécteur ou un Passport) à jour </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 3 Prevoir au moins deux personees à prevenir </strong>
+
+                                            <div class="modal-footer">
+                                                <a type="submit" class="btn btn-primary" href="{{ route('candidats.create') }}">Continuer</a>
+                                                <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+                        <div class="btn btn-default btn-lg btn-flat">
+                          <i class="fas fa-heart fa-lg mr-2"></i>
+                          Ajouter aux Favoris
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <div class="position-relative">
-                      <img src="../../dist/img/photo2.png" alt="Photo 2" class="img-fluid">
+                      <img src="/conducteur.webp" alt="Photo 2" class="img-fluid">
                       <div class="ribbon-wrapper ribbon-xl">
                         <div class="ribbon bg-warning text-lg">
-                          Ribbon
+                          Chauffeur
                         </div>
                       </div>
                     </div>
+                    <div class="mt-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="text-center text-uppercase">Conditions de candidature</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <strong class="text-justify" style=" color: #FF5E0E; font-size: 3ch">Vous voulez postuler au poste de Menager? avant de continuer veillez preparer : </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 1 Une photo paspport sccaner dans votre ordinateur ou téléphone</strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch"> 2 Avoir une pièce d'identité(Nationalité,Carte d'élécteur ou un Passport) à jour </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 3 Prevoir au moins deux personees à prevenir </strong>
+
+                                            <div class="modal-footer">
+                                                <a type="submit" class="btn btn-primary" href="{{ route('candidats.create') }}">Continuer</a>
+                                                <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+                        <div class="btn btn-default btn-lg btn-flat">
+                          <i class="fas fa-heart fa-lg mr-2"></i>
+                          Ajouter aux Favoris
+                        </div>
+                      </div>
                   </div>
                   <div class="col-sm-4">
                     <div class="position-relative" style="min-height: 180px;">
-                      <img src="../../dist/img/photo3.jpg" alt="Photo 3" class="img-fluid">
+                      <img src="/imageSite1.webp" alt="Photo 3" class="img-fluid">
                       <div class="ribbon-wrapper ribbon-xl">
                         <div class="ribbon bg-danger text-xl">
-                          Ribbon
+                          Menager
                         </div>
+                      </div>
+
+                    </div>
+                    <div class="mt-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="text-center text-uppercase">Conditions de candidature</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <strong class="text-justify" style=" color: #FF5E0E; font-size: 3ch">Vous voulez postuler au poste de Menager? avant de continuer veillez preparer : </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 1 Une photo paspport sccaner dans votre ordinateur ou téléphone</strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch"> 2 Avoir une pièce d'identité(Nationalité,Carte d'élécteur ou un Passport) à jour </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 3 Prevoir au moins deux personees à prevenir </strong>
+
+                                            <div class="modal-footer">
+                                                <a type="submit" class="btn btn-primary" href="{{ route('candidats.create') }}">Continuer</a>
+                                                <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+                        <div class="btn btn-default btn-lg btn-flat">
+                          <i class="fas fa-heart fa-lg mr-2"></i>
+                          Ajouter aux Favoris
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row  mt-4">
+                <div class="col-sm-4">
+                  <div class="position-relative">
+                    <img src="/imageSite2.webp" alt="Photo 1" class="img-fluid">
+                    <div class="ribbon-wrapper ribbon-lg">
+                      <div class="ribbon bg-success text-lg">
+                       Nounous
+                      </div>
+                    </div>
+                    <div class="mt-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="text-center text-uppercase">Conditions de candidature</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <strong class="text-justify" style=" color: #FF5E0E; font-size: 3ch">Vous voulez postuler au poste de Menager? avant de continuer veillez preparer : </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 1 Une photo paspport sccaner dans votre ordinateur ou téléphone</strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch"> 2 Avoir une pièce d'identité(Nationalité,Carte d'élécteur ou un Passport) à jour </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 3 Prevoir au moins deux personees à prevenir </strong>
+
+                                            <div class="modal-footer">
+                                                <a type="submit" class="btn btn-primary" href="{{ route('candidats.create') }}">Continuer</a>
+                                                <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+                      <div class="btn btn-default btn-lg btn-flat">
+                        <i class="fas fa-heart fa-lg mr-2"></i>
+                        Ajouter aux Favoris
                       </div>
                     </div>
                   </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="position-relative">
+                    <img src="/conducteur.webp" alt="Photo 2" class="img-fluid">
+                    <div class="ribbon-wrapper ribbon-xl">
+                      <div class="ribbon bg-warning text-lg">
+                        Chauffeur
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="text-center text-uppercase">Conditions de candidature</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <strong class="text-justify" style=" color: #FF5E0E; font-size: 3ch">Vous voulez postuler au poste de Menager? avant de continuer veillez preparer : </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 1 Une photo paspport sccaner dans votre ordinateur ou téléphone</strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch"> 2 Avoir une pièce d'identité(Nationalité,Carte d'élécteur ou un Passport) à jour </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 3 Prevoir au moins deux personees à prevenir </strong>
+
+                                            <div class="modal-footer">
+                                                <a type="submit" class="btn btn-primary" href="{{ route('candidats.create') }}">Continuer</a>
+                                                <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+                      <div class="btn btn-default btn-lg btn-flat">
+                        <i class="fas fa-heart fa-lg mr-2"></i>
+                        Ajouter aux Favoris
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="position-relative" style="min-height: 180px;">
+                    <img src="/imageSite1.webp" alt="Photo 3" class="img-fluid">
+                    <div class="ribbon-wrapper ribbon-xl">
+                      <div class="ribbon bg-danger text-xl">
+                        Menage
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="mt-4">
+                    <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="text-center text-uppercase">Conditions de candidature</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <strong class="text-justify" style=" color: #FF5E0E; font-size: 3ch">Vous voulez postuler au poste de Menager? avant de continuer veillez preparer : </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 1 Une photo paspport sccaner dans votre ordinateur ou téléphone</strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch"> 2 Avoir une pièce d'identité(Nationalité,Carte d'élécteur ou un Passport) à jour </strong><br><br>
+                                            <strong class="text-center" style=" font-size: 3ch;"> 3 Prevoir au moins deux personees à prevenir </strong>
+
+                                            <div class="modal-footer">
+                                                <form action="{{ route('candidats.create') }}" method="GET">
+                                                    @method('PUT')
+                                                    @csrf
+                                                <input type="hidden" name="poste" id="poste" value="MANAGE">
+                                                <button type="submit" class="btn btn-primary" >Continuer</button>
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                                            </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+                      <div class="btn btn-default btn-lg btn-flat">
+                        <i class="fas fa-heart fa-lg mr-2"></i>
+                        Ajouter aux Favoris
+                      </div>
+                    </div>
                 </div>
               </div>
               <!-- /.card-body -->
@@ -300,7 +535,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong class="text-center">Copyright &copy; 2014-2021 <a href="https://gofadila.com"></a>Fadila Ménage</strong> All rights reserved.
+    <strong class="text-center">Copyright &copy; 2017-{{ date('Y') }} <a href="https://gofadila.com"></a>Fadila Ménage</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

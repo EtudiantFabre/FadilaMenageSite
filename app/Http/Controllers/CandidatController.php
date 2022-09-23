@@ -30,9 +30,9 @@ class CandidatController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory
      */
-    public function create()
+    public function create(Request $request)
     {
-
+        //dd($_POST[poste]);
         return view('candidats.edit');
     }
 
@@ -99,7 +99,9 @@ class CandidatController extends Controller
         if ($expe == 'OUI') {
             return redirect(route("experienceDuCandidats.create"));
         } else {
-            return redirect('/')->with('flash_message', 'Votre candidature est enregisrer ave succès!');
+
+            return redirect(route("personneAprevenirs.create"));
+            //return redirect('/')->with('flash_message', 'Votre candidature est enregisrer ave succès!');
 
         }
 

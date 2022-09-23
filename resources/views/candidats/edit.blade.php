@@ -24,17 +24,7 @@
             });
             </script>
 
-        <style>
-            .modal-header {
-                background: #F7941E;
-                color: #fff;
-            }
-
-            .required:after {
-                content: "*";
-                color: red;
-            }
-        </style>
+        
             </head>
 	</head>
 
@@ -346,33 +336,7 @@
                                 </div>
                             </div>
                         </div>
-                            <!--button type="submit" name="valider"  class="btn btn-info btn-block form-control ">Suivant</button-->
-
-                                <button type="button" class="btn btn-info btn-block form-control" data-bs-toggle="modal" data-bs-target="#myModal">Suivant</button>
-                                <div class="modal" id="myModal">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Confirmation</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p class="text-justify" style="font-size: 3ch">Salut  Mr/Mme Félicitation votre candidature vas être prise en compte vous aurez bésoin de votre numéro de confirmation pour consultez votre candidature après veuillez le noté en un lieu sûr avant de cliquez sur OK</p>
-                                            </div>
-
-                                            <p style="color: #FF5E0E; font-size: 3ch;">Date : {{ date("l jS \of F Y ") }}</p>
-                                            <p style="color: #FF5E0E; font-size: 3ch;">Time : {{ date("h:i:s  A") }}</p>
-                                            <p style="color: #FF5E0E; font-size: 3ch;">Numéro de confirmation : {{ date("jSYhis") }}</p>
-
-                                            <div class="modal-footer">
-                                                <input class="btn btn-info btn-block form-control" type="submit" value="OK" class="submit" name="submit" id="submit" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+                            <button type="submit" name="valider"  class="btn btn-info btn-block form-control ">Suivant</button>
                         @endif
                 </section>
 

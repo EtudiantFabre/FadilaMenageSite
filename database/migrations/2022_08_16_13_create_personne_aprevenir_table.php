@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personne_a_prevenirs', function (Blueprint $table) {
-            $table->bigIncrements('id_personne_a_prevenir');
+        Schema::create('personne_aprevenirs', function (Blueprint $table) {
+            $table->bigIncrements('id_personne_aprevenir');
             $table->string('nom');
             $table->string('prenom');
             $table->string('tel');
             $table->string('quartier');
             $table->string('profession')->nullable();
-            $table->string('lien_de_parente');
+            $table->string('lien_de_parente')->nullable();
             $table->integer('id_candidat');
             $table->timestamps();
             $table->softDeletes();
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personne_a_prevenirs');
+        Schema::dropIfExists('personne_aprevenirs');
     }
 };
