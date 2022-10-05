@@ -24,11 +24,13 @@ return new class extends Migration
             $table->integer('dernier_salaire');
             $table->integer('nombre_enfants_garde')->nullable();
             $table->date('date_demission')->nullable();
-            $table->integer('candidat');
+            $table->integer('candidat')->nullable();
+            $table->integer('agent')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('candidat')->references('id_candidat')->on('candidats')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('candidat')->references('id_candidat')->on('candidats')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('agent')->references('id_agent')->on('agents')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

@@ -3,7 +3,6 @@
 @section('content')
 
 
-
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -33,14 +32,14 @@
                     <div class="row">
                       <div class="col-7">
                         <h2 class="lead"><b>{{ $candidat->nom.' '.$candidat->prenom }}</b></h2>
-                        <p class="text-muted text-sm" style="color:#FF5E0E"><b>Prétention salarial: </b> {{ $candidat->pretention_salarial }} </p>
+                        <p class="text-muted text-sm bg-teal " ><b>Prétention salarial: </b> {{ $candidat->pretention_salarial }} </p>
                         <ul class="ml-4 mb-0 fa-ul text-muted">
                           <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Addresse: Rue:{{ $candidat->rue }}, Ville:{{ $candidat->ville_residence }} quartier:{{ $candidat->quartier }}</li>
                           <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone : {{ $candidat->telephone }}</li>
                         </ul>
                       </div>
                       <div class="col-5 text-center">
-                        <img src="{{ asset('storage/'.$candidat->avatar)}}" alt="user-avatar" class="img-circle img-fluid">
+                        <img src="{{ asset('storage/'.$candidat->avatar)}}" alt="phpto_candidat" style="width: 150px height:150px" class="img-circle img-fluid">
                       </div>
                     </div>
                   </div>
@@ -50,7 +49,7 @@
                         <i class="fas fa-comments"></i>
                       </a>
                       <a href="{{ route('candidats.show', $candidat) }}" class="btn btn-sm btn-primary">
-                        <i class="fas fa-user"></i> Voir CV
+                        <i class="fas fa-user"></i> Fiche de renseignement
                       </a>
                     </div>
                   </div>
@@ -75,12 +74,8 @@
               </ul>
             </nav>
           </div>
-          <!-- /.card-footer -->
 
-        <!-- /.card -->
 
       </section>
-      <!-- /.content -->
 
-    <!-- /.content-wrapper -->
 @endsection

@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\DB;
 use App\Models\PersonneAprevenir;
 use Illuminate\Http\Request;
 use App\Models\Candidat;
+use App\Mail\MailCandidat;
+
+use Illuminate\Support\Facades\Mail;
+
 
 class PersonneAprevenirController extends Controller
 {
@@ -61,7 +65,15 @@ class PersonneAprevenirController extends Controller
 
         ]);
 
-        PersonneAprevenir::create($request->all());
+        PersonneAprevenir::create([
+            "nom"=>$request->nom,
+            "tel"=>$request->tel,
+            "prenom"=>$request->prenom,
+            "quartier"=>$request->quartier,
+            "lien_de_parente"=>$request->lien_de_parente,
+            "profession"=>$request->profession,
+            "id_candidat"=>$request->id_candidat
+        ]);
 
        /* $persAprev = PersonneAprevenir::all()->where('id_candidat', '=', $request->id_candidat)->where('prenom', '=', $request->prenom)->where('nom', '=', $request->nom);
 
@@ -71,6 +83,10 @@ class PersonneAprevenirController extends Controller
             //dd($request);
             PersonneAprevenir::create($request->all());
         }*/
+        $candidat = Candidat::find($request->id_candidat);
+
+        Mail::to($candidat->email)->queue(new MailCandidat($request->all()));
+
 
         return redirect('/')->with('flash_message', 'Votre candidature est enregisrer ave succès!');
     }

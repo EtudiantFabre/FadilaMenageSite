@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Candidat;
 use App\Models\Agent;
 use App\Models\ExperienceDuCandidat;
+use App\Models\PersonneAprevenir;
+
 //use Illuminate\Support\Facades\Storage; // <= importer Storage
 
 
@@ -23,7 +25,7 @@ class CandidatController extends Controller
     public function index()
     {
         $candidats = Candidat::all();
-        return view('candidats.index',compact('candidats'));    }
+        return view('candidats.index',compact('candidats')); }
 
     /**
      * Show the form for creating a new resource.
@@ -127,9 +129,38 @@ class CandidatController extends Controller
        //dd($experiences);
 
        $experiences = ExperienceDuCandidat::all()->where('candidat', '=', $candidat->id_candidat);
+       $personeAprevenirs = PersonneAprevenir::all()->where('id_candidat', '=', $candidat->id_candidat);
        $key = 0;
+       if (count($personeAprevenirs) == 0) {
+        $personeAprevenir = 0;
+       } elseif (count($experiences) == 0) {
+        $experience=0;
+            while(! isset($personeAprevenirs[$key])) {
+                $key++;
+            }
+            $personeAprevenir = $personeAprevenirs[$key];
 
-       if (count($experiences) == 0) {
+       } else {
+            while(! isset($experiences[$key])) {
+                $key++;
+            }
+
+            $experience = $experiences[$key];
+
+            $key = 0;
+
+            while(! isset($personeAprevenirs[$key])) {
+                $key++;
+            }
+
+            $personeAprevenir = $personeAprevenirs[$key];
+
+       }
+
+       return view('candidats.show',compact('candidat','experience','personeAprevenir'));
+
+
+       /*if (count($experiences) == 0) {
             $experience=0;
             return view('candidats.show',compact('candidat','experience'));
 
@@ -142,7 +173,7 @@ class CandidatController extends Controller
 
        }
 
-       return view('candidats.show',compact('candidat','experience'));
+       return view('candidats.show',compact('candidat','experience'));*/
 
 
     }
@@ -235,6 +266,8 @@ class CandidatController extends Controller
     public function destroy(Candidat $candidat)
     {
         $agents = new Agent;
+        $experiences = new ExperienceDuCandidat;
+        $personeAprevenirs = new PersonneAprevenir;
         $agent = Agent::all()->where('numero_de_piece', '=', $candidat->numero_de_piece);
         if (count($agent) !=0) {
             $candidat->delete();
@@ -268,13 +301,56 @@ class CandidatController extends Controller
             $agents->date_retenu = date('d-m-y h:i:s');
             $agents->pretention_salarial = $candidat->pretention_salarial;
             $agents->niveau_etude = $candidat->telephone;
-
             $agents->telephone = $candidat->telephone;
             $agents->save();
+           //dd($agents);
+
+            $last = Agent::find($agents->id_agent);//DB::table('agents')->latest()->get();
+                //if(count($last_row) == 0) {
+              //  $last = 0;
+              //  return view("experienceDuCandidats.edit",compact('last'));
+          //  } else {
+           // $last = $last_row[0];
+            $expe = ExperienceDuCandidat::all()->where('candidat', '=', $candidat->id_candidat);
+            $personeApreve = PersonneAprevenir::all()->where('id_candidat', '=', $candidat->id_candidat);
+
+// Log::debug($experience);
+                if(count($expe) == 0){
+                }else{
+                    $experience = $expe[0];
+                    $experiences->agent=$last->id_agent;
+                    $experiences->nbr_annee_experience=$experience->nbr_annee_experience;
+                    $experiences->nbr_voiture_conduit=$experience->nbr_voiture_conduit;
+                    $experiences->type_voiture=$experience->type_voiture;
+                    $experiences->type_contrat=$experience->type_contrat;
+                    $experiences->nom_employeur=$experience->nom_employeur;
+                    $experiences->numero_employeur=$experience->numero_employeur;
+                    $experiences->dernier_salaire=$experience->dernier_salaire;
+                    $experiences->nombre_enfants_garde=$experience->nombre_enfants_garde;
+                    $experiences->date_demission=$experience->date_demission;
+                    $experiences->candidat=null;
+                    $experiences->save();
+
+                }
+
+                $personeAprevenir = $personeApreve[0];
+                $personeAprevenirs->agent=$last->id_agent;
+                $personeAprevenirs->nom=$personeAprevenir->nom;
+                $personeAprevenirs->prenom=$personeAprevenir->prenom;
+                $personeAprevenirs->tel=$personeAprevenir->tel;
+                $personeAprevenirs->quartier=$personeAprevenir->quartier;
+                $personeAprevenirs->profession=$personeAprevenir->profession;
+                $personeAprevenirs->lien_de_parente=$personeAprevenir->lien_de_parente;
+                $personeAprevenirs->id_candidat=null;
+                $personeAprevenirs->save();
+
+           // }
+           $suppr = ExperienceDucandidat::where('candidat','=',$candidat->id_candidat)->first();
+           $suppr->delete();
             $candidat->delete();
 
         }
-        return redirect('candidats')->with('flash_message', 'Candidat supprimé!');
+        return redirect('candidats')->with('flash_message', 'Candidat récurté!');
 
     }
 }

@@ -67,8 +67,7 @@
                             <input type="text" name="numero_employeur" value="{{ isset($experienceDuCandidat->numero_employeur) ? $experienceDuCandidat->numero_employeur : old('numero_employeur') }}"  id="numero_employeur" placeholder="Contact de votre dernier employeur"  required/>
                         </div>
 
-                                @if($last->poste_candidate == 'Chauffeur')
-
+                                @if($last->poste_candidate == 'CHAUFFEUR')
                                     <div class="form-group">
                                         <label for="nbr_voiture_conduit" class="form-label required">Nombre de voituer conduit :</label>
                                         <input type="number" name="nbr_voiture_conduit" value="{{ isset($experienceDuCandidat->nbr_voiture_conduit) ? $experienceDuCandidat->nbr_voiture_conduit : old('nbr_voiture_conduit') }}"  id="nbr_voiture_conduit"   required/>
@@ -77,7 +76,7 @@
                                         <label class="form-label required" for="type_voiture">Type de voiture :</label>
                                         <input type="text" name="type_voiture" value="{{ isset($experienceDuCandidat->type_voiture) ? $experienceDuCandidat->type_voiture : old('type_voiture') }}"  id="type_voiture" placeholder="Example Automatique" required/>
                                     </div>
-                                @elseif($last->poste_candidate == 'Nounou')
+                                @elseif($last->poste_candidate == 'NOUNOU')
                                     <div class="form-group">
                                         <label class="form-label required" for="nombre_enfants_garde">Nombre d'enfants gardé :</label>
                                         <input type="number" name="nombre_enfants_garde" value="{{ isset($experienceDuCandidat->nombre_enfants_garde) ? $experienceDuCandidat->nombre_enfants_garde : old('nombre_enfants_garde') }}"  id="nombre_enfants_garde" required/>

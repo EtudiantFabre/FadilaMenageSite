@@ -62,9 +62,6 @@ class ExperienceDuCandidatController extends Controller
 
          // 2. On enregistre les informations de lexperience du candidat
 
-         $last_row = DB::table('candidats')->latest('id_candidat')->get();
-
-
          ExperienceDuCandidat::create([
             "nbr_annee_experience" => $request->nbr_annee_experience,
             "nbr_voiture_conduit" => $request->nbr_voiture_conduit,

@@ -24,8 +24,8 @@
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
               <div class="card bg-light d-flex flex-fill">
                 <div class="card-header text-muted border-bottom-0">
-                 {{$agent->poste_agente}}
-                </div>
+                    {{$agent->poste_candidate}}
+                   </div>
                 <div class="card-body pt-0">
                   <div class="row">
                     <div class="col-7">
@@ -47,7 +47,7 @@
                       <i class="fas fa-comments"></i>
                     </a>
                     <a href="{{ route('agents.show', $agent) }}" class="btn btn-sm btn-primary">
-                      <i class="fas fa-user"></i> Voir CV
+                      <i class="fas fa-user"></i> Fiche de renseignement
                     </a>
                   </div>
                 </div>

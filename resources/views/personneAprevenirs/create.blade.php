@@ -92,7 +92,6 @@
                   </div>
 
                 </div>
-                <button type="button" class="btn btn-info btn-block form-control" data-bs-toggle="modal" data-bs-target="#myModal">Suivant</button>
                             <div class="modal" id="myModal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -124,11 +123,11 @@
 
                 <!-- /.card-body -->
 
-                <!--div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="card-footer">
+                <button type="button" class="btn btn-info btn-block form-control" data-bs-toggle="modal" data-bs-target="#myModal">Suivant</button>
                 </div>
               </form>
-            </div-->
+            </div>
             <!-- /.card -->
     </section>
     <!-- /.content -->

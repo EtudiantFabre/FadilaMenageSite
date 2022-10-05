@@ -2,20 +2,39 @@
 @section("title", $candidat->nom)
 @section("content")
 
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Personne à Prevenir</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <p style=" font-size: 3ch;">Nom : {{ $personeAprevenir->nom }}</p>
+            <p style=" font-size: 3ch;">Prenom : {{ $personeAprevenir->prenom }}</p>
+            <p style=" font-size: 3ch;">Téléhone : {{ $personeAprevenir->tel }}</p>
+            <p style=" font-size: 3ch;">Quartier : {{ $personeAprevenir->quartier }}</p>
+            <p style=" font-size: 3ch;">profession : {{ $personeAprevenir->profession }}</p>
+
+            <div class="modal-footer">
+                <input class="btn btn-info btn-block form-control" type="button" value="OK"  data-bs-dismiss="modal"  />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+
+
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white mb-5">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white mb-5 container">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="/Original_on_Transparent.png" style="width: 200px; height: 50px;" alt="FADILA MÉNAGE"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-              <div class="container">
-                  <a href="{{ url('/') }}" class="container fixed-right text-uppercase" style="text-align: right; font-weight: bold; color:#FF5E0E;">Accueil</a>
-                  <i class="zmdi zmdi-home small"></i>
-              </div>
-                <a class="btn btn-block"  href="{{ route('candidats.index') }}" >Retourner aux candidat</a>
-                <a href="{{ route('candidats.create') }}"  class="btn  float-end text-uppercase me-6" style=" font-weight: bold; color:#FF5E0E;">Enregistrer un candidat</a>
+
+          <div class="collapse navbar-collapse" id="navbarCollapse ">
+              <button type="button" class="btn btn-info btn-block me-6" data-bs-toggle="modal" data-bs-target="#myModal">Personne à prevenir</button>
+                <a class="btn btn-block btn-primary me-6"  href="{{ route('candidats.index') }}" >Retourner aux candidat</a>
+                <a href="{{ route('candidats.create') }}"  class="btn btn-block btn-warning ms-6" >Enregistrer un candidat</a>
 
                 <form method="POST" name="recru" id="recru" action="{{ route('candidats.destroy', $candidat) }}" >
                     <!-- CSRF token -->
@@ -25,6 +44,7 @@
                     @method("DELETE")
                     <input class="btn btn-success btn-block " type="submit" name="recru" id="recru" value="Recruter {{ $candidat->nom.' '.$candidat->prenom  }}" >
                 </form>
+
 
           <!--a class="container fixed-center" href="" style="text-align: center; font-weight: bold; color:#FF5E0E; line-height: 50px;" id="comp-jd97w5lt3label">Candidatez-vous</a-->
           <!--a class="container fixed-left" href="#" style="text-align: left; color:#FF5E0E; font-weight: bold; line-height: 50px;" id="comp-jd97w5lt3label">Nos services</a-->
@@ -142,14 +162,14 @@
                             <h4 class="display-8 ">Nombre d'anneés d'expéprience</h4>
                             <h3 class="text-uppercase text-black-50">{{$experience->nbr_annee_experience.' '.'an(s)'}}</h3>
 
-                            @if ($candidat->poste_candidate == 'Chauffeur')
+                            @if ($candidat->poste_candidate == 'CHAUFFEUR')
                                 <h4 class="display-8 ">Nombre de voiture conduit</h4>
                                 <h3 class="text-uppercase text-black-50">{{$experience->nbr_voiture_conduit}}</h3>
 
                                 <h4 class="display-8 ">Type de voiture conduit</h4>
                                 <h3 class="text-uppercase text-black-50">{{$experience->type_voiture}}</h3>
 
-                            @elseif ($candidat->poste_candidate == 'Nounou')
+                            @elseif ($candidat->poste_candidate == 'NOUNOU')
                             <h4 class="display-8 ">Nombre d'enfants gardé: </h4>
                             <h3 class="text-uppercase text-black-50">{{$experience->nombre_enfants_garde}}</h3>
 

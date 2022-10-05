@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class PersonneAprevenir extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom', 'prenom', 'tel', 
-        'quartier', 'profession', 'lien_de_parente', 
+    protected $fillable = ['nom', 'prenom', 'tel',
+        'quartier', 'profession', 'lien_de_parente',
         'id_candidat'
     ];
-    protected $primaryKey = 'id_personne_a_prevenir';
+    protected $primaryKey = 'id_personne_aprevenir';
 
     /**
      * Get the candidat that owns the AppelOffre
@@ -22,5 +22,10 @@ class PersonneAprevenir extends Model
     public function candidat()
     {
         return $this->belongsTo(Candidat::class, 'id_candidat');
+    }
+
+    public function agent()
+     {
+        return $this->belongsTo(Agent::class, 'id_agent');
     }
 }

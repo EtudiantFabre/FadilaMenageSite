@@ -16,16 +16,18 @@
                         <th>Identifiant</th>
                         <th>Nom</th>
                         <th>Prénom</th>
-                        <th>Lieu de parenté</th>
+                        <th>tel</th>
+                        <th>Profession</th>
+                        <th>Lien de parenté</th>
                         <th>Candidat</th>
-                        <th class="bg-danger">Actions</th>
+                        <th colspan="3" class="bg-orange" >Opérations</th>
                     </tr>
                 </thead>
 
                 @foreach ($persAprev as $personne)
                     <tr>
                         <td>
-                            {{$personne->id_personne_a_prevenir}}
+                            {{$personne->id_personne_aprevenir}}
                         </td>
                         <td>
                             {{$personne->nom}}
@@ -34,31 +36,32 @@
                             {{$personne->prenom}}
                         </td>
                         <td>
+                            {{$personne->tel}}
+                        </td>
+                        <td>
+                            {{$personne->profession}}
+                        </td>
+                        <td>
                             {{$personne->lien_de_parente}}
                         </td>
                         <td>
                             {{$personne->candidat['nom']}}
                         </td>
                         <td>
-                            <div class="d-flex dropdown mr-1">
-                                <form action="{{route('personneAprevenirs.show', $personne->id_personne_a_prevenir)}}" method="GET">
-                                    @csrf
-                                    <button type="submit" class="btn btn-outline-primary">Afficher</button>
-                                </form>
-                            
-                                <form action="{{route('personneAprevenirs.destroy', $personne->id_personne_a_prevenir)}}" method="post" onsubmit="return AccepterSuppression()">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" class="btn btn-outline-danger">Supprimer</button>
-                                </form>
-                            
-                                <form action="{{route('personneAprevenirs.edit', $personne->id_personne_a_prevenir)}}" method="GET">
-                                    @csrf
-                                    <button type="submit" class="btn btn-outline-info">Modifier</button>
-                                </form>
-                            </div>
+                            <a class="btn btn-success btn-block" href="{{ route('personneAprevenirs.edit', $personne) }}" title="Modifier le personne">Modifier</a>
                         </td>
-                        
+
+                        <td>
+                            <a class="btn btn-info btn-block" href="{{ route('personneAprevenirs.show', $personne) }}" title="Modifier le personne">Afficher</a>
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ route('personneAprevenirs.destroy', $personne) }}" >
+                                @csrf
+                                @method("DELETE")
+                                <input class="btn btn-danger btn-block" type="submit" value="Supprimer" >
+                            </form>
+                        </td>
+
                     </tr>
                 @endforeach
             </table>

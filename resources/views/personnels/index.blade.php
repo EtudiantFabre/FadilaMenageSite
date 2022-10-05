@@ -73,8 +73,6 @@
 					{{ $personnel->quartier}}
 				</td>
 
-
-
                 <td>
 					<!-- Lien pour modifier un personnel : "posts.edit" -->
 					<a class="btn btn-success btn-block" href="{{ route('personnels.edit', $personnel) }}" title="Modifier le personnel">Modifier</a>

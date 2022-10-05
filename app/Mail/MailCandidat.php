@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class MailCandidat extends Mailable
 {
     use Queueable, SerializesModels;
-
+        public $undata;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->undata = $data;
     }
 
     /**
@@ -28,6 +28,8 @@ class MailCandidat extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $mailData = $this->undata; // Les donnés du mail à envoyer
+        return $this->subject("FADILA MÉNAGE") // Le sujet
+        ->view('emails.mailCandidat', compact('mailData')); // La vue
     }
 }

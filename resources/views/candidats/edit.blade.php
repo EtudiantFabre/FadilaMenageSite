@@ -24,7 +24,7 @@
             });
             </script>
 
-        
+
             </head>
 	</head>
 
@@ -227,11 +227,11 @@
                             <div class="form-holder">
                                     <select name="poste_candidate" id="poste_candidate" class="form-control">
                                         <option>Poste candidaté</option>
-                                        <option value="Chauffeur">Chauffeur</option>
-                                        <option value="Nounou">Nounou</option>
-                                        <option value="Agent d'entretient">Agent d'entretient</option>
+                                        <option value="Chauffeur">CHAUFFEUR</option>
+                                        <option value="Nounou">NOUNOU</option>
+                                        <option value="Agent d'entretient">ENTRETIEN</option>
                                         <option value="Cuisinier(e)">Cuisinier(e)</option>
-                                        <option value="Menagère">Menagère</option>
+                                        <option value="Menagère">MENAGE</option>
                                     </select>
                             </div>
                     	</div>

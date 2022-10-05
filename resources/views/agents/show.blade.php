@@ -1,6 +1,33 @@
 @extends("layout")
 @section("title", $agent->nom)
 @section("content")
+@section("content")
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Personne à Prevenir</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+@if ($personeAprevenir != null)
+
+            <p style=" font-size: 3ch;">Nom : {{ $personeAprevenir->nom }}</p>
+            <p style=" font-size: 3ch;">Prenom : {{ $personeAprevenir->prenom }}</p>
+            <p style=" font-size: 3ch;">Téléhone : {{ $personeAprevenir->tel }}</p>
+            <p style=" font-size: 3ch;">Quartier : {{ $personeAprevenir->quartier }}</p>
+            <p style=" font-size: 3ch;">profession : {{ $personeAprevenir->profession }}</p>
+            @else
+
+            @endif
+            <div class="modal-footer">
+                <input class="btn btn-info btn-block form-control" type="button" value="OK"  data-bs-dismiss="modal"  />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white mb-5">
@@ -10,12 +37,9 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-              <div class="container">
-                  <a href="{{ url('/') }}" class="container fixed-right text-uppercase" style="text-align: right; font-weight: bold; color:#FF5E0E;">Accueil</a>
-                  <i class="zmdi zmdi-home small"></i>
-              </div>
+            <button type="button" class="btn btn-info btn-block me-6" data-bs-toggle="modal" data-bs-target="#myModal">Personne à prevenir</button>
                 <a class="btn btn-block"  href="{{ route('agents.index') }}" >Retourner aux agent</a>
-                <a href="{{ route('agents.create') }}"  class="btn  float-end text-uppercase me-6" style=" font-weight: bold; color:#FF5E0E;">Enregistrer un agent</a>
+                <a href="{{ route('candidats.create') }}"  class="btn  float-end text-uppercase me-6" style=" font-weight: bold; color:#FF5E0E;">Enregistrer un agent</a>
 
                 <form method="POST" name="recru" id="recru" action="{{ route('agents.destroy', $agent) }}" >
                     <!-- CSRF token -->
@@ -131,51 +155,56 @@
                 <hr>
                 <p>{{ $agent->pretention_salarial }}</p>
             </div>
-
+            @if ($experience != null)
             <div>
                 <h4 class="text-uppercase">Expériences</h4>
                 <hr>
                 <ul class="list">
                     <li class="tist-item">
                         <h4 class="display-8 ">Nombre d'anneés d'expéprience</h4>
-                        <!--h3 class="text-uppercase text-black-50">{$experience->nbr_annee_experience.' '.'an(s)'}}</h3>
+                        <h3 class="text-uppercase text-black-50">{{$experience->nbr_annee_experience.' '.'an(s)'}}</h3>
 
-                        if ($agent->poste_agente == 'Chauffeur')
+                        @if ($agent->poste_candidate == 'CHAUFFEUR')
                             <h4 class="display-8 ">Nombre de voiture conduit</h4>
-                            <h3 class="text-uppercase text-black-50">$experience->nbr_voiture_conduit}}</h3>
+                            <h3 class="text-uppercase text-black-50">{{$experience->nbr_voiture_conduit}}</h3>
 
                             <h4 class="display-8 ">Type de voiture conduit</h4>
-                            <h3 class="text-uppercase text-black-50">{$experience->type_voiture}}</h3>
+                            <h3 class="text-uppercase text-black-50">{{$experience->type_voiture}}</h3>
 
-                        elseif ($agent->poste_agente == 'Nounou')
+                        @elseif ($agent->poste_candidate == 'NOUNOU')
                         <h4 class="display-8 ">Nombre d'enfants gardé: </h4>
-                        <h3 class="text-uppercase text-black-50"></h3>
+                        <h3 class="text-uppercase text-black-50">{{$experience->nombre_enfants_garde}}</h3>
 
 
-                        endif
+                        @endif
 
                         <h4 class="display-8 ">Nature contrat passé</h4>
-                        <h3 class="text-uppercase text-black-50"></h3>
+                        <h3 class="text-uppercase text-black-50">{{$experience->type_contrat}}</h3>
 
                             <h4 class="display-8 ">Nom de l'employeur/société</h4>
 
-                            <h3 class="text-uppercase text-black-50">"</h3>
+                            <h3 class="text-uppercase text-black-50">{{$experience->nom_employeur}}</h3>
 
                         <h4 class="display-8 ">Contact de l'employeur/société</h4>
-                        <h3 class="text-uppercase text-black-50">{$experience->numero_employeur}}</h3>
+                        <h3 class="text-uppercase text-black-50">{{$experience->numero_employeur}}</h3>
 
                             <h4 class="display-8 ">Dernier salaire</h4>
-                            <h3 class="text-uppercase text-black-50">{$experience->dernier_salaire}}</h3>
+                            <h3 class="text-uppercase text-black-50">{{$experience->dernier_salaire}}</h3>
 
                             <h4 class="display-8 ">Date de démission de son dernier emploi</h4>
-                            <h3 class="text-uppercase text-black-50">{$experience->date_demission}}</h3>
+                            <h3 class="text-uppercase text-black-50">{{$experience->date_demission}}</h3>
 
-                    </li-->
+                    </li>
                     <li class="tist-item">
                     </li>
                 </ul>
             </div>
-
+            @else
+                <div>
+                    <h4 class="text-uppercase">Pas d'expériences</h4>
+                </div>
+                <hr>
+            @endif
             <div class="header-right">
                 <h4 class="text-uppercase">Nature contrat</h4>
                 <hr>

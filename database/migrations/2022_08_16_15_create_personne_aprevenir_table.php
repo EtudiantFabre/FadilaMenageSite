@@ -21,10 +21,13 @@ return new class extends Migration
             $table->string('quartier');
             $table->string('profession')->nullable();
             $table->string('lien_de_parente')->nullable();
-            $table->integer('id_candidat');
+            $table->integer('id_candidat')->nullable();
+            $table->integer('agent')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('id_candidat')->references('id_candidat')->on('candidats');//->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_candidat')->references('id_candidat')->on('candidats')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('agent')->references('id_agent')->on('agents')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

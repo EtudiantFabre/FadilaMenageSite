@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\ExperienceDuCandidat;
+use App\Models\PersonneAprevenir;
 use App\Models\Agent;
 use App\Models\Client;
 use Illuminate\Http\Request;
@@ -96,8 +97,41 @@ class AgentController extends Controller
     public function show(Agent $agent)
     {
 
+       $experiences = ExperienceDuCandidat::all()->where('agent', '=', $agent->id_agent);
+       $personeAprevenirs = PersonneAprevenir::all()->where('agent', '=', $agent->id_agent);
+       //dd($personeAprevenirs);
+       $experience= null;
+       $key = 0;
+       if (count($personeAprevenirs) == 0) {
+        $personeAprevenir = null;
+       } elseif (count($experiences) == 0) {
 
-        return view('agents.show', compact("agent"));
+        while(! isset($personeAprevenirs[$key])) {
+            $key++;
+        }
+
+        $personeAprevenir = $personeAprevenirs[$key];
+
+       } else {
+            while(! isset($experiences[$key])) {
+                $key++;
+            }
+
+            $experience = $experiences[$key];
+
+            $key = 0;
+
+            while(! isset($personeAprevenirs[$key])) {
+                $key++;
+            }
+
+            $personeAprevenir = $personeAprevenirs[$key];
+
+       }
+
+
+
+       return view('agents.show',compact('agent','experience','personeAprevenir'));
 
     }
 
@@ -195,7 +229,7 @@ class AgentController extends Controller
 
     public function ListAgents(Request $request)
     {
-        
+
         $request->validate([
             "nom" => "required",
             'tel' => "required",
@@ -210,7 +244,7 @@ class AgentController extends Controller
         if (count($clients) !=0) {
             session()->flash("message", "Client déjà existant");
         } else {
-            $client = Client::create($request->all());    
+            $client = Client::create($request->all());
         }
 
 

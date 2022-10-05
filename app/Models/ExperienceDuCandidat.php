@@ -17,4 +17,9 @@ class ExperienceDuCandidat extends Model
     public function candidat(){
         return $this->belongsTo(Candidat::class,'id_candidat');
     }
+
+    public function agent()
+     {
+        return $this->belongsTo(Agent::class, 'id_agent');
+    }
 }

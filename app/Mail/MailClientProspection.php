@@ -31,6 +31,6 @@ class MailClientProspection extends Mailable
     {
         $mailData = $this->data; // Les donnés du mail à envoyer
         return $this->subject("TEST DE L'ENVOI DE MAIL") // Le sujet
-        ->view('emails.mailClientProspection', compact('mailData')); // La vue   
-    } 
+        ->view('emails.mailClientProspection', compact('mailData')); // La vue
+    }
 }
