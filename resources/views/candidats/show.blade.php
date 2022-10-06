@@ -28,7 +28,7 @@
 
 
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white mb-5 container">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-5 container">
         <div class="container-fluid">
 
           <div class="collapse navbar-collapse" id="navbarCollapse ">

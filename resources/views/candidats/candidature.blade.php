@@ -284,7 +284,7 @@
                 <div class="row  mt-4" >
                   <div class="col-sm-4" id="poste">
                     <div class="position-relative">
-                      <img src="/imageSite2.webp" alt="Photo 1" class="img-fluid">
+                      <img src="/imageSite2.webp" alt="Photo 1" class="img-fluid" style="height: 400px;">
                       <div class="ribbon-wrapper ribbon-lg">
                         <div class="ribbon bg-success text-lg">
                          Nounous
@@ -293,104 +293,6 @@
 
                       <div class="mt-4">
                         <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
-
-                        <div class="btn btn-default btn-lg btn-flat">
-                          <i class="fas fa-heart fa-lg mr-2"></i>
-                          Ajouter aux Favoris
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4" id="poste">
-                    <div class="position-relative">
-                      <img src="/conducteur.webp" alt="Photo 2" class="img-fluid">
-                      <div class="ribbon-wrapper ribbon-xl">
-                        <div class="ribbon bg-warning text-lg">
-                          Chauffeur
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mt-4">
-                        <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
-
-                        <div class="btn btn-default btn-lg btn-flat">
-                          <i class="fas fa-heart fa-lg mr-2"></i>
-                          Ajouter aux Favoris
-                        </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-4" id="poste">
-                    <div class="position-relative" style="min-height: 180px;">
-                      <img src="/imageSite1.webp" alt="Photo 3" class="img-fluid">
-                      <div class="ribbon-wrapper ribbon-xl">
-                        <div class="ribbon bg-danger text-xl">
-                          Menage
-                        </div>
-                      </div>
-
-                    </div>
-                    <div class="mt-4">
-                        <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
-
-                        <div class="btn btn-default btn-lg btn-flat">
-                          <i class="fas fa-heart fa-lg mr-2"></i>
-                          Ajouter aux Favoris
-                        </div>
-                      </div>
-                  </div>
-                </div>
-
-              <div class="row  mt-4">
-                <div class="col-sm-4" id="poste">
-                  <div class="position-relative">
-                    <img src="/imageSite2.webp" alt="Photo 1" class="img-fluid">
-                    <div class="ribbon-wrapper ribbon-lg">
-                      <div class="ribbon bg-success text-lg">
-                       Cuisine
-                      </div>
-                    </div>
-                    <div class="mt-4">
-                        <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
-
-
-                      <div class="btn btn-default btn-lg btn-flat">
-                        <i class="fas fa-heart fa-lg mr-2"></i>
-                        Ajouter aux Favoris
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4" id="poste">
-                  <div class="position-relative">
-                    <img src="/conducteur.webp" alt="Photo 2" class="img-fluid">
-                    <div class="ribbon-wrapper ribbon-xl">
-                      <div class="ribbon bg-warning text-lg">
-                        Chauffeur
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mt-4">
-                    <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
-
-
-                      <div class="btn btn-default btn-lg btn-flat">
-                        <i class="fas fa-heart fa-lg mr-2"></i>
-                        Ajouter aux Favoris
-                      </div>
-                    </div>
-                </div>
-                <div class="col-sm-4" id="poste">
-                  <div class="position-relative" style="min-height: 180px;">
-                    <img src="/imageSite1.webp" alt="Photo 3" class="img-fluid">
-                    <div class="ribbon-wrapper ribbon-xl">
-                      <div class="ribbon bg-danger text-xl">
-                        Menage
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="mt-4">
-                    <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
                         <div class="modal" id="myModal">
                             <div class="modal-dialog">
                                     <div class="modal-content">
@@ -420,11 +322,108 @@
                         </div>
                         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
+                        <div class="btn btn-default btn-lg btn-flat">
+                          <i class="fas fa-heart fa-lg mr-2"></i>
+                          Ajouter aux Favoris
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4" id="poste">
+                    <div class="position-relative">
+                      <img src="/conducteur.webp" alt="Photo 2" class="img-fluid" style="height: 400px;">
+                      <div class="ribbon-wrapper ribbon-xl">
+                        <div class="ribbon bg-warning text-lg">
+                          Chauffeur
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
+
+                        <div class="btn btn-default btn-lg btn-flat">
+                          <i class="fas fa-heart fa-lg mr-2"></i>
+                          Ajouter aux Favoris
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-4" id="poste">
+                    <div class="position-relative" style="min-height: 180px;">
+                      <img src="/ménagère.jpeg" alt="Photo 3" class="img-fluid" style="height: 400px;">
+                      <div class="ribbon-wrapper ribbon-xl">
+                        <div class="ribbon bg-danger text-xl">
+                          Menage
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="mt-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
+
+                        <div class="btn btn-default btn-lg btn-flat">
+                          <i class="fas fa-heart fa-lg mr-2"></i>
+                          Ajouter aux Favoris
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+              <div class="row  mt-4">
+                <div class="col-sm-4" id="poste">
+                  <div class="position-relative">
+                    <img src="/cuisiniere.jpg" alt="Photo 1" class="img-fluid" style="height: 400px;">
+                    <div class="ribbon-wrapper ribbon-lg">
+                      <div class="ribbon bg-success text-lg">
+                       Cuisine
+                      </div>
+                    </div>
+                    <div class="mt-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
+
+
                       <div class="btn btn-default btn-lg btn-flat">
                         <i class="fas fa-heart fa-lg mr-2"></i>
                         Ajouter aux Favoris
                       </div>
                     </div>
+                  </div>
+                </div>
+                <!--div class="col-sm-4" id="poste">
+                  <div class="position-relative">
+                    <img src="/conducteur.webp" alt="Photo 2" class="img-fluid">
+                    <div class="ribbon-wrapper ribbon-xl">
+                      <div class="ribbon bg-warning text-lg">
+                        Chauffeur
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <button type="button" class="btn btn-primary btn-lg btn-flat" data-bs-toggle="modal" data-bs-target="#myModal">Postulez maintenant</button>
+
+
+                      <div class="btn btn-default btn-lg btn-flat">
+                        <i class="fas fa-heart fa-lg mr-2"></i>
+                        Ajouter aux Favoris
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-4" id="poste">
+                  <div class="position-relative" style="min-height: 180px;">
+                    <img src="/imageSite1.webp" alt="Photo 3" class="img-fluid">
+                    <div class="ribbon-wrapper ribbon-xl">
+                      <div class="ribbon bg-danger text-xl">
+                        Menage
+                      </div>
+                    </div>
+
+                  </div-->
+                  <!--div class="mt-4">
+
+                      <div class="btn btn-default btn-lg btn-flat">
+                        <i class="fas fa-heart fa-lg mr-2"></i>
+                        Ajouter aux Favoris
+                      </div>
+                    </div-->
                 </div>
               </div>
               <!-- /.card-body -->
@@ -449,7 +448,7 @@
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
-  
+
 <script src="../../plugins/jquery/jquery.min.js"></script>
 
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

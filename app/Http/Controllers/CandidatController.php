@@ -52,6 +52,38 @@ class CandidatController extends Controller
     public function store(Request $request)
     {
 
+        $rules = [
+            'nom' => 'bail|required|string|max:255',
+            "prenom" => 'bail|required|string|max:255',
+            "date_naissance" => 'bail|date|required',
+            "lieu_naissance" => 'bail|required|string',
+            "genre" => 'bail|required|string',
+            "nationalite" => 'bail|required|string',
+            "piece_identite" => 'bail|required',
+            "numero_de_piece" => 'bail|required|string',
+            "date_delivrer" => 'bail|required',
+            "date_expiration" => 'bail|required',
+            "ville_residence" => 'bail|required|string',
+            "quartier" => 'bail|required|string',
+            "rue" => 'bail|required|string',
+            "email" => 'bail|required|email',
+            "situation_familiale" => 'bail|required',
+            "enfants_encharge" => 'bail|required|integer',
+            "profession" => 'bail|required|string',
+            "telephone" => 'bail|required|string',
+            "poste_candidate" => 'bail|required',
+            "horaire_travail_souhaite" => 'bail|required',
+            "objectif" => 'bail|required|string|max:255',
+            "qualite_personnelles" => 'bail|required|string|max:255',
+            "savoir_faire" => 'bail|required|string|max:255',
+            "disponible_a_loger" => 'bail|required',
+            "nature_contrat" => 'bail|required',
+            "horaire_travail_passe" => 'bail|required',
+            "avatar" => 'bail|required'
+        ];
+
+        $this->validate($request, $rules);
+
         $expe = $request->experience;
         //dd($expe);
 
@@ -306,18 +338,19 @@ class CandidatController extends Controller
            //dd($agents);
 
             $last = Agent::find($agents->id_agent);//DB::table('agents')->latest()->get();
-                //if(count($last_row) == 0) {
-              //  $last = 0;
-              //  return view("experienceDuCandidats.edit",compact('last'));
-          //  } else {
-           // $last = $last_row[0];
+
             $expe = ExperienceDuCandidat::all()->where('candidat', '=', $candidat->id_candidat);
             $personeApreve = PersonneAprevenir::all()->where('id_candidat', '=', $candidat->id_candidat);
 
-// Log::debug($experience);
-                if(count($expe) == 0){
+//Log::debug($personeApreve);
+                if(count($expe) == null){
                 }else{
-                    $experience = $expe[0];
+                    $key = 0;
+                    while(! isset($expe[$key])) {
+                        $key++;
+                    }
+                    $experience = $expe[$key];
+
                     $experiences->agent=$last->id_agent;
                     $experiences->nbr_annee_experience=$experience->nbr_annee_experience;
                     $experiences->nbr_voiture_conduit=$experience->nbr_voiture_conduit;
@@ -333,7 +366,14 @@ class CandidatController extends Controller
 
                 }
 
-                $personeAprevenir = $personeApreve[0];
+                $key = 0;
+
+                while(! isset($personeApreve[$key])) {
+                    $key++;
+                }
+
+                $personeAprevenir = $personeApreve[$key];
+
                 $personeAprevenirs->agent=$last->id_agent;
                 $personeAprevenirs->nom=$personeAprevenir->nom;
                 $personeAprevenirs->prenom=$personeAprevenir->prenom;
@@ -347,7 +387,7 @@ class CandidatController extends Controller
            // }
            $suppr = ExperienceDucandidat::where('candidat','=',$candidat->id_candidat)->first();
            $suppr->delete();
-            $candidat->delete();
+           $candidat->delete();
 
         }
         return redirect('candidats')->with('flash_message', 'Candidat récurté!');

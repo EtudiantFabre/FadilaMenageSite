@@ -30,25 +30,23 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white mb-5">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-5 container">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="/Original_on_Transparent.png" style="width: 200px; height: 50px;" alt="FADILA MÉNAGE"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <div class="collapse navbar-collapse" id="navbarCollapse ">
             <button type="button" class="btn btn-info btn-block me-6" data-bs-toggle="modal" data-bs-target="#myModal">Personne à prevenir</button>
-                <a class="btn btn-block"  href="{{ route('agents.index') }}" >Retourner aux agent</a>
-                <a href="{{ route('candidats.create') }}"  class="btn  float-end text-uppercase me-6" style=" font-weight: bold; color:#FF5E0E;">Enregistrer un agent</a>
+            <a class="btn btn-primary btn-block text-uppercase me-6 text-uppercase "  style=" font-weight: bold" href="{{ route('agents.index') }}" >Retourner aux agent</a>
+            <a href="{{ route('candidats.create') }}"  class="btn  btn-success text-uppercase me-6" style=" font-weight: bold; ">Enregistrer un agent</a>
 
-                <form method="POST" name="recru" id="recru" action="{{ route('agents.destroy', $agent) }}" >
-                    <!-- CSRF token -->
-                    @csrf
+            <form method="POST" name="recru" id="recru" action="{{ route('agents.destroy', $agent) }}" >
+                <!-- CSRF token -->
+                @csrf
 
-                    <!-- <input type="hidden" name="_method" value="DELETE"> -->
-                    @method("DELETE")
-                    <input class="btn btn-danger btn-block " type="submit" name="recru" id="recru" value="Retirer {{ $agent->nom.' '.$agent->prenom  }} des agents" disabled >
-                </form>
+                <!-- <input type="hidden" name="_method" value="DELETE"> -->
+                @method("DELETE")
+                <input class="btn btn-danger btn-block text-uppercase me-6" style=" font-weight: bold" type="submit" name="recru" id="recru" value="Retirer {{ $agent->nom.' '.$agent->prenom  }} des agents">
+            </form>
+
 
           <!--a class="container fixed-center" href="" style="text-align: center; font-weight: bold; color:#FF5E0E; line-height: 50px;" id="comp-jd97w5lt3label">Candidatez-vous</a-->
           <!--a class="container fixed-left" href="#" style="text-align: left; color:#FF5E0E; font-weight: bold; line-height: 50px;" id="comp-jd97w5lt3label">Nos services</a-->
@@ -57,6 +55,8 @@
         </div>
       </nav>
     </header><br><br><br><br>
+
+
 <div class="container rounded-4  shadow-lg p-5 mb-5 bg-gray mt-10">
 <div class="container p-10 mt-10">
     <div class="class row mt-10">
