@@ -13,7 +13,7 @@ class SuiviController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class SuiviController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -38,7 +38,7 @@ class SuiviController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -60,7 +60,6 @@ class SuiviController extends Controller
             'repassage' => 'required',
             'id_personnel' => 'required',
             'id_agent' => 'required',
-            'autres_traveaux' => 'nullable'
         ]);
         $suivrePersonne = Suivi::all()->where('date_passage' , '=', $request->date_passage)->where('id_personnel', '=', $request->id_personnel)->where('id_agent', '=', $request->id_agent);
         if (count($suivrePersonne) != 0) {
@@ -82,7 +81,7 @@ class SuiviController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Suivi  $suivi
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(Suivi $suivi)
     {
@@ -94,7 +93,7 @@ class SuiviController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Suivi  $suivi
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(Suivi $suivi)
     {
@@ -112,7 +111,7 @@ class SuiviController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Suivi  $suivi
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, Suivi $suivi)
     {
@@ -134,7 +133,6 @@ class SuiviController extends Controller
             'repassage' => 'required',
             'id_personnel' => 'required',
             'id_agent' => 'required',
-            'autres_traveaux' => 'nullable'
         ]);
 
         $suivi->date_passage = $request->date_passage;
@@ -155,6 +153,9 @@ class SuiviController extends Controller
         $suivi->id_personnel = $request->id_personnel;
         $suivi->id_agent = $request->id_agent;
         $suivi->autres_traveaux = $request->autres_traveaux;
+        $suivi->probleme = $request->probleme;
+        $suivi->commentaire = $request->commentaire;
+
 
         $suivi->save();
         return redirect()->route('suivis.index')->with('succes', 'Suivi modifié !');
@@ -164,7 +165,7 @@ class SuiviController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Suivi  $suivi
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(Suivi $suivi)
     {

@@ -8,13 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
-    protected $fillable = ['nom','tel','ville','quartier','email','type_service_rechercher','frequence_souhaiter'];
-=======
-    protected $fillable = ['nom','tel','ville','quartier', 'email', 'type_service_rechercher',
-     'frequence_souhaiter'];
->>>>>>> main
 
+
+    protected $fillable = ['nom','tel','ville','quartier','email','type_service_rechercher','frequence_souhaiter'];
     protected $primaryKey = 'id_client';
 
     public function contrat()

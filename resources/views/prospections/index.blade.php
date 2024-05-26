@@ -12,11 +12,19 @@
 <body>
     <div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
         <h1 class="text-center">Liste des prospections</h1>
+        <div>
+            <form action="{{route('prospections.create')}}">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-primary">CREER UNE PROSPECTION</button>
+                </div>
+            </form>
+        </div>
+        <br>
         <table class="table table-dange table-hover table-striped table-bordered border-primary text-center justify-content-center">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Date</th>
+                    <th>Date de prospection</th>
                     <!--th>Canal</th>
                     <th>Compétence recherché</th>
                     <th>Type de maison</th>
@@ -27,8 +35,7 @@
                     <th>Actions menées</th>
                     <th>Conclusion</th-->
                     <th>Agent sélectionné</th>
-                    <th>Client sélectionné</th>
-                    <th>Facture sélectionné</th>
+                    <th>Client associé</th>
                     <th class="bg-danger">Actions</th>
                 </tr>
             </thead>
@@ -39,7 +46,7 @@
                         {{$prospection->id_prospection}}
                     </td>
                     <td>
-                        {{$prospection->date}}
+                        {{$prospection->date_prospection}}
                     </td>
                     <!--td>
                         {{$prospection->canal}}
@@ -74,9 +81,7 @@
                     <td>
                         {{$prospection->id_client}}
                     </td>
-                    <td>
-                        {{$prospection->id_facture}}
-                    </td>
+                    
                     <td>
                         <div class="d-flex dropdown mr-1">
                             <form action="{{route('prospections.show', $prospection->id_prospection)}}" method="GET">
@@ -100,14 +105,11 @@
             @endforeach
         </table>
 
-        <div>
-            <form action="{{route('prospections.create')}}">
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="submit" class="btn btn-primary">CREER UNE PROSPECTION</button>
-                </div>
-            </form>
-        </div>
     </div>
+    <footer class="container">
+        <p class="float-end"><a href="#">Retour au sommet</a></p>
+        <p>&copy; 2017–2022 Compagnie, Inc. &middot; <a href="#">Privé</a> &middot; <a href="#">Fadila ménage</a></p>
+    </footer>
 </body>
 </html>
 

@@ -13,7 +13,7 @@ class AgentPonctuelController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class AgentPonctuelController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -38,7 +38,7 @@ class AgentPonctuelController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -61,7 +61,7 @@ class AgentPonctuelController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\AgentPonctuel  $agentPonctuel
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(AgentPonctuel $agentPonctuel)
     {
@@ -73,7 +73,7 @@ class AgentPonctuelController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\AgentPonctuel  $agentPonctuel
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(AgentPonctuel $agentPonctuel)
     {
@@ -88,7 +88,7 @@ class AgentPonctuelController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\AgentPonctuel  $agentPonctuel
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, AgentPonctuel $agentPonctuel)
     {
@@ -100,7 +100,7 @@ class AgentPonctuelController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\AgentPonctuel  $agentPonctuel
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(AgentPonctuel $agentPonctuel)
     {

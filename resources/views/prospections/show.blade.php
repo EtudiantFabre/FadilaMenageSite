@@ -16,7 +16,7 @@
             <thead class="table-dark">
                 <tr>
                     <th>Raison social</th>
-                    <th>Date</th>
+                    <th>Date de prospection</th>
                     <th>Canal</th>
                     <th>Compétence recherché</th>
                     <th>Type de maison</th>
@@ -28,7 +28,6 @@
                     <th>Conclusion</th>
                     <th>Agent sélectionné</th>
                     <th>Client sélectionné</th>
-                    <th>Facture sélectionné</th>
                 </tr>
             </thead>
 
@@ -37,7 +36,7 @@
                     {{$prospection->raison_social}}
                 </td>
                 <td>
-                    {{$prospection->date}}
+                    {{$prospection->date_prospection}}
                 </td>
                 <td>
                     {{$prospection->canal}}
@@ -71,9 +70,6 @@
                 </td>
                 <td>
                     {{$prospection->id_client}}
-                </td>
-                <td>
-                    {{$prospection->id_facture}}
                 </td>
             </tr>
         </table>

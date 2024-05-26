@@ -10,25 +10,16 @@ class Agent extends Model
     use HasFactory;
 
     protected $fillable = ['nom','prenom','date_naissance','lieu_naissance','genre','nationalite','piece_identite','numero_de_piece','date_delivrer',
-<<<<<<< HEAD
-    'date_expiration','ville_residence','quartier','rue','email','situation_familiale','enfants_encharge','profession','photo_id',
+    'date_expiration','ville_residence','quartier','rue','email','situation_familiale','enfants_encharge','profession',
     'avatar','poste_candidate','horaire_travail_souhaite','objectif','qualite_personnelles','savoir_faire','disponible_a_loger',
-    'nature_contrat','oraire_travail_passe','date_retenu','status' ,'telephone'];
+    'nature_contrat','horaire_travail_passe','date_retenu','telephone','pretention_salarial','niveau_etude'];
 protected $primaryKey = 'id_agent';
 
 public function contrat()
 {
 return $this->hasMany(Contrat::class,'id_contrat' );
 }
-=======
-                        'date_expiration','ville_residence','quartier','rue','email','situation_familiale','enfants_encharge','profession','photo_id','avatar','date_retenu','status'];
-    protected $primaryKey = 'id_agent';
 
-    public function contrat()
-    { 
-    return $this->hasMany(Contrat::class,'id_contrat' );
-    }
->>>>>>> main
 
     public function suivis()
     {
@@ -38,6 +29,7 @@ return $this->hasMany(Contrat::class,'id_contrat' );
     public function evaluation()
     {
     return $this->hasMany(Evaluation::class,'id_evaluation');
+    
     }
 
     public function personne()

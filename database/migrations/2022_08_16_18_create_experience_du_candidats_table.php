@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('experience_du_candidats', function (Blueprint $table) {
             $table->bigIncrements('id_experience');
             $table->integer('nbr_annee_experience');
-            $table->integer('nbr_voiture_conduit');
-            $table->string('type_voiture');
-            $table->string('type_contrat');
-            $table->string('adresse_societe');
-            $table->string('adresse_employeur');
+            $table->integer('nbr_voiture_conduit')->nullable();
+            $table->string('type_voiture')->nullable();
+            $table->string('type_contrat')->nullable();
+            $table->string('nom_employeur')->nullable();
+            $table->string('numero_employeur')->nullable();
             $table->integer('dernier_salaire');
-            $table->date('date_demission');
-            $table->integer('pretention_salarial');
+            $table->integer('nombre_enfants_garde');
+            $table->date('date_demission')->nullable();
             $table->integer('candidat');
             $table->timestamps();
             $table->softDeletes();

@@ -13,7 +13,7 @@ class AppelOffreController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class AppelOffreController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -38,7 +38,7 @@ class AppelOffreController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -79,7 +79,7 @@ class AppelOffreController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\AppelOffre  $appelOffre
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(AppelOffre $appelOffre)
     {
@@ -90,7 +90,7 @@ class AppelOffreController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\AppelOffre  $appelOffre
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(AppelOffre $appelOffre)
     {
@@ -106,7 +106,7 @@ class AppelOffreController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\AppelOffre  $appelOffre
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, AppelOffre $appelOffre)
     {
@@ -159,7 +159,7 @@ class AppelOffreController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\AppelOffre  $appelOffre
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(AppelOffre $appelOffre)
     {

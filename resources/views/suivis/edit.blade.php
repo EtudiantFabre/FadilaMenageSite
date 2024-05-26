@@ -603,7 +603,16 @@
                     Autres traveaux (ceci est optionnel):
                     <textarea class="form-control" placeholder="Pricisez si vous avez" id="floatingTextarea2" style="height: 100px" name="autres_traveaux">{{$suivi->autres_traveaux}}</textarea>
                 </div> 
-                <br>          
+                <br>   
+                <div class="form-floating" >
+                    Problème (ceci est optionnel):
+                    <textarea class="form-control" id="floatingTextarea2" style="height: 100px" name="probleme">{{$suivi->probleme}}</textarea>
+                </div> 
+                <br>
+                <div class="form-floating" >
+                    Commentaire (ceci est optionnel):
+                    <textarea class="form-control" id="floatingTextarea2" style="height: 100px" name="commentaire">{{$suivi->commentaire}}</textarea>
+                </div>        
             </div>
 
             <div class="d-grid gap-2 col-6 mx-auto">

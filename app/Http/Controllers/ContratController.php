@@ -13,7 +13,7 @@ class ContratController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -24,7 +24,7 @@ class ContratController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -38,7 +38,7 @@ class ContratController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -77,7 +77,7 @@ class ContratController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Contrat  $contrat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(Contrat $contrat)
     {
@@ -88,7 +88,7 @@ class ContratController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Contrat  $contrat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(Contrat $contrat)
     {
@@ -104,7 +104,7 @@ class ContratController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Contrat  $contrat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, Contrat $contrat)
     {
@@ -132,7 +132,7 @@ class ContratController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Contrat  $contrat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(Contrat $contrat)
     {

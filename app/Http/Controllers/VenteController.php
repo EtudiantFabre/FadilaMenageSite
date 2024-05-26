@@ -12,7 +12,7 @@ class VenteController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class VenteController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -38,7 +38,7 @@ class VenteController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -65,7 +65,7 @@ class VenteController extends Controller
     "ca_total_mensuel_realiser" => $request['solde_contrat']+$request['total_client_findu_mois'],
 
 
-]);
+    ]);
 
 // 3. On retourne vers tous les ventes :
 return redirect(route("ventes.index"));
@@ -76,7 +76,7 @@ return redirect(route("ventes.index"));
      * Display the specified resource.
      *
      * @param  \App\Models\Vente  $vente
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(Vente $vente)
     {
@@ -88,7 +88,7 @@ return redirect(route("ventes.index"));
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Vente  $vente
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(Vente $vente)
     {
@@ -103,7 +103,7 @@ return redirect(route("ventes.index"));
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Vente  $vente
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, Vente $vente)
     {
@@ -132,7 +132,7 @@ return redirect(route("ventes.index"));
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Vente  $vente
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(Vente $vente)
     {

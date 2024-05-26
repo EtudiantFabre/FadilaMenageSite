@@ -27,11 +27,11 @@ return new class extends Migration
             $table->date('date_expiration');
             $table->string('ville_residence');
             $table->string('quartier');
-            $table->string('rue');
-            $table->string('email');
+            $table->string('rue')->nullable();
+            $table->string('email')->nullable();
             $table->string('situation_familiale');
-            $table->integer('enfants_en_charge');
-            $table->string('profession');
+            $table->integer('enfants_en_charge')->nullable();
+            $table->string('profession')->nullable();
             $table->string('avatar');
             $table->integer('salaire');
             $table->string('post_ocuper');

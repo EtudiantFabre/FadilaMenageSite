@@ -181,9 +181,11 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        // Service Provider DomPDF
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         //MercurySeries\Flashy\FlashyServiceProvider::class,
-        
+
 
         /*
          * Package Service Providers...
@@ -195,8 +197,9 @@ return [
 
         //SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
-        /* 
-        
+        /*
+
+
         */
 
 
@@ -223,8 +226,12 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        "PDF" => Barryvdh\DomPDF\Facade::class
         //'Flashy' => MercurySeries\Flashy\Flashy::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        // Façade DomPDF
+    
     ])->toArray(),
+
 
 ];

@@ -2,10 +2,11 @@
 @section("title", $contrat->client)
 @section("content")
 
-	<h1>{{ $contrat->agent }}</h1>
+	<h1 class="text-center">{{ $contrat->agent }}</h1>
+<div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
 
 	<!-- Le tableau pour lister les contrats -->
-	<table>
+	<table class="table table-primary table-hover table-striped rounded table-bordered border-primary text-center table-curved justify-content-center">
 		<thead>
 			<tr>
 				<th>Agent</th>
@@ -15,7 +16,7 @@
                 <th>Echeance</th>
                 <th>service</th>
                 <th>local</th>
-                <th>Adresse</th>
+
                 <th>Temps</th>
                 <th>Frequence</th>
                 <th>Agent assigne</th>
@@ -34,7 +35,6 @@
             <td>{{ $contrat->echeance_contrat}}</td>
             <td>{{ $contrat->service}}</td>
             <td>{{ $contrat->local}}</td>
-            <td>{{ $contrat->adresse}}</td>
             <td>{{ $contrat->temps}}</td>
             <td>{{ $contrat->frequence}}</td>
             <td>{{ $contrat->agent_assigne}}</td>
@@ -45,6 +45,8 @@
             <td>{{ $contrat->status}}</td>
         </tbody>
 
-	<p><a href="{{ route('contrat.index') }}" title="Retourner aux articles" >Retourner aux contrats</a></p>
-
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn-success btn-block" href="{{ route('contrat.index') }}" title="Retourner aux articles" >Retourner aux contrats</a>
+        </div>
+</div>
 @endsection

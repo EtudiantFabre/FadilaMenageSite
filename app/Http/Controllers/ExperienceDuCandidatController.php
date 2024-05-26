@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 use App\Models\ExperienceDuCandidat;
 use Illuminate\Http\Request;
 use App\Models\Candidat;
@@ -12,11 +13,11 @@ class ExperienceDuCandidatController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
-        $experienceDuCandidats = ExperienceDuCandidat::latest()->get();
+        $experienceDuCandidats = ExperienceDuCandidat::all();
 
         // On transmet les Post à la vue
         return view("experienceDuCandidats.index", compact("experienceDuCandidats"));
@@ -25,13 +26,14 @@ class ExperienceDuCandidatController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
-        $candidats = Candidat::all();
-        return view("experienceDuCandidats.edit",compact('candidats'));
-        //return view("experienceDuCandidats.edit");
+        $last_row = DB::table('candidats')->latest()->get();
+        //Log::debug($last_row);
+
+        return view("experienceDuCandidats.edit",compact('last_row'));
 
     }
 
@@ -39,7 +41,7 @@ class ExperienceDuCandidatController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -50,21 +52,29 @@ class ExperienceDuCandidatController extends Controller
 
 
          // 2. On enregistre les informations de lexperience du candidat
+         $last_row = DB::table('candidats')->latest('id_candidat')->get();
+
+        foreach ($last_row as $last) {
+            $idCandidat = $last->id_candidat;
+
+            
          ExperienceDuCandidat::create([
             "nbr_annee_experience" => $request->nbr_annee_experience,
             "nbr_voiture_conduit" => $request->nbr_voiture_conduit,
             "type_voiture" => $request->type_voiture,
             "type_contrat" => $request->type_contrat,
-            "adresse_societe" => $request->adresse_societe,
-            "adresse_employeur" => $request->adresse_employeur,
+            "nom_employeur" => $request->nom,
+            "numero_employeur" => $request->numero_employeur,
+            "nombre_enfants_garde" => $request->nombre_enfants_garde,
             "dernier_salaire" => $request->dernier_salaire,
             "date_demission" => $request->date_demission,
-            "pretention_salarial" => $request->pretention_salarial,
-            "candidat" => $request->id_candidat
-
+            "candidat" =>  $idCandidat
 
         ]);
-        
+
+    }
+
+
         // 3. On retourne vers tous les experiences :
         return redirect(route("experienceDuCandidats.index"));
 
@@ -74,7 +84,7 @@ class ExperienceDuCandidatController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\ExperienceDuCandidat  $experienceDuCandidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(ExperienceDuCandidat $experienceDuCandidat)
     {
@@ -86,7 +96,7 @@ class ExperienceDuCandidatController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\ExperienceDuCandidat  $experienceDuCandidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(ExperienceDuCandidat $experienceDuCandidat)
     {
@@ -99,7 +109,7 @@ class ExperienceDuCandidatController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\ExperienceDuCandidat  $experienceDuCandidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, ExperienceDuCandidat $experienceDuCandidat)
     {
@@ -117,14 +127,12 @@ class ExperienceDuCandidatController extends Controller
             "nbr_voiture_conduit" => $request->nbr_voiture_conduit,
             "type_voiture" => $request->type_voiture,
             "type_contrat" => $request->type_contrat,
-            "adresse_societe" => $request->adresse_societe,
-            "adresse_employeur" => $request->adresse_employeur,
+            "nom" => $request->nom,
+            "numero" => $request->numero,
+            "nombre_enfants_garde" => $request->nombre_enfants_garde,
             "dernier_salaire" => $request->dernier_salaire,
             "date_demission" => $request->date_demission,
-            "pretention_salarial" => $request->pretention_salarial,
             "candidat" => $request->id_candidat
-
-
     ]);
 
     // 4. On affiche les informatins modifié :
@@ -135,7 +143,7 @@ class ExperienceDuCandidatController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\ExperienceDuCandidat  $experienceDuCandidat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(ExperienceDuCandidat $experienceDuCandidat)
     {

@@ -11,7 +11,7 @@ class PersonneAprevenirController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -22,7 +22,7 @@ class PersonneAprevenirController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function create()
     {
@@ -35,7 +35,7 @@ class PersonneAprevenirController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -61,7 +61,7 @@ class PersonneAprevenirController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\PersonneAprevenir  $personneAprevenir
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function show(PersonneAprevenir $personneAprevenir)
     {
@@ -72,7 +72,7 @@ class PersonneAprevenirController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\PersonneAprevenir  $personneAprevenir
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(PersonneAprevenir $personneAprevenir)
     {
@@ -85,7 +85,7 @@ class PersonneAprevenirController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\PersonneAprevenir  $personneAprevenir
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, PersonneAprevenir $personneAprevenir)
     {
@@ -108,7 +108,7 @@ class PersonneAprevenirController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\PersonneAprevenir  $personneAprevenir
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(PersonneAprevenir $personneAprevenir)
     {

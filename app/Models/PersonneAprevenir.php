@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PersonneAprevenir extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom', 'prenom', 'lien_de_parente', 'id_candidat'];
+    protected $fillable = ['nom', 'prenom', 'tel', 
+        'quartier', 'profession', 'lien_de_parente', 
+        'id_candidat'
+    ];
     protected $primaryKey = 'id_personne_a_prevenir';
 
     /**

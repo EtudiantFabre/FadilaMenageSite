@@ -2,16 +2,17 @@
 @section("title", "Les vente mensuelles")
 @section("content")
 
-	<h1>Tous les ventes par mois</h1>
+	<h1 class="text-center">Les ventes par mois</h1>
+<div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
 
-	<p>
-		<!-- Lien pour créer un nouvel vente : "vente.create" -->
-		<a href="{{ route('ventes.create') }}" title="Créer un vente" >Enregistrer une nouvelle vente</a>
-	</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+		<!-- Lien pour créer une nouvel vente : "vente.create" -->
+		<a class="btn btn-success btn-block" href="{{ route('ventes.create') }}" title="Créer un vente" >Enregistrer une nouvelle vente</a>
+	</div><br><br>
 
 	<!-- Le tableau pour lister les ventes -->
-	<table>
-		<thead>
+	<table class="table table-primary table-hover table-striped rounded table-bordered border-primary text-center table-curved justify-content-center">
+		<thead style="background-color: orangered">
 			<tr>
 				<th>Personnel</th>
                 <th>Mois</th>
@@ -94,5 +95,5 @@
 			@endforeach
 		</tbody>
 	</table>
-
+</div>
 @endsection

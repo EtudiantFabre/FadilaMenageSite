@@ -4,7 +4,7 @@
 
 	<h1>{{ $agent->nom." ".$agent->prenom}}</h1>
 
-	<img src="{{ asset('storage/app/agents'.$agent->avatar) }}" alt="Photo d'agent" style="max-width: 300px;">
+	<img src="{{ asset('storage/'.$agent->avatar) }}" alt="Photo d'agent" style="max-width: 300px;">
 
 	<p>
         <label for="numero">Numero :</label> {{$agent->id_agent }}

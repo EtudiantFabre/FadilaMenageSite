@@ -9,7 +9,14 @@ class Suivi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date_passage', 'heure_passage', 'acces_residence', 'verif_presence_agent', 'presence_agent', 'heure_arrive_agent', 'pres_corporel_vestimentaire', 'entretient_plafond', 'essuyage_vitre', 'depousierage_appareil', 'depousierage_meuble', 'entretient_corbeil', 'entretient_sanitaire', 'balayage_netoyage_sol', 'repassage', 'autres_traveaux', 'id_personnel', 'id_agent'];
+    protected $fillable = ['date_passage', 'heure_passage', 'acces_residence', 
+        'verif_presence_agent', 'presence_agent', 'heure_arrive_agent',
+        'pres_corporel_vestimentaire', 'entretient_plafond', 
+        'essuyage_vitre', 'depousierage_appareil', 'depousierage_meuble',
+        'entretient_corbeil', 'entretient_sanitaire', 
+        'balayage_netoyage_sol', 'repassage', 'autres_traveaux', 'probleme',
+        'commentaire', 'id_personnel', 'id_agent'
+    ];
     protected $primaryKey = 'id_suivis';
 
     /**

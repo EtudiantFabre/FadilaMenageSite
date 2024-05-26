@@ -2,13 +2,22 @@
 @section("title", "Relancer un contrat")
 @section("content")
 
-	<h1>Relancer un contrat</h1>
+<div class="container rounded-4 bg-warning shadow-lg p-3 mb-5 bg-div">
+    @if (isset($relanceContrat))
 
+    <div class="container " style="text-color: white" id="title">
+	    <h1 class="text-center">Medifier une relance</h1>
+    </div>
+    @else
+    <div class="container " style="text-color: white" id="title">
+	    <h1 class="text-center">Relancer un contrat</h1>
+    </div>
+    @endif
 	<!-- Si nous avons un relanceContrat $relanceContrat -->
 	@if (isset($relanceContrat))
 
         <!-- Le formulaire est géré par la route "relanceContrat.update" -->
-        <form method="POST" action="{{ route('relanceContrats.update', $relanceContrat) }}" enctype="multipart/form-data" >
+        <form class="mb-10px" method="POST" action="{{ route('relanceContrats.update', $relanceContrat) }}" enctype="multipart/form-data" >
 
             <!-- <input type="hidden" name="_method" value="PUT"> -->
             @method('PUT')
@@ -16,14 +25,14 @@
 	@else
 
         <!-- Le formulaire est géré par la route "relanceContrats.store" -->
-        <form method="POST" action="{{ route('relanceContrats.store') }}" enctype="multipart/form-data" >
+        <form class="mb-10px" method="POST" action="{{ route('relanceContrats.store') }}" enctype="multipart/form-data" >
 
 	@endif
 
 		<!-- Le token CSRF -->
 		@csrf
 
-		<p>
+		<div class="form-group">
 			<label for="contrat" >Contrat à rélancer : </label>
             <select name="contrat">
                 @foreach ($contrats as $contrat)
@@ -34,19 +43,19 @@
 			@error("contrat")
 			<div>{{ $message }}</div>
 			@enderror
-		</p>
+		</div>
 
-		<p>
+		<div class="form-group">
 			<label for="date_relance" >Date de telance : </label>
 
-			<input type="date" name="date_relance" value="{{ isset($relanceContrat->date_relance) ? $relanceContrat->date_relance : old('date_relance') }}"  id="date_relance">
+			<input class="form-control" type="date" name="date_relance" value="{{ isset($relanceContrat->date_relance) ? $relanceContrat->date_relance : old('date_relance') }}"  id="date_relance">
 
 			<!-- Le message d'erreur pour "date_relance" -->
 			@error("date_relance")
 			<div>{{ $message }}</div>
 			@enderror
-		</p>
-        <p>
+		</div>
+        <div class="form-group">
 			<label for="client" >Client</label><br/>
 
             <select name="client">
@@ -58,39 +67,40 @@
 			@error("client")
 			<div>{{ $message }}</div>
 			@enderror
-		</p>
-        <p>
-			<label for="motif" >Motif : </label>
+		</div>
+        <div class="form-group">
+			<label for="motif" >Motif : </label><br>
 
-            <textarea name="motif" id="motif" value="{{ isset($relanceContrat->motif) ? $relanceContrat->motif : old('motif') }}" cols="30" rows="10" placeholder="motif"></textarea>
+            <textarea class="form-control" name="motif" id="motif" value="{{ isset($relanceContrat->motif) ? $relanceContrat->motif : old('motif') }}"  placeholder="motif"></textarea>
 			<!-- Le message d'erreur pour "motif" -->
 			@error("motif")
 			<div>{{ $message }}</div>
 			@enderror
-		</p>
-        <p>
+		</div>
+        <div class="form-group">
 			<label for="situation" >Situation : </label>
 
-			<input type="text" name="situation" value="{{ isset($relanceContrat->situation) ? $relanceContrat->situation : old('situation') }}"  id="situation" placeholder="situation" >
+			<input class="form-control" type="text" name="situation" value="{{ isset($relanceContrat->situation) ? $relanceContrat->situation : old('situation') }}"  id="situation" placeholder="situation" >
 
 			<!-- Le message d'erreur pour "situation" -->
 			@error("situation")
 			<div>{{ $message }}</div>
 			@enderror
-		</p>
-        <p>
+		</div>
+        <div class="form-group">
 			<label for="nbr_contrat_encours" >Nombre de contrat en cours : </label>
 
-			<input type="number" name="nbr_contrat_encours" value="{{ isset($relanceContrat->nbr_contrat_encours) ? $relanceContrat->nbr_contrat_encours : old('nbr_contrat_encours') }}"  id="nbr_contrat_encours">
+			<input class="form-control" type="number" name="nbr_contrat_encours" value="{{ isset($relanceContrat->nbr_contrat_encours) ? $relanceContrat->nbr_contrat_encours : old('nbr_contrat_encours') }}"  id="nbr_contrat_encours">
 
 			<!-- Le message d'erreur pour "nbr_contrat_encours" -->
 			@error("nbr_contrat_encours")
 			<div>{{ $message }}</div>
 			@enderror
-		</p>
+		</div><br>
 
-		<input type="submit" name="valider" value="Valider" >
-
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <button type="submit" class="btn btn-success btn-block form-control">ENREGISTREZ</button>
+        </div>
 	</form>
-
+</div>
 @endsection
